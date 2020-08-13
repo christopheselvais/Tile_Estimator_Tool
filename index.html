@@ -15,7 +15,7 @@ function validSqft()
         document.getElementById("sqftError").innerHTML= "";
         document.getElementById("sqftL").style.backgroundColor= "white";
         document.getElementById("sqftW").style.backgroundColor= "white";
-        if (sqftLTextBoxContent.length <3 || sqftWTextBoxContent.length <3)
+        if (sqftLTextBoxContent.value <3 || sqftWTextBoxContent.value <3)
         {
             document.getElementById("sqftError").innerHTML= "Response too short";
         }
@@ -36,7 +36,7 @@ function validTileSize()
         document.getElementById("TileSizeError").innerHTML= "";
         document.getElementById("TileSizeL").style.backgroundColor= "white";
         document.getElementById("TileSizeW").style.backgroundColor= "white";
-        if (tilesizeTextBoxContent.length <3 || tilesizeWTextBoxContent.length <3)
+        if (tilesizeLTextBoxContent.value <3 || tilesizeWTextBoxContent.value <3)
         {
             document.getElementById("TileSizeError").innerHTML= "Response too short";
         }
@@ -84,33 +84,56 @@ function validPhone()
 }
 function calculate()
 {
+
+    var tilesizeLTextBoxContent = document.getElementById("TileSizeL").value;
+    var tilesizeWTextBoxContent = document.getElementById("TileSizeW").value;
+    var sqftLTextBoxContent = document.getElementById("sqftL").value;
+    var sqftWTextBoxContent = document.getElementById("sqftW").value;
+    var UOMsqft = document.getElementById("UOMsqft").value;
+    var UOMTS = document.getElementById("UOMTS").value;
     var ATC = sqftLTextBoxContent * sqftWTextBoxContent;
     var AOT = tilesizeLTextBoxContent * tilesizeWTextBoxContent;
-    if (document.getElementById("UOMsqft").value = "feet"  && document.getElementById("UOMTS".value = "inches"))
+    if (UOMsqft == "feet"  && UOMTS == "inch")
     {
         document.write("Number of Tiles: " + ((ATC * 12) / AOT) + "<br>Remainder: " + ((ATC * 12) % AOT));
 
-    } 
-//   else if (document.getElementById("UOMsqft").value=... UOM = two systems empirial or metric 
+    }
+  }
+function uomCheck()
+{
+  if (document.getElementById("UOM").value = "metric") {
+    document.getElementById("uomsqftHangar").innerHTML = "m/cm"
+    document.getElementById("uomTSHangar").innerHTML = "m/cm";
+  } else if (document.getElementById("UOM").value = "imperial") {
+      document.getElementById("uomsqftHangar").innerHTML = "ft/in"
+      document.getElementById("uomTSHangar").innerHTML = "ft/in";
+    }
 }
+
+//   else if (document.getElementById("UOMsqft").value=... UOM = two systems empirial or metric
+
 </script>
-  
+
   <table style="background-color:#CCD1D1;">
 
-
+        <tr>
+          <td> <b>Unit of Measurement</b> </td>
+          <td>
+          <select id="UOM" name="UOM" onchange="uomCheck()">
+          <option value="imperial" selected> Imperial</option>
+          <option value="metric" >Metric</option>
+          </select>
+        </td>
+      </tr>
         <tr>
             <td><b>Enter dimensions of area </b></td>
             <td>
-              <input type="text" id="sqftL" size="4" maxlength="3" name="sqftL" onblur="validSqft()"> X
+              <input type="text" id="sqftL" size="4" maxlength="3" name="sqftL" onblur="validSqft()">
+              X
               <input type="text" maxlength="3" id="sqftW" size="4" name="sqftW" onblur="validSqft()">
+              <em><span id = "uomsqftHangar">ft/in</span></em>
 
-              <select id="UOMsqft" name="UOM" >
-              <option value="inch" selected> inches</option>
-              <option value="foot" >feet</option>
-              <option value="meter" >meters</option>
-              <option value="cm" >cm</option>
-            </select>
-             <span id="sqftError">
+             <td><span id="sqftError"></td>
         </td></tr>
         <tr>
             <td><b>Tile Size</b></td>
@@ -118,13 +141,8 @@ function calculate()
             <input type="text" size="4" maxlength="2" id="TileSizeL" onblur="validTileSize()">
             X
             <input type="text" size="4" maxlength="2" id="TileSizeW" onblur="validTileSize()">
-            <select id="UOMTS" name="UOMTS" >
-            <option value="inch" selected> inches</option>
-            <option value="foot" >feet</option>
-            <option value="meter" >meters</option>
-            <option value="cm" >cm</option>
-          </select>
-            <span id="TileSizeError"></td>
+            <em><span id = "uomTSHangar">ft/in</span></td>
+            <td><span id="TileSizeError"></td></td>
         </tr>
         <tr>
             <td><b>Gap Size</b></td>
