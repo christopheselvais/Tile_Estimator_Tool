@@ -5,57 +5,6 @@
 </head>
 
 <script language="javascript" type="text/javascript">
-<table style="background-color:#CCD1D1;">
-
-
-        <tr>
-            <td><b>Enter dimensions of area </b></td>
-            <td>
-              <input type="text" id="sqftL" size="4" maxlength="3" name="sqftL" onblur="validSqft()"> X
-              <input type="text" maxlength="3" id="sqftW" size="4" name="sqftW" onblur="validSqft()">
-
-              <select id="UOMsqft" name="UOM" >
-              <option value="inch" selected> inches</option>
-              <option value="foot" >feet</option>
-              <option value="meter" >meters</option>
-              <option value="cm" >cm</option>
-            </select>
-             <span id="sqftError">
-        </td></tr>
-        <tr>
-            <td><b>Tile Size</b></td>
-            <td>
-            <input type="text" size="4" maxlength="2" id="TileSizeL" onblur="validTileSize()">
-            X
-            <input type="text" size="4" maxlength="2" id="TileSizeW" onblur="validTileSize()">
-            <select id="UOMTS" name="UOMTS" >
-            <option value="inch" selected> inches</option>
-            <option value="foot" >feet</option>
-            <option value="meter" >meters</option>
-            <option value="cm" >cm</option>
-          </select>
-            <span id="TileSizeError"></td>
-        </tr>
-        <!-- <tr>
-            <td><b>Gap Size</b></td>
-            <td><input type="text" id="email" onblur="validEmail()"></td>
-            <td><span id="emailError"></td>
-        </tr>
-        <tr>
-            <td>Box Size</td>
-            <td><input type="text" id="phone" onblur="validPhone()"></td>
-            <td><span id="phoneError"></td>
-        </tr>
-        <tr>
-            <td>Price</td>
-            <td><input type="text" id="phone" onblur="validPhone()"></td>
-            <td><span id="phoneError"></td>
-        </tr> -->
-        <tr>
-            <td><input type="submit" onclick="calculate()"></td>
-            <td></td>
-            <td></td>
-</table>
 function validSqft()
 {
     //alert("In validFirst()");
@@ -138,8 +87,64 @@ function calculate()
     var ATC = sqftLTextBoxContent * sqftWTextBoxContent;
     var AOT = tilesizeLTextBoxContent * tilesizeWTextBoxContent;
     if (document.getElementById("UOMsqft").value = "feet"  && document.getElementById("UOMTS".value = "inches"))
-    {document.write("Number of Tiles: " + ((ATC * 12) / AOT) + "<br>Remainder: " + ((ATC * 12) % AOT));
+    {
+        document.write("Number of Tiles: " + ((ATC * 12) / AOT) + "<br>Remainder: " + ((ATC * 12) % AOT));
 
-} else null }
+    } 
+//   else if (document.getElementById("UOMsqft").value=... UOM = two systems empirial or metric 
+}
 </script>
+  
+  <table style="background-color:#CCD1D1;">
+
+
+        <tr>
+            <td><b>Enter dimensions of area </b></td>
+            <td>
+              <input type="text" id="sqftL" size="4" maxlength="3" name="sqftL" onblur="validSqft()"> X
+              <input type="text" maxlength="3" id="sqftW" size="4" name="sqftW" onblur="validSqft()">
+
+              <select id="UOMsqft" name="UOM" >
+              <option value="inch" selected> inches</option>
+              <option value="foot" >feet</option>
+              <option value="meter" >meters</option>
+              <option value="cm" >cm</option>
+            </select>
+             <span id="sqftError">
+        </td></tr>
+        <tr>
+            <td><b>Tile Size</b></td>
+            <td>
+            <input type="text" size="4" maxlength="2" id="TileSizeL" onblur="validTileSize()">
+            X
+            <input type="text" size="4" maxlength="2" id="TileSizeW" onblur="validTileSize()">
+            <select id="UOMTS" name="UOMTS" >
+            <option value="inch" selected> inches</option>
+            <option value="foot" >feet</option>
+            <option value="meter" >meters</option>
+            <option value="cm" >cm</option>
+          </select>
+            <span id="TileSizeError"></td>
+        </tr>
+        <tr>
+            <td><b>Gap Size</b></td>
+            <td><input type="text" id="email" onblur="validEmail()"></td>
+            <td><span id="emailError"></td>
+        </tr>
+        <tr>
+            <td>Box Size</td>
+            <td><input type="text" id="phone" onblur="validPhone()"></td>
+            <td><span id="phoneError"></td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td><input type="text" id="phone" onblur="validPhone()"></td>
+            <td><span id="phoneError"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" onclick="calculate()"></td>
+            <td></td>
+            <td></td>
+    </tr>
+</table>
 </html>
