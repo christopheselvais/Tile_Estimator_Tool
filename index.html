@@ -5,64 +5,95 @@
 </head>
 
 <script language="javascript" type="text/javascript">
-function validSqft()
+function validLSqft()
 {
-    //alert("In validFirst()");
     var sqftLTextBoxContent = document.getElementById("sqftL").value;
-    var sqftWTextBoxContent = document.getElementById("sqftW").value;
-    if (sqftLTextBoxContent != "" && sqftLTextBoxContent != null || sqftWTextBoxContent != "" && sqftWTextBoxContent != null)
+    if (sqftLTextBoxContent != "" && sqftLTextBoxContent != null)
     {
         document.getElementById("sqftError").innerHTML= "";
         document.getElementById("sqftL").style.backgroundColor= "white";
-        document.getElementById("sqftW").style.backgroundColor= "white";
-        if (sqftLTextBoxContent.value <3 || sqftWTextBoxContent.value <3)
-        {
-            document.getElementById("sqftError").innerHTML= "Response too short";
-        }
-    } else
+    }
+    if (sqftLTextBoxContent <= 3)
     {
-        document.getElementById("sqftError").innerHTML= "Required Field"
+        document.getElementById("sqftError").innerHTML= "Room too small";
+    }
+    if (sqftLTextBoxContent == "" || sqftLTextBoxContent == null)
+    {
+        document.getElementById("sqftError").innerHTML= "Required Field";
         document.getElementById("sqftL").style.backgroundColor= "red";
+    }
+    else
+    {
+    document.getElementById("sqftError").innerHTML= "";
+    document.getElementById("sqftL").style.backgroundColor= "white";
+    }
+}
+function validWSqft()
+{
+    var sqftWTextBoxContent = document.getElementById("sqftW").value;
+    if (sqftWTextBoxContent != "" || sqftWTextBoxContent != null)
+    {
+        document.getElementById("sqftError").innerHTML= "";
+        document.getElementById("sqftW").style.backgroundColor= "white";
+    }
+    if (sqftWTextBoxContent <= 3)
+    {
+            document.getElementById("sqftError").innerHTML= "Room too small";
+    }
+    if (sqftWTextBoxContent == "" || sqftWTextBoxContent == null)
+    {
+        document.getElementById("sqftError").innerHTML= "Required Field";
         document.getElementById("sqftW").style.backgroundColor= "red";
     }
-
+    else
+    {
+    document.getElementById("sqftError").innerHTML= "";
+    document.getElementById("sqftW").style.backgroundColor= "white";
+    }
 }
-function validTileSize()
+function validLTileSize()
 {
     var tilesizeLTextBoxContent = document.getElementById("TileSizeL").value;
-    var tilesizeWTextBoxContent = document.getElementById("TileSizeW").value;
-    if(tilesizeLTextBoxContent != "" && tilesizeLTextBoxContent != null || tilesizeWTextBoxContent != "" && tilesizeWTextBoxContent != null)
+    if (tilesizeLTextBoxContent != "" || tilesizeLTextBoxContent != null)
     {
         document.getElementById("TileSizeError").innerHTML= "";
         document.getElementById("TileSizeL").style.backgroundColor= "white";
-        document.getElementById("TileSizeW").style.backgroundColor= "white";
-        if (tilesizeLTextBoxContent.value <3 || tilesizeWTextBoxContent.value <3)
+    }
+    if (tilesizeLTextBoxContent <= 2)
         {
-            document.getElementById("TileSizeError").innerHTML= "Response too short";
+            document.getElementById("TileSizeError").innerHTML = "Tile too small";
         }
-    } else
+    if (tilesizeLTextBoxContent == "" || tilesizeLTextBoxContent == null)
     {
-        document.getElementById("TileSizeError").innerHTML= "Required Field"
+        document.getElementById("TileSizeError").innerHTML= "Required Field";
         document.getElementById("TileSizeL").style.backgroundColor= "red";
-        document.getElementById("TileSizeW").style.backgroundColor= "red";
+    }
+    else {
+      document.getElementById("TileSizeError").innerHTML= "";
+      document.getElementById("TileSizeL").style.backgroundColor= "white";
     }
 
 }
-function validEmail()
+function validWTileSize()
 {
-    var emailTextBoxContent = document.getElementById("email").value;
-    if(emailTextBoxContent != "" && emailTextBoxContent != null)
+    var tilesizeWTextBoxContent = document.getElementById("TileSizeW").value;
+    if(tilesizeWTextBoxContent != "" || tilesizeWTextBoxContent != null)
     {
-        document.getElementById("emailError").innerHTML= "";
-        document.getElementById("email").style.backgroundColor= "white";
-        if (emailTextBoxContent.length <3)
+        document.getElementById("TileSizeError").innerHTML= "";
+        document.getElementById("TileSizeW").style.backgroundColor= "white";
+    }
+    if (tilesizeWTextBoxContent <= 2)
         {
-            document.getElementById("emailError").innerHTML= "Response too short";
+            document.getElementById("TileSizeError").innerHTML = "Tile too small";
         }
-    } else
+    if (tilesizeWTextBoxContent == "" || tilesizeWTextBoxContent == null)
     {
-        document.getElementById("emailError").innerHTML= "Required Field"
-        document.getElementById("email").style.backgroundColor= "red";
+        document.getElementById("TileSizeError").innerHTML= "Required Field";
+        document.getElementById("TileSizeW").style.backgroundColor= "red";
+    }
+    else {
+      document.getElementById("TileSizeError").innerHTML= "";
+      document.getElementById("TileSizeW").style.backgroundColor= "white";
     }
 }
 function validPhone()
@@ -78,7 +109,7 @@ function validPhone()
         }
     } else
     {
-        document.getElementById("phoneError").innerHTML= "Required Field"
+        document.getElementById("phoneError").innerHTML= "Required Field";
         document.getElementById("phone").style.backgroundColor= "red";
     }
 }
@@ -92,24 +123,27 @@ function calculate()
     var AOT = tilesizeLTextBoxContent * tilesizeWTextBoxContent;
     if (document.getElementById("UOM").value == "imperial")
     {
-        document.getElementById("resultsTextarea").value = "Number of Tiles: " + ((ATC * 12) / AOT)
-        + "Remainder: " + ((ATC * 12) % AOT) + " in3";
+        document.getElementById("sqftresultsTextarea").value = ((ATC * 12) / AOT);
+        document.getElementById("remainderresultsTextarea").value = ((ATC * 12) % AOT);
     }
   }
 function uomCheck()
 {
-  if (document.getElementById("UOM").value == "metric") {
-    document.getElementById("uomsqftHangar").innerHTML = "m/cm"
+  if (document.getElementById("UOM").value == "metric")
+  {
+    document.getElementById("uomsqftHangar").innerHTML = "m/cm";
     document.getElementById("uomTSHangar").innerHTML = "m/cm";
-  } else if (document.getElementById("UOM").value == "imperial") {
-      document.getElementById("uomsqftHangar").innerHTML = "ft/in"
+    document.getElementById("remainderUOM").innerHTML = "cm";
+  }
+  if (document.getElementById("UOM").value == "imperial")
+  {
+      document.getElementById("uomsqftHangar").innerHTML = "ft/in";
       document.getElementById("uomTSHangar").innerHTML = "ft/in";
-    }
+      document.getElementById("remainderUOM").innerHTML = "in";
+  }
 }
-
-//   else if (document.getElementById("UOMsqft").value=... UOM = two systems empirial or metric
-
 </script>
+
 
   <table style="background-color:#CCD1D1;">
 
@@ -125,26 +159,26 @@ function uomCheck()
         <tr>
             <td><b>Enter dimensions of area </b></td>
             <td>
-              <input type="text" id="sqftL" size="4" maxlength="3" name="sqftL" onblur="validSqft()">
+              <input type="text" id="sqftL" size="4" maxlength="3" name="sqftL" onblur="validLSqft()">
               X
-              <input type="text" maxlength="3" id="sqftW" size="4" name="sqftW" onblur="validSqft()">
+              <input type="text" maxlength="3" id="sqftW" size="4" name="sqftW" onblur="validWSqft()">
               <em><span id = "uomsqftHangar">ft/in</span></em>
 
-             <td><span id="sqftError"></td>
+             <td><span id="sqftError"></span></td>
         </td></tr>
         <tr>
             <td><b>Tile Size</b></td>
             <td>
-            <input type="text" size="4" maxlength="2" id="TileSizeL" onblur="validTileSize()">
+            <input type="text" size="4" maxlength="2" id="TileSizeL" onblur="validLTileSize()">
             X
-            <input type="text" size="4" maxlength="2" id="TileSizeW" onblur="validTileSize()">
+            <input type="text" size="4" maxlength="2" id="TileSizeW" onblur="validWTileSize()">
             <em><span id = "uomTSHangar">ft/in</span></td>
-            <td><span id="TileSizeError"></td></td>
+            <td><span id="TileSizeError"></span></td>
         </tr>
         <tr>
             <td><b>Gap Size</b></td>
-            <td><input type="text" id="email" onblur="validEmail()"></td>
-            <td><span id="emailError"></td>
+            <td><input type="text" id="gapSize" onblur="validGapSize()"></td>
+            <td><span id="gapsizeError"></td>
         </tr>
         <tr>
             <td>Box Size</td>
@@ -163,5 +197,10 @@ function uomCheck()
     </tr>
 </table>
 </br>
-<textarea readonly id="resultsTextarea" cols="40" rows="10">Results </textarea readonly>
+<b><p>Number of tiles: </p></b>
+<textarea readonly id="sqftresultsTextarea" cols="5" rows="1" maxlength="5"></textarea readonly>
+  <br>
+  <p><b>Remainder</b> <span id="remainderUOM">in</span><sup>3</sup> <b>:</b></p>
+  <textarea readonly id="remainderresultsTextarea" cols="5" rows="1" maxlength="5"></textarea readonly>
+  <br>
 </html>
