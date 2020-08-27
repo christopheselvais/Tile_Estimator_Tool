@@ -96,55 +96,75 @@ function validGapSize()
 }
 function calculate()
 {
-    var tilesizeLTextBoxContent = document.getElementById("TileSizeL").value;
-    var tilesizeWTextBoxContent = document.getElementById("TileSizeW").value;
     var sqftLTextBoxContent = document.getElementById("sqftL").value;
+    var areaLNumber = parseInt(sqftLTextBoxContent);
     var sqftWTextBoxContent = document.getElementById("sqftW").value;
-    var ATC = sqftLTextBoxContent * sqftWTextBoxContent;
-    var AOT = tilesizeLTextBoxContent * tilesizeWTextBoxContent;
-    var GAP = document.getElementById("gapSize").value;
-    debugger;
-    if (document.getElementById("UOM").value == "imperial" && document.getElementById("uomFt2").selected == true)
+    var areaWNumber = parseInt(sqftWTextBoxContent);
+    var tilesizeLTextBoxContent = document.getElementById("TileSizeL").value;
+    var tileareaLNumber = parseInt(tilesizeLTextBoxContent);
+    var imptileareaLConverted = tileareaLNumber / 144;
+    var mettileareaLConverted = tileareaLNumber / 10000;
+    var tilesizeWTextBoxContent = document.getElementById("TileSizeW").value;
+    var tileareaWNumber = parseInt(tilesizeWTextBoxContent);
+    var imptileareaWConverted = tileareaWNumber / 144;
+    var mettileareaWConverted = tileareaWNumber / 10000;
+    var gapsizeContent = document.getElementById("gapSize").value;
+    var gapsizeNumber = parseFloat(gapsizeContent);
+    var halfimpgapConverted = ((gapsizeNumber / 144) / 2);
+    var halfmetgapmmtomConverted = ((gapsizeNumber / 1000000)/2);
+    var impatcPerimeter = (areaLNumber - halfimpgapConverted)*(areaWNumber - halfimpgapConverted);
+    var metatcPerimeter = (areaLNumber - halfmetgapmmtomConverted)*(areaWNumber - halfmetgapmmtomConverted);
+    const implengthplusGap = tileareaLNumber + halfimpgapConverted;
+    const impwidthplusGap = tileareaWNumber + halfimpgapConverted;
+    const impaotPertile = implengthplusGap * impwidthplusGap;
+    const impconlengthplusGap = imptileareaLConverted + halfimpgapConverted;
+    const impconwidthplusGap = imptileareaWConverted + halfimpgapConverted;
+    const impconaotPertile = impconlengthplusGap * impconwidthplusGap;
+    const metmmtomlengthplusGap = tileareaLNumber + halfmetgapmmtomConverted;
+    const metmmtomwidthplusGap = tileareaWNumber + halfmetgapmmtomConverted;
+    const metaotPertile = metmmtomlengthplusGap * metmmtomwidthplusGap;
+    const metconlengthplusGap = mettileareaLConverted + halfmetgapmmtomConverted;
+    const metconwidthplusGap = mettileareaWConverted + halfmetgapmmtomConverted;
+    const metconaotPertile = metconlengthplusGap * metconwidthplusGap;
+    var isImp = document.getElementById("UOM").value == "imperial";
+    var isFt2 = document.getElementById("uomFt2").selected == true;
+
+    if (isImp && isFt2)
     {
-        document.getElementById("sqftresultsTextarea").value = (ATC - (((sqftLTextBoxContent - ((GAP/144)/2))*(sqftWTextBoxContent - ((GAP/144)/2)))))/(AOT + ((tilesizeLTextBoxContent + ((GAP/144)/2)) * (tilesizeWTextBoxContent + ((GAP/144)/2))));
+        document.getElementById("sqftresultsTextarea").value = Math.round(impatcPerimeter / impaotPertile);
     }
     if (document.getElementById("UOM").value == "imperial" && document.getElementById("uomIn2").selected == true)
     {
-        document.getElementById("sqftresultsTextarea").value = Math.floor((ATC * 0.00694444)/ AOT)
-        document.getElementById("remainderresultsTextarea").value = ((ATC * 0.00694444) % AOT);
+        document.getElementById("sqftresultsTextarea").value = Math.round(impatcPerimeter / impconaotPertile);
     }
-    if (document.getElementById("UOM").value == "metric" && document.getElementById("uomFt3").selected == true)
+    if (document.getElementById("UOM").value == "metric" && document.getElementById("uomFt2").selected == true)
     {
-        document.getElementById("sqftresultsTextarea").value = Math.floor(ATC / AOT)
-        document.getElementById("remainderresultsTextarea").value = (ATC % AOT);
+        document.getElementById("sqftresultsTextarea").value = Math.round(metatcPerimeter / metaotPertile);
     }
     if (document.getElementById("UOM").value == "metric" && document.getElementById("uomIn2").selected == true)
     {
-        document.getElementById("sqftresultsTextarea").value = Math.floor((ATC * 0.0001) / AOT)
-        document.getElementById("remainderresultsTextarea").value = ((ATC * 0.0001) % AOT);
+        document.getElementById("sqftresultsTextarea").value = Math.round(metatcPerimeter / metconaotPertile);
     }
 }
 function uomCheck()
 {
   if (document.getElementById("UOM").value == "metric")
   {
-    document.getElementById("uomsqftHangar").innerHTML = "m/cm"
+    document.getElementById("uomsqftHangar").innerHTML = "m"
     document.getElementById("gapsizeHangar").innerHTML = "mm"
-    document.getElementById("remainderUOM").innerHTML = "cm"
     document.getElementById("uomFt2").innerHTML = "m2"
     document.getElementById("uomIn2").innerHTML = "cm2";
   }
   else if (document.getElementById("UOM").value == "imperial")
   {
-      document.getElementById("uomsqftHangar").innerHTML = "ft/in"
+      document.getElementById("uomsqftHangar").innerHTML = "ft"
       document.getElementById("gapsizeHangar").innerHTML = "in"
-      document.getElementById("remainderUOM").innerHTML = "in2"
       document.getElementById("uomFt2").innerHTML = "ft2"
       document.getElementById("uomIn2").innerHTML = "in2";
   }
 }
 </script>
-
+<body>
 
   <table style="background-color:#CCD1D1;">
 
@@ -160,10 +180,10 @@ function uomCheck()
         <tr>
             <td><b>Enter dimensions of area </b></td>
             <td>
-              <input type="number" id="sqftL" size="4" maxlength="3" name="sqftL" onblur="validLSqft()">
+              <input type="number" id="sqftL" size="4" maxlength="3" name="sqftL" onblur="validLSqft()" required>
               X
               <input type="number" maxlength="3" id="sqftW" size="4" name="sqftW" onblur="validWSqft()">
-              <em><span id = "uomsqftHangar">ft/in</span><sup>2</sup></em>
+              <em><span id = "uomsqftHangar">ft</span><sup>2</sup></em>
             </td>
 
              <td><span id="sqftError"></td>
@@ -171,28 +191,29 @@ function uomCheck()
         <tr>
             <td><b>Tile Size</b></td>
             <td>
-            <input type="number" size="4" maxlength="4" id="TileSizeL" onblur="validLTileSize()">
+            <input type="number" size="4" maxlength="4" id="TileSizeL" onblur="validLTileSize()" required>
             X
-            <input type="number" size="4" maxlength="4" id="TileSizeW" onblur="validWTileSize()">
-            <select id="uomSelect" name="uomSelect" onchange="uomselectSwap()">
+            <input type="number" size="4" maxlength="4" id="TileSizeW" onblur="validWTileSize()" required>
+            <select id="uomSelect" name="uomSelect">
             <option id="uomFt2" value="ft2" selected> ft<sup>2</sup></option>
-            <option id="uomIn2" value="in2" >in<sup>3</sup></option>
+            <option id="uomIn2" value="in2" >in<sup>2</sup></option>
             </select></td>
             <td><span id="TileSizeError"></td>
         </tr>
         <tr>
             <td><b>Gap Size</b></td>
-            <td><input type="text" id="gapSize" size="4" maxlength="4" onblur="validGapSize()"> <span id="gapsizeHangar">in</span><sup>2</sup></em></td>
+            <td><input type="number" id="gapSize" size="4" maxlength="4" onblur="validGapSize()" required> <span id="gapsizeHangar">in</span><sup>2</sup></em></td>
             <td><span id="gapsizeError"></td>
         </tr>
         <tr>
             <td><input type="submit" onclick="calculate()"></td>
             <td></td>
             <td></td>
-    </tr>
+        </tr>
 </table>
 </br>
 <b><p>Number of tiles: </p></b>
-<textarea readonly id="sqftresultsTextarea" cols="5" rows="1"></textarea readonly>
+<textarea readonly id="sqftresultsTextarea" cols="10" rows="2"></textarea readonly>
   <br>
+  </body>
 </html>
