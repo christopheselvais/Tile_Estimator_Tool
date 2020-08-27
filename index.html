@@ -102,11 +102,11 @@ function calculate()
     var areaWNumber = parseInt(sqftWTextBoxContent);
     var tilesizeLTextBoxContent = document.getElementById("TileSizeL").value;
     var tileareaLNumber = parseInt(tilesizeLTextBoxContent);
-    var imptileareaLConverted = tileareaLNumber / 144;
+    var imptileareaLConverted = tileareaLNumber / 12;
     var mettileareaLConverted = tileareaLNumber / 10000;
     var tilesizeWTextBoxContent = document.getElementById("TileSizeW").value;
     var tileareaWNumber = parseInt(tilesizeWTextBoxContent);
-    var imptileareaWConverted = tileareaWNumber / 144;
+    var imptileareaWConverted = tileareaWNumber / 12;
     var mettileareaWConverted = tileareaWNumber / 10000;
     var gapsizeContent = document.getElementById("gapSize").value;
     var gapsizeNumber = parseFloat(gapsizeContent);
@@ -126,22 +126,27 @@ function calculate()
     const metconlengthplusGap = mettileareaLConverted + halfmetgapmmtomConverted;
     const metconwidthplusGap = mettileareaWConverted + halfmetgapmmtomConverted;
     const metconaotPertile = metconlengthplusGap * metconwidthplusGap;
+    var remainderImpFt2 = impatcPerimeter % impaotPertile;
+    var remainderImpIn2 = impatcPerimeter % impconaotPertile;
     var isImp = document.getElementById("UOM").value == "imperial";
+    var isMet = document.getElementById("UOM").value == "metric"
     var isFt2 = document.getElementById("uomFt2").selected == true;
+    var isIn2 = document.getElementById("uomIn2").selected == true;
+    debugger;
 
     if (isImp && isFt2)
     {
-        document.getElementById("sqftresultsTextarea").value = Math.round(impatcPerimeter / impaotPertile);
+        document.getElementById("sqftresultsTextarea").value = Math.round(impatcPerimeter / impaotPertile) + "\r\n" + "Waste: " + (remainderImpFt2.toFixed(2)) + " ft2";
     }
-    if (document.getElementById("UOM").value == "imperial" && document.getElementById("uomIn2").selected == true)
+    if (isImp && isIn2)
     {
-        document.getElementById("sqftresultsTextarea").value = Math.round(impatcPerimeter / impconaotPertile);
+        document.getElementById("sqftresultsTextarea").value = Math.round(impatcPerimeter / impconaotPertile) + "\r\n" + "Waste: " + (remainderImpIn2.toFixed(2)) + " ft2";
     }
-    if (document.getElementById("UOM").value == "metric" && document.getElementById("uomFt2").selected == true)
+    if (isMet && isFt2)
     {
         document.getElementById("sqftresultsTextarea").value = Math.round(metatcPerimeter / metaotPertile);
     }
-    if (document.getElementById("UOM").value == "metric" && document.getElementById("uomIn2").selected == true)
+    if (isMet && isIn2)
     {
         document.getElementById("sqftresultsTextarea").value = Math.round(metatcPerimeter / metconaotPertile);
     }
@@ -213,7 +218,7 @@ function uomCheck()
 </table>
 </br>
 <b><p>Number of tiles: </p></b>
-<textarea readonly id="sqftresultsTextarea" cols="10" rows="2"></textarea readonly>
+<textarea readonly id="sqftresultsTextarea" cols="30" rows="3"></textarea readonly>
   <br>
   </body>
 </html>
