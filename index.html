@@ -14,11 +14,11 @@ function validLSqft()
       document.getElementById("sqftError").innerHTML= "Required Field"
       document.getElementById("sqftL").style.backgroundColor= "red";
     }
-    if (sqftLTextBoxContent != "" && Number(sqftLTextBoxContent) <= 3)
-    {
-      document.getElementById("sqftError").innerHTML= "Room too small"
-      document.getElementById("sqftL").style.backgroundColor= "red";
-    }
+    // if (document.getElementById("UOM").value = "imperial" && sqftLTextBoxContent != "" && Number(sqftLTextBoxContent) <= 3)
+    // {
+    //   document.getElementById("sqftError").innerHTML= "Room too small"
+    //   document.getElementById("sqftL").style.backgroundColor= "red";
+    // }
     else if (sqftLTextBoxContent != "" && sqftLTextBoxContent != null)
     {
       document.getElementById("sqftError").innerHTML= ""
@@ -33,11 +33,11 @@ function validWSqft()
         document.getElementById("sqftError").innerHTML= "Required Field"
         document.getElementById("sqftW").style.backgroundColor="red";
     }
-    if (sqftWTextBoxContent != "" && Number(sqftWTextBoxContent) <= 3)
-    {
-        document.getElementById("sqftError").innerHTML= "Room too small"
-        document.getElementById("sqftW").style.backgroundColor="red";
-    }
+    // if (document.getElementById("UOM").value = "imperial" && sqftWTextBoxContent != "" && Number(sqftWTextBoxContent) <= 3)
+    // {
+    //     document.getElementById("sqftError").innerHTML= "Room too small"
+    //     document.getElementById("sqftW").style.backgroundColor="red";
+    // }
     else if (sqftWTextBoxContent != "" && sqftWTextBoxContent != null)
     {
         document.getElementById("sqftError").innerHTML= ""
@@ -118,20 +118,24 @@ function calculate()
     const metmmtomlengthplusGap = mettileareaLConverted + halfmetgapmmtomConverted;
     const metmmtomwidthplusGap = mettileareaWConverted + halfmetgapmmtomConverted;
     const metaotPertile = metmmtomlengthplusGap * metmmtomwidthplusGap;
-    var remainderImpFt2 = impatcPerimeter % impaotPertile;
-    var remainderImpIn2 = impatcPerimeter % impconaotPertile;
+    var remainderImp = impatcPerimeter % impaotPertile;
+    var remainderMet = metatcPerimeter % metaotPertile;
     var isImp = document.getElementById("UOM").value == "imperial";
-    var isMet = document.getElementById("UOM").value == "metric"
-
+    var isMet = document.getElementById("UOM").value == "metric";
     if (isImp)
     {
-        document.getElementById("sqftresultsTextarea").value = Math.round(impatcPerimeter / impaotPertile) + "\r\n" + "Waste: " + (remainderImpFt2.toFixed(2)) + " ft2";
+        document.getElementById("numberofTiles").innerHTML = Math.round(impatcPerimeter / impaotPertile) + " Tiles"
+        document.getElementById("waste").innerHTML = (remainderImp.toFixed(2)) + " square feet";
+        document.getElementById("thinset").innerHTML = Math.round(((areaLNumber * areaWNumber)/95)*50) + " lbs of thinset at 1/4-inch thickness"
+        document.getElementById("numberof50lbsBags").innerHTML = Math.round((areaLNumber * areaWNumber)/95) + " 50lb bag(s) of thinset";
     }
     else if (isMet)
     {
-        document.getElementById("sqftresultsTextarea").value = Math.round(metatcPerimeter / metaotPertile);
+        document.getElementById("numberofTiles").innerHTML = Math.round(metatcPerimeter / metaotPertile) + " Tiles"
+        document.getElementById("waste").innerHTML = (remainderMet.toFixed(2)) + " square meters"
+        document.getElementById("thinset").innerHTML = Math.round(((areaLNumber * areaWNumber)/8.82579)*22.6796) + " kgs of thinset at 2.5cm thickness"
+        document.getElementById("numberof50lbsBags").innerHTML = Math.round((areaLNumber * areaWNumber)/8.82579) + " 22kg bags of thinset";
     }
-    else undefined
 }
 function uomCheck()
 {
@@ -195,9 +199,11 @@ function uomCheck()
             <td></td>
         </tr>
 </table>
-</br>
-<b><p>Number of tiles: </p></b>
-<textarea readonly id="sqftresultsTextarea" cols="30" rows="3"></textarea readonly>
+<br>
+<pre><b><p>Number of tiles: </b> <span id="numberofTiles"> </span></p>
+<b><p>Waste: </b> <span id="waste"> </span></p>
+<b><p>Thinset: </b> <span id="thinset"> </span> </p>
+<b><p>Thinset Bags: </b> <span id="numberof50lbsBags"> </span> </p> </pre>
   <br>
   </body>
 </html>
