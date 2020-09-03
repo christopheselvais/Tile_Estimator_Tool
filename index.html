@@ -2,6 +2,7 @@
 <html lang= "en">
 <head>
   <title>Tile Estimator Tool</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 
 <script language="javascript" type="text/javascript">
@@ -102,54 +103,35 @@ function calculate()
     var areaWNumber = parseInt(sqftWTextBoxContent);
     var tilesizeLTextBoxContent = document.getElementById("TileSizeL").value;
     var tileareaLNumber = parseInt(tilesizeLTextBoxContent);
-    var imptileareaLConverted = tileareaLNumber / 12;
-    var mettileareaLConverted = tileareaLNumber / 10000;
+    var mettileareaLConverted = tileareaLNumber / 100;
     var tilesizeWTextBoxContent = document.getElementById("TileSizeW").value;
     var tileareaWNumber = parseInt(tilesizeWTextBoxContent);
-    var imptileareaWConverted = tileareaWNumber / 12;
-    var mettileareaWConverted = tileareaWNumber / 10000;
+    var mettileareaWConverted = tileareaWNumber / 100;
     var gapsizeContent = document.getElementById("gapSize").value;
-    var gapsizeNumber = parseFloat(gapsizeContent);
     var halfimpgapConverted = ((gapsizeNumber / 144) / 2);
-    var halfmetgapmmtomConverted = ((gapsizeNumber / 1000000)/2);
+    var halfmetgapmmtomConverted = (Number(gapsizeNumber) / 1000)/2;
     var impatcPerimeter = (areaLNumber - halfimpgapConverted)*(areaWNumber - halfimpgapConverted);
     var metatcPerimeter = (areaLNumber - halfmetgapmmtomConverted)*(areaWNumber - halfmetgapmmtomConverted);
     const implengthplusGap = tileareaLNumber + halfimpgapConverted;
     const impwidthplusGap = tileareaWNumber + halfimpgapConverted;
     const impaotPertile = implengthplusGap * impwidthplusGap;
-    const impconlengthplusGap = imptileareaLConverted + halfimpgapConverted;
-    const impconwidthplusGap = imptileareaWConverted + halfimpgapConverted;
-    const impconaotPertile = impconlengthplusGap * impconwidthplusGap;
-    const metmmtomlengthplusGap = tileareaLNumber + halfmetgapmmtomConverted;
-    const metmmtomwidthplusGap = tileareaWNumber + halfmetgapmmtomConverted;
+    const metmmtomlengthplusGap = mettileareaLConverted + halfmetgapmmtomConverted;
+    const metmmtomwidthplusGap = mettileareaWConverted + halfmetgapmmtomConverted;
     const metaotPertile = metmmtomlengthplusGap * metmmtomwidthplusGap;
-    const metconlengthplusGap = mettileareaLConverted + halfmetgapmmtomConverted;
-    const metconwidthplusGap = mettileareaWConverted + halfmetgapmmtomConverted;
-    const metconaotPertile = metconlengthplusGap * metconwidthplusGap;
     var remainderImpFt2 = impatcPerimeter % impaotPertile;
     var remainderImpIn2 = impatcPerimeter % impconaotPertile;
     var isImp = document.getElementById("UOM").value == "imperial";
     var isMet = document.getElementById("UOM").value == "metric"
-    var isFt2 = document.getElementById("uomFt2").selected == true;
-    var isIn2 = document.getElementById("uomIn2").selected == true;
-    debugger;
 
-    if (isImp && isFt2)
+    if (isImp)
     {
         document.getElementById("sqftresultsTextarea").value = Math.round(impatcPerimeter / impaotPertile) + "\r\n" + "Waste: " + (remainderImpFt2.toFixed(2)) + " ft2";
     }
-    if (isImp && isIn2)
-    {
-        document.getElementById("sqftresultsTextarea").value = Math.round(impatcPerimeter / impconaotPertile) + "\r\n" + "Waste: " + (remainderImpIn2.toFixed(2)) + " ft2";
-    }
-    if (isMet && isFt2)
+    else if (isMet)
     {
         document.getElementById("sqftresultsTextarea").value = Math.round(metatcPerimeter / metaotPertile);
     }
-    if (isMet && isIn2)
-    {
-        document.getElementById("sqftresultsTextarea").value = Math.round(metatcPerimeter / metconaotPertile);
-    }
+    else undefined
 }
 function uomCheck()
 {
@@ -157,15 +139,14 @@ function uomCheck()
   {
     document.getElementById("uomsqftHangar").innerHTML = "m"
     document.getElementById("gapsizeHangar").innerHTML = "mm"
-    document.getElementById("uomFt2").innerHTML = "m2"
-    document.getElementById("uomIn2").innerHTML = "cm2";
+    document.getElementById("uomTileSize").innerHTML = "cm"
   }
   else if (document.getElementById("UOM").value == "imperial")
   {
       document.getElementById("uomsqftHangar").innerHTML = "ft"
       document.getElementById("gapsizeHangar").innerHTML = "in"
-      document.getElementById("uomFt2").innerHTML = "ft2"
-      document.getElementById("uomIn2").innerHTML = "in2";
+      document.getElementById("uomTileSize").innerHTML = "in"
+
   }
 }
 </script>
@@ -188,7 +169,7 @@ function uomCheck()
               <input type="number" id="sqftL" size="4" maxlength="3" name="sqftL" onblur="validLSqft()" required>
               X
               <input type="number" maxlength="3" id="sqftW" size="4" name="sqftW" onblur="validWSqft()">
-              <em><span id = "uomsqftHangar">ft</span><sup>2</sup></em>
+              <em><span id = "uomsqftHangar">ft</span></em>
             </td>
 
              <td><span id="sqftError"></td>
@@ -199,15 +180,13 @@ function uomCheck()
             <input type="number" size="4" maxlength="4" id="TileSizeL" onblur="validLTileSize()" required>
             X
             <input type="number" size="4" maxlength="4" id="TileSizeW" onblur="validWTileSize()" required>
-            <select id="uomSelect" name="uomSelect">
-            <option id="uomFt2" value="ft2" selected> ft<sup>2</sup></option>
-            <option id="uomIn2" value="in2" >in<sup>2</sup></option>
-            </select></td>
+            <em><span id = "uomTileSize">in</span></em>
+          </td>
             <td><span id="TileSizeError"></td>
         </tr>
         <tr>
             <td><b>Gap Size</b></td>
-            <td><input type="number" id="gapSize" size="4" maxlength="4" onblur="validGapSize()" required> <span id="gapsizeHangar">in</span><sup>2</sup></em></td>
+            <td><input type="number" id="gapSize" size="4" maxlength="4" onblur="validGapSize()" required> <span id="gapsizeHangar">in</span></em></td>
             <td><span id="gapsizeError"></td>
         </tr>
         <tr>
