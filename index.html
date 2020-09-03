@@ -108,8 +108,8 @@ function calculate()
     var tileareaWNumber = parseInt(tilesizeWTextBoxContent);
     var mettileareaWConverted = tileareaWNumber / 100;
     var gapsizeContent = document.getElementById("gapSize").value;
-    var halfimpgapConverted = ((gapsizeNumber / 144) / 2);
-    var halfmetgapmmtomConverted = (Number(gapsizeNumber) / 1000)/2;
+    var halfimpgapConverted = (Number(gapsizeContent) / 144) / 2;
+    var halfmetgapmmtomConverted = (Number(gapsizeContent) / 1000)/2;
     var impatcPerimeter = (areaLNumber - halfimpgapConverted)*(areaWNumber - halfimpgapConverted);
     var metatcPerimeter = (areaLNumber - halfmetgapmmtomConverted)*(areaWNumber - halfmetgapmmtomConverted);
     const implengthplusGap = tileareaLNumber + halfimpgapConverted;
