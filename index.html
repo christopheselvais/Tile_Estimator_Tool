@@ -154,38 +154,74 @@ function uomCheck()
   }
 }
 </script>
-<body>
-  <form>
+
+<form>
+  <div class="form-row">
+    <div class="form-group col-md-1">
+      <label for="inputUOM">Unit of Measurement</label>
+      <select id="UOM" class="form-control">
+        <option selected> Choose...</option>
+        <option value ="imperial">Imperial</option>
+        <option value="metric">Metric</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-row">
     <div class="form-group col-md-4">
-  <label for="inputUOM">Unit of Measurement</label>
-  <select id="UOM" class="form-control">
-    <option selected>Choose...</option>
-    <option value="imperial">Imperial</option>
-    <option value="metric">Imperial</option>
-  </select>
-</div>
-    <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="lengthofArea">Dimension of Area to Cover</label>
-      <input type="number" class="form-control"  id="sqftL">
+      <label for="declareTileSize">Tile Area</label>
+      <input type="text" class="form-control" placeholder="Tile Length" required>
     </div>
-    <div class="form-group col-md-6">
-      <label for="widthofArea"></label>
-      <input type="number" class="form-control" id="sqftW">
-    </div> <em><span id = "uomsqftHangar">ft</span></em><span id="sqftError">
-    <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="lengthofTile">Area of Tile</label>
-      <input type="number" class="form-control"  id="TileSizeL" onblur ="validLTileSize" required>
+    <div class="form-group italic col-md-1">
+      <p>X</p>
     </div>
-    <div class="form-group col-md-6">
-      <label for="lengthofTile"></label>
-      <input type="number" class="form-control" id="TileSizeW" onblur="validWTileSize" required>
-    </div>  <em><span id = "uomTileSize">in</span></em><span id="TileSizeError">
+    <div class="form-group col-md-4">
+      <input type="text" class="form-control" placeholder="Tile Width" required>
+    </div>
+    <div class="form-group italic col-md-1">
+      <p><span id = "uomTileSize">in</span></p>
+    </div>
+    <div class="form-group col-md-2">
+      <p><span id="TileSizeError"></span></p>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="declareAreaToCover">Area to Cover</label>
+      <input type="text" class="form-control" placeholder="Area Length" required>
+    </div>
+    <div class="form-group italic col-md-1">
+      <p>X</p>
+    </div>
+    <div class="form-group col-md-4">
+      <input type="text" class="form-control" placeholder="Area Width" required>
+    </div>
+    <div class="form-group italic col-md-1">
+      <p><span id = "uomsqftHangar">ft</span></p>
+    </div>
+    <div class="form-group col-md-2">
+      <p><span id="sqftError"></span></p>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-10">
+      <label for="declareGapSize">Gap Size</label>
+      <input type="text" class="form-control" placeholder="Gap Size" required>
+    </div>
+  <div class="form-group italic col-md-1">
+    <p><span id="gapsizeHangar">in</span></p>
+  </div>
+  <div class="form-group col-md-1">
+    <p><span id="gapsizeError"></p>
+    </div>
+  </div>
+</form>
+<button type="button" class="btn btn-primary" onclick="calculate()">Calculate</button>
 
-  <table style="background-color:#CCD1D1;">
 
-        <tr>
+<body style="margin:4px; padding:25px">
+  <table border="1" style="background-color:#CCD1D1;">
+
+      <tr>
           <td><b>Unit of Measurement</b></td>
           <td>
           <select id="UOM" name="UOM" onchange="uomCheck()">
@@ -193,8 +229,9 @@ function uomCheck()
           <option value="metric" >Metric</option>
           </select>
         </td>
+        <td></td>
       </tr>
-        <tr>
+      <tr>
             <td><b>Enter dimensions of area </b></td>
             <td>
               <input type="number" id="sqftL" size="4" maxlength="3" name="sqftL" onblur="validLSqft()" required>
@@ -204,8 +241,8 @@ function uomCheck()
             </td>
 
              <td><span id="sqftError"></td>
-        </tr>
-        <tr>
+      </tr>
+      <tr>
             <td><b>Tile Size</b></td>
             <td>
             <input type="number" size="4" maxlength="4" id="TileSizeL" onblur="validLTileSize()" required>
@@ -214,17 +251,17 @@ function uomCheck()
             <em><span id = "uomTileSize">in</span></em>
           </td>
             <td><span id="TileSizeError"></td>
-        </tr>
-        <tr>
+      </tr>
+      <tr>
             <td><b>Gap Size</b></td>
             <td><input type="number" id="gapSize" size="4" maxlength="4" onblur="validGapSize()" required> <span id="gapsizeHangar">in</span></em></td>
             <td><span id="gapsizeError"></td>
-        </tr>
-        <tr>
+      </tr>
+      <tr>
             <td><input type="submit" onclick="calculate()"></td>
             <td></td>
             <td></td>
-        </tr>
+      </tr>
 </table>
 <br>
 <pre><b><p>Number of tiles: </b> <span id="numberofTiles"> </span></p>
