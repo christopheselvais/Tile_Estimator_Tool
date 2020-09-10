@@ -144,73 +144,111 @@ function uomCheck()
     document.getElementById("uomsqftHangar").innerHTML = "m"
     document.getElementById("gapsizeHangar").innerHTML = "mm"
     document.getElementById("uomTileSize").innerHTML = "cm"
+    document.getElementById("uomsqftWHangar").innerHTML = "m"
+    document.getElementById("uomWTileSize").innerHTML = "cm"
+    document.getElementById("totalsqftTag").innerHTML = "m"
   }
   else if (document.getElementById("UOM").value == "imperial")
   {
       document.getElementById("uomsqftHangar").innerHTML = "ft"
       document.getElementById("gapsizeHangar").innerHTML = "in"
       document.getElementById("uomTileSize").innerHTML = "in"
+      document.getElementById("uomWTileSize").innerHTML = "in"
+      document.getElementById("uomsqftWHangar").innerHTML = "ft"
+      document.getElementById("totalsqftTag").innerHTML = "ft";
 
   }
 }
 </script>
 
 <form>
-  <div class="form-row">
-    <div class="form-group col-md-1">
+  <div class="form-row" style="margin-top:30px;margin-bottom:30px">
+    <div class="form-group col-md-3">
       <label for="inputUOM">Unit of Measurement</label>
-      <select id="UOM" class="form-control">
+      <select id="UOM" class="form-control" name="UOM" onchange="uomCheck()">
         <option selected> Choose...</option>
         <option value ="imperial">Imperial</option>
         <option value="metric">Metric</option>
       </select>
     </div>
+    <!-- <div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+    <span class="input-group-text" id="basic-addon2">@example.com</span>
   </div>
-  <div class="form-row">
-    <div class="form-group col-md-4">
-      <label for="declareTileSize">Tile Area</label>
-      <input type="text" class="form-control" placeholder="Tile Length" required>
+</div> -->
+  </div>
+  <div class="form-row" style="margin-top:30px;margin-bottom:30px">
+    <div class="input-group col-md-4" style="margin:auto">
+      <label style="position:absolute;bottom:40px" for="declareTileSize">Tile Size</label>
+      <input id="TileSizeL" onblur="validLTileSize()" maxlength="3" type="text" class="form-control" placeholder="Tile Length" required>
+      <div class="input-group-append">
+        <span class="input-group-text" id="uomTileSize">in</span>
+      </div>
     </div>
-    <div class="form-group italic col-md-1">
+    <div class="form-group italic col-md-2" style="margin:auto;text-align:center">
+      <label for="multiplier"></label>
       <p>X</p>
     </div>
-    <div class="form-group col-md-4">
-      <input type="text" class="form-control" placeholder="Tile Width" required>
+    <div class="input-group col-md-4" style="margin:auto;">
+      <label style="position:absolute" for="tileWidth"></label>
+      <input id="TileSizeW" onblur="validWTileSize()" type="text" maxlength="3" class="form-control" placeholder="Tile Width" required>
+      <div class="input-group-append">
+        <span class="input-group-text" id="uomWTileSize">in</span>
+      </div>
     </div>
-    <div class="form-group italic col-md-1">
-      <p><span id = "uomTileSize">in</span></p>
-    </div>
-    <div class="form-group col-md-2">
+    <div class="form-group col-md-2" style="margin:auto;text-align:center">
+      <label style="position:absolute" for="tileareaerrorSpan"></label>
       <p><span id="TileSizeError"></span></p>
     </div>
   </div>
-  <div class="form-row">
-    <div class="form-group col-md-4">
-      <label for="declareAreaToCover">Area to Cover</label>
-      <input type="text" class="form-control" placeholder="Area Length" required>
+  <div class="form-row" style="margin-top:30px;margin-bottom:30px">
+    <div class="input-group col-md-4" style="margin:auto">
+      <label style="position:absolute;bottom:40px" for="declareAreaToCover">Area to Cover</label>
+      <input id="sqftL" maxlength="3" name="sqftL" onblur="validLSqft()" type="text" class="form-control" placeholder="Area Length" >
+      <div class="input-group-append">
+        <span class="input-group-text" id="uomsqftHangar">ft</span>
+      </div>
     </div>
-    <div class="form-group italic col-md-1">
+    <div class="form-group italic col-md-2" style="margin:auto;text-align:center">
+      <label style="position:absolute" for="multiplier"></label>
       <p>X</p>
     </div>
-    <div class="form-group col-md-4">
-      <input type="text" class="form-control" placeholder="Area Width" required>
+    <div class="input-group col-md-4" style="margin:auto">
+      <label style="position:absolute" for="areawidth"></label>
+      <input id="sqftW" name="sqftW" maxlength="3" onblur="validWSqft()" type="text" class="form-control" placeholder="Area Width">
+      <div class="input-group-append">
+        <span class="input-group-text" id="uomsqftWHangar">ft</span>
+      </div>
     </div>
-    <div class="form-group italic col-md-1">
-      <p><span id = "uomsqftHangar">ft</span></p>
-    </div>
-    <div class="form-group col-md-2">
+    <div class="form-group col-md-2" style="margin:auto;text-align:center">
+      <label style="position:absolute" for="areatocovererrorSpan"></label>
       <p><span id="sqftError"></span></p>
     </div>
   </div>
-  <div class="form-row">
-    <div class="form-group col-md-10">
-      <label for="declareGapSize">Gap Size</label>
-      <input type="text" class="form-control" placeholder="Gap Size" required>
+  <div class="form-row" style="margin-top:40px;margin-bottom:40px">
+    <div class="input-group col-md-4" style="left:0px">
+      <label style="position:absolute;bottom:35px" for="declareSqft">Square Footage</label>
+      <input type="text" id="totalSqft" onblur="validtotalSqft()" maxlength="7" class="form-control" placeholder="Square Feet" required>
+      <div class="input-group-append">
+        <span class="input-group-text" id="totalsqftHangar"><span id="totalsqftTag"></span><sup>2</sup></span>
+      </div>
     </div>
-  <div class="form-group italic col-md-1">
-    <p><span id="gapsizeHangar">in</span></p>
+  <div class="form-group col-md-10" style="margin:auto;text-align:center">
+    <label style="position:absolute" for="gapsizeerrorSpan"></label>
+    <p><span id="totalSqftError"></p>
+    </div>
   </div>
-  <div class="form-group col-md-1">
+  <div class="form-row" style="margin-top:40px;margin-bottom:40px">
+    <div class="input-group col-md-2" style="left:0px">
+      <label style="position:absolute;bottom:35px" for="declareGapSize">Gap Size</label>
+      <input type="text" id="gapSize" onblur="validGapSize()" maxlength="7" class="form-control" placeholder="Gap Size" required>
+      <div class="input-group-append">
+        <span class="input-group-text" id="gapsizeHangar">in</span>
+      </div>
+    </div>
+  <div class="form-group col-md-10" style="margin:auto;text-align:center">
+    <label style="position:absolute" for="gapsizeerrorSpan"></label>
     <p><span id="gapsizeError"></p>
     </div>
   </div>
@@ -219,7 +257,7 @@ function uomCheck()
 
 
 <body style="margin:4px; padding:25px">
-  <table border="1" style="background-color:#CCD1D1;">
+  <!-- <table border="1" style="background-color:#CCD1D1;">
 
       <tr>
           <td><b>Unit of Measurement</b></td>
@@ -262,7 +300,8 @@ function uomCheck()
             <td></td>
             <td></td>
       </tr>
-</table>
+</table> -->
+<br>
 <br>
 <pre><b><p>Number of tiles: </b> <span id="numberofTiles"> </span></p>
 <b><p>Waste: </b> <span id="waste"> </span></p>
