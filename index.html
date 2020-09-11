@@ -28,6 +28,10 @@ function validLSqft()
 function validWSqft()
 {
     var sqftWTextBoxContent = document.getElementById("sqftW").value;
+    var areaWidth = parseInt(sqftWTextBoxContent);
+    var sqftLTextBoxContent = document.getElementById("sqftL").value;
+    var areaLength = parseInt(sqftLTextBoxContent);
+    var sqFootage = areaWidth * areaLength;
     if (sqftWTextBoxContent == "" || sqftWTextBoxContent == null)
     {
         document.getElementById("sqftError").innerHTML= "Required Field"
@@ -39,9 +43,11 @@ function validWSqft()
     //     document.getElementById("sqftW").style.backgroundColor="red";
     // }
     else if (sqftWTextBoxContent != "" && sqftWTextBoxContent != null)
+    debugger;
     {
         document.getElementById("sqftError").innerHTML= ""
-        document.getElementById("sqftW").style.backgroundColor= "white";
+        document.getElementById("sqftW").style.backgroundColor= "white"
+        document.getElementById("totalSqft").value = sqFootage;
     }
 }
 function validLTileSize()
@@ -229,7 +235,7 @@ function uomCheck()
   <div class="form-row" style="margin-top:40px;margin-bottom:40px">
     <div class="input-group col-md-4" style="left:0px">
       <label style="position:absolute;bottom:35px" for="declareSqft">Square Footage</label>
-      <input type="text" id="totalSqft" onblur="validtotalSqft()" maxlength="7" class="form-control" placeholder="Square Feet" required>
+      <input type="text" id="totalSqft" maxlength="7" class="form-control" placeholder="Square Feet" required>
       <div class="input-group-append">
         <span class="input-group-text" id="totalsqftHangar"><span id="totalsqftTag"></span><sup>2</sup></span>
       </div>
