@@ -100,12 +100,12 @@ function validWTileSize()
     //     document.getElementById("TileSizeError").innerHTML = "Tile too small"
     //     document.getElementById("TileSizeW").style.backgroundColor="red";
     // }
-}
 if (tilesizeWTextBoxContent != "" && tilesizeWTextBoxContent != null)
   {
     document.getElementById("TileSizeError").innerHTML= "";
     document.getElementById("TileSizeW").style.backgroundColor= "white";
   }
+}
 function validGapSize()
 {
     var gapsizeContent = document.getElementById("gapSize").value;
@@ -144,21 +144,24 @@ function calculate()
     const metaotPertile = metmmtomlengthplusGap * metmmtomwidthplusGap;
     var remainderImp = impatcPerimeter % impaotPertile;
     var remainderMet = metatcPerimeter % metaotPertile;
+    var wasteList = document.getElementById("wasteSelect");
+    var myselectedWaste = wasteList.options[wasteList.options.selectedIndex].value;
     var isImp = document.getElementById("UOM").value == "imperial";
     var isMet = document.getElementById("UOM").value == "metric";
     if (isImp)
+    debugger;
     {
-        document.getElementById("numberofTiles").innerHTML = Math.round(impatcPerimeter / impaotPertile) + " Tiles"
-        document.getElementById("waste").innerHTML = (remainderImp.toFixed(2)) + " square feet";
-        document.getElementById("thinset").innerHTML = Math.round(((areaLNumber * areaWNumber)/95)*50) + " lbs of thinset at 1/4-inch thickness"
-        document.getElementById("numberof50lbsBags").innerHTML = Math.round((areaLNumber * areaWNumber)/95) + " 50lb bag(s) of thinset";
+        document.getElementById("numberofTiles").innerHTML = Math.round((impatcPerimeter / impaotPertile)-(impatcPerimeter / impaotPertile)*myselectedWaste) + " Tiles"
+        document.getElementById("waste").innerHTML = ((remainderImp.toFixed(2))-(remainderImp*myselectedWaste).toFixed(2)) + " square feet";
+        document.getElementById("thinset").innerHTML = Math.round((((areaLNumber * areaWNumber)*myselectedWaste)/95)*50) + " lbs of thinset at 1/4-inch thickness"
+        document.getElementById("numberof50lbsBags").innerHTML = Math.round(((areaLNumber * areaWNumber)*myselectedWaste)/95) + " 50lb bag(s) of thinset";
     }
     if (isMet)
     {
-        document.getElementById("numberofTiles").innerHTML = Math.round(metatcPerimeter / metaotPertile) + " Tiles"
-        document.getElementById("waste").innerHTML = (remainderMet.toFixed(2)) + " square meters"
-        document.getElementById("thinset").innerHTML = Math.round(((areaLNumber * areaWNumber)/8.82579)*22.6796) + " kgs of thinset at 2.5cm thickness"
-        document.getElementById("numberof50lbsBags").innerHTML = Math.round((areaLNumber * areaWNumber)/8.82579) + " 22kg bags of thinset";
+        document.getElementById("numberofTiles").innerHTML = Math.round((metatcPerimeter / metaotPertile)-(metatcPerimeter / metaotPertile)*myselectedWaste) + " Tiles"
+        document.getElementById("waste").innerHTML = ((remainderMet.toFixed(2))-(remainderMet*myselectedWaste).toFixed(2)) + " square meters"
+        document.getElementById("thinset").innerHTML = Math.round((((areaLNumber * areaWNumber)*myselectedWaste)/8.82579)*22.6796) + " kgs of thinset at 2.5cm thickness"
+        document.getElementById("numberof50lbsBags").innerHTML = Math.round(((areaLNumber * areaWNumber)*myselectedWaste)/8.82579) + " 22kg bags of thinset";
     }
 }
 function uomCheck()
@@ -208,9 +211,10 @@ function gapsizeSelect()
 }
 </script>
 <div class="row">
-  <div class="col-md-6">
-    <div class="card p-2">
-  <div class="card-body"><h1>Tile Estimator Tool</h1></div>
+  <div class="col-md-6 mx-auto">
+    <div class="card mx-auto p-2">
+      <div class="card-title" mx-auto><h1>Tile Estimator Tool</h1></div>
+  <div class="card-body" mx-auto></div>
 <form>
   <div class="form-row mx-auto my-auto"
     <div class="form-group col-md-12 mx-auto">
@@ -316,6 +320,21 @@ function gapsizeSelect()
   <div class="form-group my-auto mx-auto col-md-1">
     <label for="gapsizeerrorSpan"></label>
     <p><span id="gapsizeError"></p>
+    </div>
+  </div>
+  <div class="form-row my-auto pt-3 mx-auto">
+    <div class="form-group col-md-12 my-auto mx-auto">
+      <p>Waste</p>
+    </div>
+  </div>
+    <div class="form-row my-auto mx-auto">
+      <div class="form-group col-md-12 my-auto ml-0">
+        <select id="wasteSelect" class="form-control" class="form-control">
+          <option>Choose...</option>
+          <option value=.5 id="5%">5%</option>
+          <option selected value=.1 id="10%">10%</option>
+          <option value=.15 id="15%">15%</option>
+        </select>
     </div>
   </div>
 </div>
