@@ -43,7 +43,6 @@ function validWSqft()
     //     document.getElementById("sqftW").style.backgroundColor="red";
     // }
     else if (sqftWTextBoxContent != "" && sqftWTextBoxContent != null)
-    debugger;
     {
         document.getElementById("sqftError").innerHTML= ""
         document.getElementById("sqftW").style.backgroundColor= "white"
@@ -73,50 +72,51 @@ function validWTileSize()
 {
     var tilesizeLTextBoxContent = document.getElementById("TileSizeL").value;
     var tilesizeWTextBoxContent = document.getElementById("TileSizeW").value;
+    var gapList = document.getElementById("gapSelect");
     var tileArea = Number(tilesizeLTextBoxContent) * Number(tilesizeWTextBoxContent);
     if(tilesizeWTextBoxContent == "" || tilesizeWTextBoxContent == null)
-    {
+  {
         document.getElementById("TileSizeError").innerHTML= "Required Field";
         document.getElementById("TileSizeW").style.backgroundColor="red";
-    }
+  }
     if (tileArea <= 36)
     {
-    document.getElementById("1/16").select;
+    gapList.selectedIndex = 0;
     }
     if (tileArea > 36 && tileArea <= 64)
     {
-    document.getElementById("1/8").select;
+    gapList.selectedIndex = 1;
     }
     if (tileArea > 64 && tileArea <= 144)
     {
-    document.getElementById("3/16").select;
+    gapList.selectedIndex = 2;
     }
     if (tileArea > 256)
     {
-    document.getElementById("1/16").select;
+    gapList.selectedIndex = 0;
     }
     // if (Number(tilesizeWTextBoxContent) <= 3 && tilesizeWTextBoxContent != "")
     // {
     //     document.getElementById("TileSizeError").innerHTML = "Tile too small"
     //     document.getElementById("TileSizeW").style.backgroundColor="red";
     // }
-    else if (tilesizeWTextBoxContent != "" && tilesizeWTextBoxContent != null)
-    {
-        document.getElementById("TileSizeError").innerHTML= "";
-        document.getElementById("TileSizeW").style.backgroundColor= "white";
-    }
 }
+if (tilesizeWTextBoxContent != "" && tilesizeWTextBoxContent != null)
+  {
+    document.getElementById("TileSizeError").innerHTML= "";
+    document.getElementById("TileSizeW").style.backgroundColor= "white";
+  }
 function validGapSize()
 {
     var gapsizeContent = document.getElementById("gapSize").value;
     if (gapsizeContent > 10)
     {
-            document.getElementById("gapsizeError").innerHTML= "Gap too large";
+    document.getElementById("gapsizeError").innerHTML= "Gap too large";
     }
     else
     {
-        document.getElementById("gapsizeError").innerHTML= "";
-        document.getElementById("gapSize").style.backgroundColor= "white";
+    document.getElementById("gapsizeError").innerHTML= "";
+    document.getElementById("gapSize").style.backgroundColor= "white";
     }
 }
 function calculate()
@@ -204,17 +204,18 @@ function uomCheck()
 }
 function gapsizeSelect()
 {
-  document.getElementById("gapSize").value=document.getElementById("gapSelect").value;
-
+  document.getElementById("gapSize").value = document.getElementById("gapSelect").value;
 }
 </script>
-
+<div class="row">
+  <div class="col-md-6">
+    <div class="card p-2">
+  <div class="card-body"><h1>Tile Estimator Tool</h1></div>
 <form>
   <div class="form-row mx-auto my-auto"
     <div class="form-group col-md-12 mx-auto">
       <p>Unit of Measurement</p>
   </div>
-</div>
   <div class="form-row p-auto mx-auto my-auto">
     <div class="form-group col-md-3">
       <select id="UOM" class="form-control" name="UOM" onchange="uomCheck()">
@@ -297,13 +298,7 @@ function gapsizeSelect()
     </div>
 </div>
   <div class="form-row my-auto mx-auto">
-    <div class="input-group my-auto ml-0 col-md-5">
-      <input type="text" id="gapSize" onblur="validGapSize()" maxlength="7" class="form-control" placeholder="Gap Size" required>
-      <div class="input-group-append my-auto">
-        <span class="input-group-text" id="gapsizeHangar">in</span>
-      </div>
-    </div>
-    <div class="form-group col-md-4 my-auto mx-auto">
+    <div class="form-group col-md-6 my-auto mx-auto">
       <select id="gapSelect" class="form-control" onchange="gapsizeSelect()">
         <option value=.0625 id="1/16" selected>1/16</option>
         <option value=.125 id="1/8">1/8</option>
@@ -312,16 +307,25 @@ function gapsizeSelect()
         <option value=.375 id="3/8">3/8</option>
       </select>
     </div>
+    <div class="input-group my-auto ml-0 col-md-6">
+      <input type="text" id="gapSize" onblur="validGapSize()" maxlength="7" class="form-control" placeholder="Gap Size" required>
+      <div class="input-group-append my-auto">
+        <span class="input-group-text" id="gapsizeHangar">in</span>
+      </div>
+    </div>
   <div class="form-group my-auto mx-auto col-md-1">
     <label for="gapsizeerrorSpan"></label>
     <p><span id="gapsizeError"></p>
     </div>
   </div>
-</form>
-<button type="button" class="btn btn-primary m-3" onclick="calculate()">Calculate</button>
+</div>
+  </form>
+</div>
+<div class="col-md-6">
+  <div class="card p-2">
+    <div class="card-title"><button type="button" class="btn btn-primary m-3" onclick="calculate()">Calculate</button></div>
+      <div class="card-body">
 
-
-<body style="margin:4px; padding:25px">
   <!-- <table border="1" style="background-color:#CCD1D1;">
 
       <tr>
@@ -367,15 +371,20 @@ function gapsizeSelect()
       </tr>
 </table> -->
 <br>
-<br>
+<label for="resultsArea"><h2>Results</h2></label>
 <pre><b><p>Number of tiles: </b> <span id="numberofTiles"> </span></p>
 <b><p>Waste: </b> <span id="waste"> </span></p>
 <b><p>Thinset: </b> <span id="thinset"> </span> </p>
 <b><p>Thinset Bags: </b> <span id="numberof50lbsBags"> </span> </p> </pre>
+</div>
+</div>
+</div>
+</div>
   <br>
   <script>
   uomCheck()
-  gapsizeSelect();
+  gapsizeSelect()
   </script>
+
   </body>
 </html>
