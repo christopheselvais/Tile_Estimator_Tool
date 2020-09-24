@@ -76,7 +76,7 @@ function validWTileSize()
     var tileArea = Number(tilesizeLTextBoxContent) * Number(tilesizeWTextBoxContent);
     if(tilesizeWTextBoxContent == "" || tilesizeWTextBoxContent == null)
   {
-        document.getElementById("TileSizeError").innerHTML= "Required Field";
+        document.getElementById("TileSizeError").innerHTML= "Required Field"
         document.getElementById("TileSizeW").style.backgroundColor="red";
   }
     if (tileArea <= 36)
@@ -102,20 +102,26 @@ function validWTileSize()
     // }
 if (tilesizeWTextBoxContent != "" && tilesizeWTextBoxContent != null)
   {
-    document.getElementById("TileSizeError").innerHTML= "";
+    document.getElementById("TileSizeError").innerHTML= ""
     document.getElementById("TileSizeW").style.backgroundColor= "white";
   }
 }
 function validGapSize()
 {
     var gapsizeContent = document.getElementById("gapSize").value;
-    if (gapsizeContent > 10)
+    if (gapsizeContent > .5)
     {
-    document.getElementById("gapsizeError").innerHTML= "Gap too large";
+    document.getElementById("gapsizeError").innerHTML= "Gap too large"
+    document.getElementById("gapSize").style.backgroundColor= "red";
+    }
+    if(gapsizeContent < 0)
+    {
+    document.getElementById("gapsizeError").innerHTML= "Enter Positive Value"
+    document.getElementById("gapSize").style.backgroundColor= "red";
     }
     else
     {
-    document.getElementById("gapsizeError").innerHTML= "";
+    document.getElementById("gapsizeError").innerHTML= ""
     document.getElementById("gapSize").style.backgroundColor= "white";
     }
 }
@@ -144,24 +150,24 @@ function calculate()
     const metaotPertile = metmmtomlengthplusGap * metmmtomwidthplusGap;
     var remainderImp = impatcPerimeter % impaotPertile;
     var remainderMet = metatcPerimeter % metaotPertile;
-    var wasteList = document.getElementById("wasteSelect");
-    var myselectedWaste = wasteList.options[wasteList.options.selectedIndex].value;
+    var wasteRange = document.getElementById("wasteRange");
+    var myselectedWaste = (Number(wasteRange.value)/10);
     var isImp = document.getElementById("UOM").value == "imperial";
     var isMet = document.getElementById("UOM").value == "metric";
     if (isImp)
     debugger;
     {
         document.getElementById("numberofTiles").innerHTML = Math.round((impatcPerimeter / impaotPertile)-(impatcPerimeter / impaotPertile)*myselectedWaste) + " Tiles"
-        document.getElementById("waste").innerHTML = ((remainderImp.toFixed(2))-(remainderImp*myselectedWaste).toFixed(2)) + " square feet";
+        document.getElementById("waste").innerHTML = wasteRange.value + " %";
         document.getElementById("thinset").innerHTML = Math.round((((areaLNumber * areaWNumber)*myselectedWaste)/95)*50) + " lbs of thinset at 1/4-inch thickness"
-        document.getElementById("numberof50lbsBags").innerHTML = Math.round(((areaLNumber * areaWNumber)*myselectedWaste)/95) + " 50lb bag(s) of thinset";
+        document.getElementById("numberof50lbsBags").innerHTML = Math.round(((areaLNumber * areaWNumber)*myselectedWaste)/95) + " X 50lb bag(s) of thinset";
     }
     if (isMet)
     {
         document.getElementById("numberofTiles").innerHTML = Math.round((metatcPerimeter / metaotPertile)-(metatcPerimeter / metaotPertile)*myselectedWaste) + " Tiles"
-        document.getElementById("waste").innerHTML = ((remainderMet.toFixed(2))-(remainderMet*myselectedWaste).toFixed(2)) + " square meters"
+        document.getElementById("waste").innerHTML = wasteRange.value + " %"
         document.getElementById("thinset").innerHTML = Math.round((((areaLNumber * areaWNumber)*myselectedWaste)/8.82579)*22.6796) + " kgs of thinset at 2.5cm thickness"
-        document.getElementById("numberof50lbsBags").innerHTML = Math.round(((areaLNumber * areaWNumber)*myselectedWaste)/8.82579) + " 22kg bags of thinset";
+        document.getElementById("numberof50lbsBags").innerHTML = Math.round(((areaLNumber * areaWNumber)*myselectedWaste)/8.82579) + " X 22kg bags of thinset";
     }
 }
 function uomCheck()
@@ -209,8 +215,46 @@ function gapsizeSelect()
 {
   document.getElementById("gapSize").value = document.getElementById("gapSelect").value;
 }
+function gapcustomAppear()
+{
+  if (document.getElementById("gapSelect").options.selectedIndex != 6)
+  {
+    document.getElementById("gapSize").style.display = "none"
+    document.getElementById("gapsizeAppend").style.display = "none"
+    document.getElementById("gapSize").value = document.getElementById("gapSelect").value;
+  }
+  else if (document.getElementById("gapSelect").options.selectedIndex = 6)
+  {
+    document.getElementById("gapSize").style.display = "inline"
+    document.getElementById("gapsizeAppend").style.display = "inline";
+  }
+}
+function validSquareFootage()
+{
+  var squareFootage = document.getElementById("totalSqft").value
+  if ( squareFootage != "" || squareFootage != null || squareFootage != NaN)
+  {
+    document.getElementById("sqftL").value = Number(squareFootage)/2
+    document.getElementById("sqftW").value = Number(squareFootage)/2
+  }
+  else
+  {
+  document.getElementById("totalSqftError").innerHTML = "Invalid Input"
+  squareFootage.style.backgroundColor = "red"
+  }
+}
+function displayValue()
+{
+  var slider = document.getElementById("wasteRange");
+  var output = document.getElementById("currentwasteValue");
+  output.innerHTML = slider.value; //Display the default slider value
+
+  slider.oninput = function() {
+    output.innerHTML = this.value;
+  }
+}
 </script>
-<div class="row">
+<div class="row" style="padding:50px">
   <div class="col-md-6 mx-auto">
     <div class="card mx-auto p-2">
       <div class="card-title" mx-auto><h1>Tile Estimator Tool</h1></div>
@@ -287,7 +331,7 @@ function gapsizeSelect()
 </div>
   <div class="form-row my-auto mx-auto">
     <div class="input-group my-auto mx-auto col-md-6">
-      <input type="text" id="totalSqft" maxlength="7" class="form-control" placeholder="Square Feet" required>
+      <input type="text" id="totalSqft" maxlength="7" class="form-control" placeholder="Square Feet" onblur="validSquareFootage()" required>
       <div class="input-group-append my-auto">
         <span class="input-group-text" id="totalsqftHangar"><span id="totalsqftTag"></span><sup>2</sup></span>
       </div>
@@ -302,18 +346,20 @@ function gapsizeSelect()
     </div>
 </div>
   <div class="form-row my-auto mx-auto">
-    <div class="form-group col-md-6 my-auto mx-auto">
-      <select id="gapSelect" class="form-control" onchange="gapsizeSelect()">
-        <option value=.0625 id="1/16" selected>1/16</option>
+    <div class="form-group col-md-6 my-auto ml-0">
+      <select id="gapSelect" class="form-control" onchange="gapcustomAppear()" onchange="gapsizeSelect()">
+        <option value=0 id="NA" selected>Choose...</option>
+        <option value=.0625 id="1/16">1/16</option>
         <option value=.125 id="1/8">1/8</option>
         <option value=.1875 id="3/16">3/16</option>
         <option value=.25 id="1/4">1/4</option>
         <option value=.375 id="3/8">3/8</option>
+        <option id="customGap" placeholder="Gap Size">Custom</option>
       </select>
     </div>
     <div class="input-group my-auto ml-0 col-md-6">
-      <input type="text" id="gapSize" onblur="validGapSize()" maxlength="7" class="form-control" placeholder="Gap Size" required>
-      <div class="input-group-append my-auto">
+      <input type="text" id="gapSize" onblur="validGapSize()" min="0" max=".5" step=".0001" maxlength="7" class="form-control" placeholder="Gap Size" required>
+      <div class="input-group-append my-auto" id="gapsizeAppend">
         <span class="input-group-text" id="gapsizeHangar">in</span>
       </div>
     </div>
@@ -322,79 +368,38 @@ function gapsizeSelect()
     <p><span id="gapsizeError"></p>
     </div>
   </div>
-  <div class="form-row my-auto pt-3 mx-auto">
-    <div class="form-group col-md-12 my-auto mx-auto">
-      <p>Waste</p>
+  <div class="form-row my-auto ml-0" style="width:18rem;">
+    <div class="form-group col-md-4 my-auto ml-0">
+      <p>Waste: </p>
+    </div>
+    <div class="form-group col-md-4 my-0 pt-1 pl-0 ml-0 mr-0" style="height:3rem;">
+        <span id="currentwasteValue"></span>
+    </div>
+    <div class="form-group col-md-4 mb-1 mt-1 ml-0 mr-0 pl-0 pr-0" style:"width:3rem;">
+        <p>%</p>
     </div>
   </div>
     <div class="form-row my-auto mx-auto">
-      <div class="form-group col-md-12 my-auto ml-0">
-        <select id="wasteSelect" class="form-control" class="form-control">
-          <option>Choose...</option>
-          <option value=.5 id="5%">5%</option>
-          <option selected value=.1 id="10%">10%</option>
-          <option value=.15 id="15%">15%</option>
-        </select>
+      <div class="form-group col-md-6 my-auto mx-auto">
+      <input type="range" class="form-control-range" id="wasteRange" min="0" max="20" step=".5" oninput="displayValue()">
+    </div>
+        <div class="form-group my-auto mx-auto col-md-6">
     </div>
   </div>
 </div>
+
   </form>
 </div>
 <div class="col-md-6">
   <div class="card p-2">
     <div class="card-title"><button type="button" class="btn btn-primary m-3" onclick="calculate()">Calculate</button></div>
       <div class="card-body">
-
-  <!-- <table border="1" style="background-color:#CCD1D1;">
-
-      <tr>
-          <td><b>Unit of Measurement</b></td>
-          <td>
-          <select id="UOM" name="UOM" onchange="uomCheck()">
-          <option value="imperial" selected> Imperial</option>
-          <option value="metric" >Metric</option>
-          </select>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-            <td><b>Enter dimensions of area </b></td>
-            <td>
-              <input type="number" id="sqftL" size="4" maxlength="3" name="sqftL" onblur="validLSqft()" required>
-              X
-              <input type="number" maxlength="3" id="sqftW" size="4" name="sqftW" onblur="validWSqft()">
-              <em><span id = "uomsqftHangar">ft</span></em>
-            </td>
-
-             <td><span id="sqftError"></td>
-      </tr>
-      <tr>
-            <td><b>Tile Size</b></td>
-            <td>
-            <input type="number" size="4" maxlength="4" id="TileSizeL" onblur="validLTileSize()" required>
-            X
-            <input type="number" size="4" maxlength="4" id="TileSizeW" onblur="validWTileSize()" required>
-            <em><span id = "uomTileSize">in</span></em>
-          </td>
-            <td><span id="TileSizeError"></td>
-      </tr>
-      <tr>
-            <td><b>Gap Size</b></td>
-            <td><input type="number" id="gapSize" size="4" maxlength="4" onblur="validGapSize()" required> <span id="gapsizeHangar">in</span></em></td>
-            <td><span id="gapsizeError"></td>
-      </tr>
-      <tr>
-            <td><input type="submit" onclick="calculate()"></td>
-            <td></td>
-            <td></td>
-      </tr>
-</table> -->
 <br>
 <label for="resultsArea"><h2>Results</h2></label>
-<pre><b><p>Number of tiles: </b> <span id="numberofTiles"> </span></p>
-<b><p>Waste: </b> <span id="waste"> </span></p>
-<b><p>Thinset: </b> <span id="thinset"> </span> </p>
-<b><p>Thinset Bags: </b> <span id="numberof50lbsBags"> </span> </p> </pre>
+<pre><b><p style="font-family:Helvetica;">Number of tiles: </b> <span id="numberofTiles"> </span></p>
+<b><p style="font-family:Helvetica;">Waste: </b> <span id="waste"> </span></p>
+<b><p style="font-family:Helvetica;">Thinset: </b> <span id="thinset"> </span> </p>
+<b><p style="font-family:Helvetica;">Thinset Bags: </b> <span id="numberof50lbsBags"> </span> </p> </pre>
 </div>
 </div>
 </div>
@@ -403,6 +408,8 @@ function gapsizeSelect()
   <script>
   uomCheck()
   gapsizeSelect()
+  gapcustomAppear()
+  displayValue()
   </script>
 
   </body>
