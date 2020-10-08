@@ -159,14 +159,14 @@ function calculate()
     {
         document.getElementById("numberofTiles").innerHTML = Math.round((impatcPerimeter / impaotPertile)-(impatcPerimeter / impaotPertile)*myselectedWaste) + " Tiles"
         document.getElementById("waste").innerHTML = wasteRange.value + " %";
-        document.getElementById("thinset").innerHTML = Math.round((((areaLNumber * areaWNumber)*myselectedWaste)/95)*50) + " lbs of thinset at 1/4-inch thickness"
+        document.getElementById("thinset").innerHTML = Math.round((((areaLNumber * areaWNumber)*myselectedWaste)/95)*50) + " lbs of thinset"
         document.getElementById("numberof50lbsBags").innerHTML = Math.round(((areaLNumber * areaWNumber)*myselectedWaste)/95) + " X 50lb bag(s) of thinset";
     }
     if (isMet)
     {
         document.getElementById("numberofTiles").innerHTML = Math.round((metatcPerimeter / metaotPertile)-(metatcPerimeter / metaotPertile)*myselectedWaste) + " Tiles"
         document.getElementById("waste").innerHTML = wasteRange.value + " %"
-        document.getElementById("thinset").innerHTML = Math.round((((areaLNumber * areaWNumber)*myselectedWaste)/8.82579)*22.6796) + " kgs of thinset at 2.5cm thickness"
+        document.getElementById("thinset").innerHTML = Math.round((((areaLNumber * areaWNumber)*myselectedWaste)/8.82579)*22.6796) + " kgs of thinset"
         document.getElementById("numberof50lbsBags").innerHTML = Math.round(((areaLNumber * areaWNumber)*myselectedWaste)/8.82579) + " X 22kg bags of thinset";
     }
 }
@@ -252,6 +252,9 @@ function displayValue()
   slider.oninput = function() {
     output.innerHTML = this.value;
   }
+}
+function printButton() {
+    window.print();
 }
 </script>
 <div class="row" style="padding:50px">
@@ -400,6 +403,17 @@ function displayValue()
 <b><p style="font-family:Helvetica;">Waste: </b> <span id="waste"> </span></p>
 <b><p style="font-family:Helvetica;">Thinset: </b> <span id="thinset"> </span> </p>
 <b><p style="font-family:Helvetica;">Thinset Bags: </b> <span id="numberof50lbsBags"> </span> </p> </pre>
+</div>
+<div class="container center-aligned" id="box">
+	<div class="row well mx-auto my-auto">
+		<h5 style="font-size:12px;text-align:center;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, labore, magni illum nemo ipsum quod voluptates ab natus nulla possimus incidunt aut neque quaerat mollitia perspiciatis assumenda asperiores consequatur soluta Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h5>
+
+      <div class="mx-auto">
+        <br>
+             <button class="btn btn-primary hidden-print" onclick="printButton()"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print</button>
+	    </div>
+
+	</div>
 </div>
 </div>
 </div>
