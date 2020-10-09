@@ -155,7 +155,6 @@ function calculate()
     var isImp = document.getElementById("radio-Imp").checked == true;
     var isMet = document.getElementById("radio-Met").checked == true;
     if (isImp)
-    debugger;
     {
         document.getElementById("numberofTiles").innerHTML = Math.round((impatcPerimeter / impaotPertile)-(impatcPerimeter / impaotPertile)*myselectedWaste) + " Tiles"
         document.getElementById("waste").innerHTML = wasteRange.value + " %";
@@ -189,7 +188,8 @@ function uomCheck()
     document.getElementById("1/4").value=6.35
     document.getElementById("1/4").innerHTML="6.35"
     document.getElementById("3/8").value=9.525
-    document.getElementById("3/8").innerHTML="9.52";
+    document.getElementById("3/8").innerHTML="9.52"
+    document.getElementById("totalSqft").placeholder = "Square Meters";
   }
   else if (document.getElementById("radio-Imp").checked == true)
   {
@@ -208,7 +208,8 @@ function uomCheck()
       document.getElementById("1/4").value=.25
       document.getElementById("1/4").innerHTML="1/4"
       document.getElementById("3/8").value=.375
-      document.getElementById("3/8").innerHTML="3/8";
+      document.getElementById("3/8").innerHTML="3/8"
+      document.getElementById("totalSqft").placeholder = "Square Feet";
   }
 }
 function gapsizeSelect()
@@ -282,81 +283,80 @@ function printButton() {
       </select> -->
     </div>
   </div>
-    <div class="form-row pt-3 my-auto mx-auto">
-      <div class="form-group col-md-12 mx-auto">
+    <div class="form-row my-0 mx-0 py-0 px-0">
+      <div class="form-group col-md-12 mx-0 my-0 px-0 py-0">
         <p>Tile Size</p>
     </div>
   </div>
-  <div class="form-row p-auto mx-auto my-auto">
-    <div class="input-group my-auto mx-auto col-md-5">
-      <input id="TileSizeL" onblur="validLTileSize()" maxlength="3" type="text" class="form-control" placeholder="Tile Length" required>
-      <div class="input-group-append my-auto">
+  <div class="form-row my-0 mx-0 py-0 px-0">
+    <div class="input-group my-0 mx-0 col-md-3">
+      <input id="TileSizeL" onblur="validLTileSize()" maxlength="3" type="text" class="form-control" placeholder="Length" required>
+      <div class="input-group-append my-0">
         <span class="input-group-text" id="uomTileSize">in</span>
       </div>
     </div>
-    <div class="form-group italic col-md-1 mx-auto my-auto" style="text-align: center;">
+    <div class="form-group italic col-md-1 mx-0 my-0 px-0 py-0" style="text-align: center;">
       X
     </div>
-    <div class="input-group my-auto mx-auto col-md-5">
-      <input id="TileSizeW" onblur="validWTileSize()" type="text" maxlength="3" class="form-control" placeholder="Tile Width" required>
-      <div class="input-group-append my-auto">
+    <div class="input-group my-0 mx-0 py-0 px-0 col-md-3">
+      <input id="TileSizeW" onblur="validWTileSize()" type="text" maxlength="3" class="form-control" placeholder="Width" required>
+      <div class="input-group-append my-0 mx-0 py-0 px-0">
         <span class="input-group-text" id="uomWTileSize">in</span>
       </div>
     </div>
-    <div class="form-group my-auto mx-auto col-md-1">
+    <div class="form-group my-0 mx-0 py-0 px-0 col-md-5">
       <p><span id="TileSizeError"></span></p>
     </div>
   </div>
-  <div class="form-row pt-4 my-auto mx-auto">
-    <div class="form-group col-md-12 mx-auto">
+  <div class="form-row my-0 mx-0 py-0 px-0">
+    <div class="form-group col-md-12 mx-0 my-0 px-0 py-0">
       <p>Area to Cover</p>
   </div>
 </div>
-<div class="form-row my-auto mx-auto">
-    <div class="input-group my-auto mx-auto col-md-5">
-      <input id="sqftL" maxlength="3" name="sqftL" onblur="validLSqft()" type="text" class="form-control" placeholder="Area Length" >
-      <div class="input-group-append my-auto">
+<div class="form-row my-0 mx-0 py-0 px-0">
+    <div class="input-group my-0 mx-0 col-md-3">
+      <input id="sqftL" maxlength="3" name="sqftL" onblur="validLSqft()" type="text" class="form-control" placeholder="Length" >
+      <div class="input-group-append my-0">
         <span class="input-group-text" id="uomsqftHangar">ft</span>
       </div>
     </div>
-    <div class="form-group italic col-md-1 mx-auto my-auto" style="text-align: center;">
+    <div class="form-group italic col-md-1 mx-0 my-0 px-0 py-0" style="text-align: center;">
       X
     </div>
-    <div class="input-group my-auto mx-auto col-md-5">
+    <div class="input-group my-0 mx-0 px-0 py-0 col-md-3">
       <label for="areawidth"></label>
-      <input id="sqftW" name="sqftW" maxlength="3" onblur="validWSqft()" type="text" class="form-control" placeholder="Area Width">
-      <div class="input-group-append my-auto">
+      <input id="sqftW" name="sqftW" maxlength="3" onblur="validWSqft()" type="text" class="form-control mx-0 my-0 px-0 py-0" placeholder="Width">
+      <div class="input-group-append my-0 mx-0 px-0 py-0">
         <span class="input-group-text" id="uomsqftWHangar">ft</span>
       </div>
     </div>
-    <div class="form-group my-auto mx-auto col-md-1">
-      <label for="areatocovererrorSpan"></label>
+    <div class="form-group my-0 mx-0 px-0 py-0 col-md-5">
       <p><span id="sqftError"></span></p>
     </div>
   </div>
-  <div class="form-row my-auto pt-3 mx-auto">
-    <div class="form-group col-md-12 mx-auto">
+  <div class="form-row my-0 mx-0 py-0 px-0 mx-auto">
+    <div class="form-group col-md-12 mx-0 my-0 px-0 py-0">
       <p>Square Footage</p>
   </div>
 </div>
-  <div class="form-row my-auto mx-auto">
-    <div class="input-group my-auto mx-auto col-md-6">
+  <div class="form-row my-0 mx-0 px-0 py-0">
+    <div class="input-group my-0 mx-0 px-0 py-0 col-md-6">
       <input type="text" id="totalSqft" maxlength="7" class="form-control" placeholder="Square Feet" onblur="validSquareFootage()" required>
-      <div class="input-group-append my-auto">
+      <div class="input-group-append my-0 mx-0 py-0 px-0">
         <span class="input-group-text" id="totalsqftHangar"><span id="totalsqftTag"></span><sup>2</sup></span>
       </div>
     </div>
-  <div class="form-group my-auto mx-auto col-md-6">
+  <div class="form-group my-0 mx-0 py-0 px-0 col-md-6">
     <p><span id="totalSqftError"></p>
   </div>
   </div>
-  <div class="form-row my-auto pt-3 mx-auto">
+  <div class="form-row my-0 mx-0 py-0 px-0 mx-auto">
     <div class="form-group col-md-12 my-auto mx-auto">
       <p>Gap Size</p>
     </div>
 </div>
-  <div class="form-row my-auto mx-auto">
-    <div class="form-group col-md-6 my-auto ml-0">
+  <div class="form-row my-0 mx-0 py-0 px-0">
+    <div class="form-group col-md-6 my-0 mx-0 py-0 px-0 ml-0">
       <select id="gapSelect" class="form-control" onchange="gapcustomAppear()" onchange="gapsizeSelect()">
         <option value=0 id="NA" selected>Choose...</option>
         <option value=.0625 id="1/16">1/16</option>
@@ -367,18 +367,18 @@ function printButton() {
         <option id="customGap" placeholder="Gap Size">Custom</option>
       </select>
     </div>
-    <div class="input-group my-auto ml-0 col-md-6">
+    <div class="input-group my-0 mx-0 py-0 px-0 ml-0 col-md-6">
       <input type="text" id="gapSize" onblur="validGapSize()" min="0" max=".5" step=".0001" maxlength="7" class="form-control" placeholder="Gap Size" required>
-      <div class="input-group-append my-auto" id="gapsizeAppend">
+      <div class="input-group-append my-0 mx-0 py-0 px-0" id="gapsizeAppend">
         <span class="input-group-text" id="gapsizeHangar">in</span>
       </div>
     </div>
-  <div class="form-group my-auto mx-auto col-md-1">
+  <div class="form-group my-0 mx-0 py-0 px-0 col-md-1">
     <label for="gapsizeerrorSpan"></label>
     <p><span id="gapsizeError"></p>
     </div>
   </div>
-  <div class="form-row my-auto ml-0" style="width:18rem;">
+  <div class="form-row my-auto ml-0 my-0 px-0 py-0" style="width:18rem;">
     <div class="form-group col-md-4 my-auto ml-0">
       <p>Waste: </p>
     </div>
@@ -389,11 +389,11 @@ function printButton() {
         <p>%</p>
     </div>
   </div>
-    <div class="form-row my-auto mx-auto">
-      <div class="form-group col-md-6 my-auto mx-auto">
+    <div class="form-row my-0 mx-0 py-0 px-0">
+      <div class="form-group col-md-6 my-0 mx-0 py-0 px-0">
       <input type="range" class="form-control-range" id="wasteRange" min="0" max="20" step=".5" oninput="displayValue()">
     </div>
-        <div class="form-group my-auto mx-auto col-md-6">
+        <div class="form-group my-0 mx-0 py-0 px-0 col-md-6">
     </div>
   </div>
 </div>
