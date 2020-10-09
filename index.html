@@ -152,8 +152,8 @@ function calculate()
     var remainderMet = metatcPerimeter % metaotPertile;
     var wasteRange = document.getElementById("wasteRange");
     var myselectedWaste = (Number(wasteRange.value)/10);
-    var isImp = document.getElementById("UOM").value == "imperial";
-    var isMet = document.getElementById("UOM").value == "metric";
+    var isImp = document.getElementById("radio-Imp").checked == true;
+    var isMet = document.getElementById("radio-Met").checked == true;
     if (isImp)
     debugger;
     {
@@ -172,7 +172,7 @@ function calculate()
 }
 function uomCheck()
 {
-  if (document.getElementById("UOM").value == "metric")
+  if (document.getElementById("radio-Met").checked == true)
   {
     document.getElementById("uomsqftHangar").innerHTML = "m"
     document.getElementById("gapsizeHangar").innerHTML = "mm"
@@ -191,7 +191,7 @@ function uomCheck()
     document.getElementById("3/8").value=9.525
     document.getElementById("3/8").innerHTML="9.52";
   }
-  else if (document.getElementById("UOM").value == "imperial")
+  else if (document.getElementById("radio-Imp").checked == true)
   {
       document.getElementById("uomsqftHangar").innerHTML = "ft"
       document.getElementById("gapsizeHangar").innerHTML = "in"
@@ -263,16 +263,23 @@ function printButton() {
       <div class="card-title" mx-auto><h1>Tile Estimator Tool</h1></div>
   <div class="card-body" mx-auto></div>
 <form>
+
   <div class="form-row mx-auto my-auto"
     <div class="form-group col-md-12 mx-auto">
       <p>Unit of Measurement</p>
   </div>
   <div class="form-row p-auto mx-auto my-auto">
     <div class="form-group col-md-3">
-      <select id="UOM" class="form-control" name="UOM" onchange="uomCheck()">
+      <div class="regular-field" onchange="uomCheck()">
+        <input type="radio" id="radio-Imp" name="notaswitch-one" value="Imp" checked/>
+        <label for="radio-Imp">Imperial</label>
+        <input type="radio" id="radio-Met" name="notaswitch-one" value="Met" />
+        <label for="radio-Met">Metric</label>
+      </div>
+      <!-- <select id="UOM" class="form-control" name="UOM" onchange="uomCheck()">
         <option selected value ="imperial">Imperial</option>
         <option value="metric">Metric</option>
-      </select>
+      </select> -->
     </div>
   </div>
     <div class="form-row pt-3 my-auto mx-auto">
@@ -420,10 +427,10 @@ function printButton() {
 </div>
   <br>
   <script>
+  displayValue()
   uomCheck()
   gapsizeSelect()
   gapcustomAppear()
-  displayValue()
   </script>
 
   </body>
