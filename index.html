@@ -268,10 +268,10 @@ function printButton() {
 
   <div class="form-row mx-auto my-auto"
     <div class="form-group col-md-12 mx-auto">
-      <p>Unit of Measurement</p>
+    <label for="UOm">Unit of Measurement</label>
   </div>
   <div class="form-row p-auto mx-auto my-auto">
-    <div class="form-group col-md-3">
+    <div class="form-group col">
       <div class="regular-field" onchange="uomCheck()">
         <input type="radio" id="radio-Imp" name="notaswitch-one" value="Imp" checked/>
         <label for="radio-Imp">Imperial</label>
@@ -316,7 +316,7 @@ function printButton() {
 </div>
 <div class="form-row my-0 mx-0 py-0 px-0">
     <div class="input-group my-0 mx-0 col-md-3">
-      <input id="sqftL" maxlength="3" name="sqftL" onblur="validLSqft()" type="text" class="form-control" placeholder="Length" >
+      <input id="sqftL" maxlength="3" name="sqftL" onblur="validLSqft()" type="text" class="form-control" placeholder="Length">
       <div class="input-group-append my-0">
         <span class="input-group-text" id="uomsqftHangar">ft</span>
       </div>
@@ -324,10 +324,9 @@ function printButton() {
     <div class="form-group italic col-md-1 mx-0 my-0 px-0 py-0" style="text-align: center;">
       X
     </div>
-    <div class="input-group my-0 mx-0 px-0 py-0 col-md-3">
-      <label for="areawidth"></label>
-      <input id="sqftW" name="sqftW" maxlength="3" onblur="validWSqft()" type="text" class="form-control mx-0 my-0 px-0 py-0" placeholder="Width">
-      <div class="input-group-append my-0 mx-0 px-0 py-0">
+    <div class="input-group my-0 mx-0 col-md-3">
+      <input id="sqftW" name="sqftW" maxlength="3" onblur="validWSqft()" type="text" class="form-control" placeholder="Width">
+      <div class="input-group-append my-0">
         <span class="input-group-text" id="uomsqftWHangar">ft</span>
       </div>
     </div>
