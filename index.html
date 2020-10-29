@@ -2,7 +2,44 @@
 <html lang= "en">
 <head>
   <title>Tile Estimator Tool</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <style type="text/css">
+        h1 {
+            color:black;
+        }
+        .xyz {
+            background-size: auto;
+            text-align: center;
+            padding-top: 100px;
+        }
+        .btn-circle.btn-sm {
+            width: 15px;
+            height: 15px;
+            padding: 0px 0px;
+            margin: 0px 0px;
+            border-radius: 30px;
+            border-color: darkgray;
+            font-size: 6px;
+        }
+        .btn-circle.btn-md {
+            width: 50px;
+            height: 50px;
+            padding: 7px 10px;
+            border-radius: 25px;
+            font-size: 10px;
+            text-align: center;
+        }
+        .btn-circle.btn-xl {
+            width: 70px;
+            height: 70px;
+            padding: 10px 16px;
+            border-radius: 35px;
+            font-size: 12px;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <script language="javascript" type="text/javascript">
@@ -261,16 +298,16 @@ function printButton() {
 </script>
 <div class="row" style="padding:50px">
   <div class="col-md-6 mx-auto">
-    <div class="card mx-auto p-2">
+    <div class="card mx-auto p-0">
       <div class="card-title" mx-auto><h1>Tile Estimator Tool</h1></div>
   <div class="card-body" mx-auto></div>
 <form>
 
-  <div class="form-row mx-auto my-auto"
-    <div class="form-group col-md-12 mx-auto">
+  <div class="form-row ml-2 y-auto">
     <label for="UOM">Unit of Measurement</label>
-  </div>
-  <div class="form-row p-auto mx-auto my-auto">
+      <button type="button" data-toggle="tooltip" data-placement="top" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porta nisi et tempor congue. Praesent libero eros, auctor non urna in, elementum feugiat arcu. Orci varius natoque." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+</div>
+  <div class="form-row mx-auto my-auto">
     <div class="form-group col">
       <div class="regular-field" onchange="uomCheck()">
         <input type="radio" id="radio-Imp" name="notaswitch-one" value="Imp" checked/>
@@ -284,11 +321,10 @@ function printButton() {
       </select> -->
     </div>
   </div>
-    <div class="form-row my-0 mx-0 py-0 px-0">
-      <div class="form-group col-md-12 mx-0 my-0 px-0 py-0">
-      <label for="TileSize">Tile Size</label>
-    </div>
-  </div>
+  <div class="form-row ml-2 y-auto">
+    <label for="TileSize">Tile Size</label>
+      <button type="button" data-toggle="tooltip" data-placement="top" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porta nisi et tempor congue. Praesent libero eros, auctor non urna in, elementum feugiat arcu. Orci varius natoque." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+</div>
   <div class="form-row my-0 mx-0 py-0 px-0">
     <div class="input-group my-0 mx-0 col-md-3">
       <input id="TileSizeL" onblur="validLTileSize()" maxlength="3" type="text" class="form-control" placeholder="Length" required>
@@ -299,7 +335,7 @@ function printButton() {
     <div class="form-group italic col-md-1 mx-0 my-0 px-0 py-0" style="text-align: center;">
       X
     </div>
-    <div class="input-group my-0 mx-0 py-0 px-0 col-md-3">
+    <div class="input-group my-0 mx-0 col-md-3">
       <input id="TileSizeW" onblur="validWTileSize()" type="text" maxlength="3" class="form-control" placeholder="Width" required>
       <div class="input-group-append my-0 mx-0 py-0 px-0">
         <span class="input-group-text" id="uomWTileSize">in</span>
@@ -309,15 +345,14 @@ function printButton() {
       <p><span id="TileSizeError"></span></p>
     </div>
   </div>
-  <div class="form-row my-0 mx-0 py-0 px-0">
-    <div class="form-group col-md-12 mx-0 my-0 px-0 py-0">
+  <div class="form-row ml-2 pt-4 y-auto">
     <label for="ATC">Area to Cover</label>
-  </div>
+      <button type="button" data-toggle="tooltip" data-placement="top" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porta nisi et tempor congue. Praesent libero eros, auctor non urna in, elementum feugiat arcu. Orci varius natoque." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
 </div>
 <div class="form-row my-0 mx-0 py-0 px-0">
     <div class="input-group my-0 mx-0 col-md-3">
       <input id="sqftL" maxlength="3" name="sqftL" onblur="validLSqft()" type="text" class="form-control" placeholder="Length">
-      <div class="input-group-append my-0">
+      <div class="input-group-append my-0 mx-0 px-0 py-0">
         <span class="input-group-text" id="uomsqftHangar">ft</span>
       </div>
     </div>
@@ -326,7 +361,7 @@ function printButton() {
     </div>
     <div class="input-group my-0 mx-0 col-md-3">
       <input id="sqftW" name="sqftW" maxlength="3" onblur="validWSqft()" type="text" class="form-control" placeholder="Width">
-      <div class="input-group-append my-0">
+      <div class="input-group-append my-0 mx-0 px-0 py-0">
         <span class="input-group-text" id="uomsqftWHangar">ft</span>
       </div>
     </div>
@@ -334,13 +369,12 @@ function printButton() {
       <p><span id="sqftError"></span></p>
     </div>
   </div>
-  <div class="form-row my-0 mx-0 py-0 px-0 mx-auto">
-    <div class="form-group col-md-12 mx-0 my-0 px-0 py-0">
+  <div class="form-row ml-2 pt-4 y-auto">
     <label for="SquareFootage">Square Footage</label>
-  </div>
+      <button type="button" data-toggle="tooltip" data-placement="top" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porta nisi et tempor congue. Praesent libero eros, auctor non urna in, elementum feugiat arcu. Orci varius natoque." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
 </div>
   <div class="form-row my-0 mx-0 px-0 py-0">
-    <div class="input-group my-0 mx-0 px-0 py-0 col-md-6">
+    <div class="input-group my-0 mx-0 col-md-6">
       <input type="text" id="totalSqft" maxlength="7" class="form-control" placeholder="Square Feet" onblur="validSquareFootage()" required>
       <div class="input-group-append my-0 mx-0 py-0 px-0">
         <span class="input-group-text" id="totalsqftHangar"><span id="totalsqftTag"></span><sup>2</sup></span>
@@ -350,13 +384,12 @@ function printButton() {
     <p><span id="totalSqftError"></p>
   </div>
   </div>
-  <div class="form-row my-0 mx-0 py-0 px-0 mx-auto">
-    <div class="form-group col-md-12 my-auto mx-auto">
+  <div class="form-row ml-2 pt-4 y-auto">
     <label for="GapSize">Gap Size</label>
-    </div>
+      <button type="button" data-toggle="tooltip" data-placement="top" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porta nisi et tempor congue. Praesent libero eros, auctor non urna in, elementum feugiat arcu. Orci varius natoque." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
 </div>
   <div class="form-row my-0 mx-0 py-0 px-0">
-    <div class="form-group col-md-6 my-0 mx-0 py-0 px-0 ml-0">
+    <div class="form-group col-md-6 my-0 mx-0">
       <select id="gapSelect" class="form-control" onchange="gapcustomAppear()" onchange="gapsizeSelect()">
         <option value=0 id="NA" selected>Choose...</option>
         <option value=.0625 id="1/16">1/16</option>
@@ -378,9 +411,10 @@ function printButton() {
     <p><span id="gapsizeError"></p>
     </div>
   </div>
-  <div class="form-row my-auto ml-0 my-0 px-0 py-0" style="width:18rem;">
+  <div class="form-row my-0 ml-0 my-0 px-0 py-0" style="width:18rem;">
     <div class="form-group col-md-4 my-auto ml-0">
-    <label for="Waste">Waste</label>
+    <label for="Waste">Waste:</label>
+    <button type="button" data-toggle="tooltip" data-placement="top" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porta nisi et tempor congue. Praesent libero eros, auctor non urna in, elementum feugiat arcu. Orci varius natoque." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
     </div>
     <div class="form-group col-md-4 my-0 pt-1 pl-0 ml-0 mr-0" style="height:3rem;">
         <span id="currentwasteValue"></span>
@@ -432,6 +466,17 @@ function printButton() {
   gapsizeSelect()
   gapcustomAppear()
   </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"></script>
 
+<script>
+
+  $(document).ready(function(){
+    $('button').tooltip();
+  })
+  }
+  </script>
   </body>
 </html>
