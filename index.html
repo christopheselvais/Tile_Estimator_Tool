@@ -39,6 +39,13 @@
             font-size: 12px;
             text-align: center;
         }
+        .mt-n1 {
+  margin-top: -0.25rem !important;
+}
+        .mt-n2 {
+          position:fixed;
+          margin-top: -0.25rem !important;
+}
     </style>
 </head>
 
@@ -332,7 +339,7 @@ function printButton() {
         <span class="input-group-text" id="uomTileSize">in</span>
       </div>
     </div>
-    <div class="form-group italic col-md-1 mx-0 my-0 px-0 py-0" style="text-align: center;">
+    <div class="form-group italic col-mt-n1 mx-0 my-0 px-0 pt-2" style="text-align: center;">
       X
     </div>
     <div class="input-group my-0 mx-0 col-md-3">
@@ -346,7 +353,7 @@ function printButton() {
     </div>
   </div>
   <div class="form-row ml-2 pt-4 y-auto">
-    <label for="ATC">Area to Cover</label>
+    <label for="ATC">Area to Cover:</label>
       <button type="button" data-toggle="tooltip" data-placement="top" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porta nisi et tempor congue. Praesent libero eros, auctor non urna in, elementum feugiat arcu. Orci varius natoque." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
 </div>
 <div class="form-row my-0 mx-0 py-0 px-0">
@@ -356,7 +363,7 @@ function printButton() {
         <span class="input-group-text" id="uomsqftHangar">ft</span>
       </div>
     </div>
-    <div class="form-group italic col-md-1 mx-0 my-0 px-0 py-0" style="text-align: center;">
+    <div class="form-group italic col-mt-n1 mx-0 my-0 px-0 pt-2" style="text-align: center;">
       X
     </div>
     <div class="input-group my-0 mx-0 col-md-3">
@@ -370,7 +377,7 @@ function printButton() {
     </div>
   </div>
   <div class="form-row ml-2 pt-4 y-auto">
-    <label for="SquareFootage">Square Footage</label>
+    <label for="SquareFootage">Square Footage:</label>
       <button type="button" data-toggle="tooltip" data-placement="top" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porta nisi et tempor congue. Praesent libero eros, auctor non urna in, elementum feugiat arcu. Orci varius natoque." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
 </div>
   <div class="form-row my-0 mx-0 px-0 py-0">
@@ -385,7 +392,7 @@ function printButton() {
   </div>
   </div>
   <div class="form-row ml-2 pt-4 y-auto">
-    <label for="GapSize">Gap Size</label>
+    <label for="GapSize">Gap Size:</label>
       <button type="button" data-toggle="tooltip" data-placement="top" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porta nisi et tempor congue. Praesent libero eros, auctor non urna in, elementum feugiat arcu. Orci varius natoque." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
 </div>
   <div class="form-row my-0 mx-0 py-0 px-0">
@@ -411,17 +418,19 @@ function printButton() {
     <p><span id="gapsizeError"></p>
     </div>
   </div>
-  <div class="form-row my-0 ml-0 my-0 px-0 py-0" style="width:18rem;">
+  <div class="form-row ml-0 my-auto" style="width:18rem;">
     <div class="form-group col-md-4 my-auto ml-0">
     <label for="Waste">Waste:</label>
-    <button type="button" data-toggle="tooltip" data-placement="top" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porta nisi et tempor congue. Praesent libero eros, auctor non urna in, elementum feugiat arcu. Orci varius natoque." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
     </div>
-    <div class="form-group col-md-4 my-0 pt-1 pl-0 ml-0 mr-0" style="height:3rem;">
+    <div class="form-group col-mt-n1 my-auto pb-2">
         <span id="currentwasteValue"></span>
     </div>
-    <div class="form-group col-md-4 mb-1 mt-1 ml-0 mr-0 pl-0 pr-0" style:"width:3rem;">
+    <div class="form-group col-mt-n1 my-auto pt-2">
         <p>%</p>
     </div>
+    <div class="form-group col-mt-n1 my-auto ml-5 pb-4 pt-1">
+    <button type="button" data-toggle="tooltip" data-placement="top" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porta nisi et tempor congue. Praesent libero eros, auctor non urna in, elementum feugiat arcu. Orci varius natoque." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+  </div>
   </div>
     <div class="form-row my-0 mx-0 py-0 px-0">
       <div class="form-group col-md-6 my-0 mx-0 py-0 px-0">
