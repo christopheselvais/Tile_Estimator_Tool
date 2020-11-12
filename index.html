@@ -1,6 +1,9 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang= "en">
 <head>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <title>Tile Estimator Tool</title>
   <link rel="stylesheet" href=
 "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -8,11 +11,6 @@
     <style type="text/css">
         h1 {
             color:black;
-        }
-        .xyz {
-            background-size: auto;
-            text-align: center;
-            padding-top: 100px;
         }
         .btn-circle.btn-sm {
             width: 15px;
@@ -23,28 +21,9 @@
             border-color: darkgray;
             font-size: 6px;
         }
-        .btn-circle.btn-md {
-            width: 50px;
-            height: 50px;
-            padding: 7px 10px;
-            border-radius: 25px;
-            font-size: 10px;
-            text-align: center;
-        }
-        .btn-circle.btn-xl {
-            width: 70px;
-            height: 70px;
-            padding: 10px 16px;
-            border-radius: 35px;
-            font-size: 12px;
-            text-align: center;
-        }
+
         .mt-n1 {
   margin-top: -0.25rem !important;
-}
-        .mt-n2 {
-          position:fixed;
-          margin-top: -0.25rem !important;
 }
     </style>
 </head>
@@ -312,7 +291,7 @@ function printButton() {
 
   <div class="form-row ml-2 y-auto">
     <label for="UOM">Unit of Measurement</label>
-      <button type="button" data-toggle="tooltip" data-placement="top" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porta nisi et tempor congue. Praesent libero eros, auctor non urna in, elementum feugiat arcu. Orci varius natoque." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+    <button type="button" data-toggle="tooltip" data-delay='0' data-placement="top" title="A unit of measurement is a definite magnitude of a quanitity, defined and adopted by convention or by law, that is used as a standard for measurement of the same kind. The Imperial system includes definite quantifiers such as inches, feet, and yards. The Metric system utilizes milimeters, centimeters, and meters as units for measuring quantity." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
 </div>
   <div class="form-row mx-auto my-auto">
     <div class="form-group col">
@@ -330,7 +309,7 @@ function printButton() {
   </div>
   <div class="form-row ml-2 y-auto">
     <label for="TileSize">Tile Size</label>
-      <button type="button" data-toggle="tooltip" data-placement="top" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porta nisi et tempor congue. Praesent libero eros, auctor non urna in, elementum feugiat arcu. Orci varius natoque." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+      <button type="button" data-toggle="tooltip" data-placement="top" title="Dimensions of one tile. Actual length and width proportions of one floor tile. A measurement of a single tile piece that accurately sizes up and proportiates the intended area of tile application." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
 </div>
   <div class="form-row my-0 mx-0 py-0 px-0">
     <div class="input-group my-0 mx-0 col-md-3">
@@ -354,7 +333,7 @@ function printButton() {
   </div>
   <div class="form-row ml-2 pt-4 y-auto">
     <label for="ATC">Area to Cover:</label>
-      <button type="button" data-toggle="tooltip" data-placement="top" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porta nisi et tempor congue. Praesent libero eros, auctor non urna in, elementum feugiat arcu. Orci varius natoque." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+      <button type="button" data-toggle="tooltip" data-placement="top" title="Area to cover is the part of the kitchen, bathroom, etc. where floor tiles will be installed atop the subfloor and not subject to drains and vents." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
 </div>
 <div class="form-row my-0 mx-0 py-0 px-0">
     <div class="input-group my-0 mx-0 col-md-3">
@@ -378,8 +357,8 @@ function printButton() {
   </div>
   <div class="form-row ml-2 pt-4 y-auto">
     <label for="SquareFootage">Square Footage:</label>
-      <button type="button" data-toggle="tooltip" data-placement="top" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porta nisi et tempor congue. Praesent libero eros, auctor non urna in, elementum feugiat arcu. Orci varius natoque." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
-</div>
+      <button type="button" data-toggle="tooltip" data-placement="top" title="Estimated Total Area of the tile floor. Not only the tile installed for a walkway/path, but also the floor finish that's installed underneath permanent fixtures like cabinets, refridgerators, and kitchen islands, in that end." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+  </div>
   <div class="form-row my-0 mx-0 px-0 py-0">
     <div class="input-group my-0 mx-0 col-md-6">
       <input type="text" id="totalSqft" maxlength="7" class="form-control" placeholder="Square Feet" onblur="validSquareFootage()" required>
@@ -393,8 +372,8 @@ function printButton() {
   </div>
   <div class="form-row ml-2 pt-4 y-auto">
     <label for="GapSize">Gap Size:</label>
-      <button type="button" data-toggle="tooltip" data-placement="top" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porta nisi et tempor congue. Praesent libero eros, auctor non urna in, elementum feugiat arcu. Orci varius natoque." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
-</div>
+      <button type="button" data-toggle="tooltip" data-placement="top" title="Gap Size of the tiles are the standard measurement to and from one tile to another one i.e. the width of the grout lines depending on the size and type of the tile. Your tile gap is the average degree of separation, from edge to edge, which remains as a buffer that forms the tile grid." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+  </div>
   <div class="form-row my-0 mx-0 py-0 px-0">
     <div class="form-group col-md-6 my-0 mx-0">
       <select id="gapSelect" class="form-control" onchange="gapcustomAppear()" onchange="gapsizeSelect()">
@@ -420,22 +399,22 @@ function printButton() {
   </div>
   <div class="form-row ml-0 my-auto" style="width:18rem;">
     <div class="form-group col-md-4 my-auto ml-0">
-    <label for="Waste">Waste:</label>
+      <label for="Waste">Waste:</label>
     </div>
     <div class="form-group col-mt-n1 my-auto pb-2">
-        <span id="currentwasteValue"></span>
+      <span id="currentwasteValue"></span>
     </div>
-    <div class="form-group col-mt-n1 my-auto pt-2">
-        <p>%</p>
+    <div style="min-width:50px;" class="form-group col-mt-n1 my-auto pt-2">
+      <p>%</p>
     </div>
     <div class="form-group col-mt-n1 my-auto ml-5 pb-4 pt-1">
-    <button type="button" data-toggle="tooltip" data-placement="top" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porta nisi et tempor congue. Praesent libero eros, auctor non urna in, elementum feugiat arcu. Orci varius natoque." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
-  </div>
+      <button type="button" data-delay='0' data-toggle="tooltip" data-placement="top" title="Waste percentages can account for sections of the Area to Cover that will be removed from the equation, such as perimeter baseboards or structural support beams where tile cannot not be installed. Waste gives you control over your ability to manage the dimensions according to your project." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+    </div>
   </div>
     <div class="form-row my-0 mx-0 py-0 px-0">
       <div class="form-group col-md-6 my-0 mx-0 py-0 px-0">
-      <input type="range" class="form-control-range" id="wasteRange" min="0" max="20" step=".5" oninput="displayValue()">
-    </div>
+        <input type="range" class="form-control-range" id="wasteRange" min="0" max="20" step=".5" oninput="displayValue()">
+      </div>
         <div class="form-group my-0 mx-0 py-0 px-0 col-md-6">
     </div>
   </div>
@@ -463,29 +442,26 @@ function printButton() {
              <button class="btn btn-primary hidden-print" onclick="printButton()"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print</button>
 	    </div>
 
-	</div>
-</div>
-</div>
-</div>
+	      </div>
+      </div>
+    </div>
+  </div>
 </div>
   <br>
-  <script>
-  displayValue()
-  uomCheck()
-  gapsizeSelect()
-  gapcustomAppear()
-  </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"></script>
 
-<script>
+    <script>
 
-  $(document).ready(function(){
-    $('button').tooltip();
-  })
-  }
-  </script>
+      $(function () { 
+        displayValue();
+
+        uomCheck();
+
+        gapsizeSelect();
+
+        gapcustomAppear();
+        $('[data-toggle="tooltip"]').tooltip() ;
+
+      })
+    </script>
   </body>
 </html>
