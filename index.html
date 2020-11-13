@@ -198,7 +198,7 @@ function calculate()
     var myselectedWaste = (Number(wasteRange.value)/100);
     var isImp = document.getElementById("radio-Imp").checked == true;
     var isMet = document.getElementById("radio-Met").checked == true;
-    var tiledepthNumber = eval(document.getElementById("gapSize").value);
+    var tiledepthNumber = eval(document.getElementById("depthSize").value);
     var mettdA = tileareaLNumber + tileareaWNumber
     var mettdB = gapsizeContent * tiledepthNumber
     var mettdC = mettdA * mettdB * 1.2 <!-- grout coverage ratio -->
@@ -213,7 +213,6 @@ function calculate()
     var imptgR = mettdE * (areaLNumber * areaWNumber)
     var tileBox = document.getElementById("tileBox").value
     if (isImp)
-    debugger;
     {
         document.getElementById("numberofTiles").innerHTML = Math.round(((squareFootage * 144) / impaotPertile) * (1 + myselectedWaste)) + " Tiles"
         document.getElementById("waste").innerHTML = wasteRange.value + " %";
