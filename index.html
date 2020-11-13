@@ -218,8 +218,8 @@ function calculate()
         document.getElementById("waste").innerHTML = wasteRange.value + " %";
         document.getElementById("thinset").innerHTML = Math.round((((areaLNumber * areaWNumber) * myselectedWaste)/95)*50) + " lbs of thinset"
         document.getElementById("numberof50lbsBags").innerHTML = Math.ceil(((areaLNumber * areaWNumber)*myselectedWaste)/95) + " X 50lb bag(s) of thinset"
-        document.getElementById("tgR").innerHTML = Math.ceil(imptgR) + " lbs"
-        document.getElementById("tpB").innerHTML = (Math.round(((squareFootage * 144) / impaotPertile) * (1 + myselectedWaste))) / tileBox;
+        document.getElementById("tgR").innerHTML = Math.ceil(imptgR) + " psi"
+        document.getElementById("tpB").innerHTML = (Math.ceil(((squareFootage * 144) / impaotPertile) * (1 + myselectedWaste))) / tileBox;
     }
     if (isMet)
     {
@@ -227,8 +227,8 @@ function calculate()
         document.getElementById("waste").innerHTML = wasteRange.value + " %"
         document.getElementById("thinset").innerHTML = Math.round((((areaLNumber * areaWNumber)*myselectedWaste)/8.82579)*22.6796) + " kgs of thinset"
         document.getElementById("numberof50lbsBags").innerHTML = Math.ceil(((areaLNumber * areaWNumber)*myselectedWaste)/8.82579) + " X 22kg bags of thinset"
-        document.getElementById("tgR").innerHTML = Math.ceil(mettgR) + " kg"
-        document.getElementById("tpB").innerHTML = (Math.round(((squareFootage * 144) / metaotPertile) * (1 + myselectedWaste))) / tileBox;
+        document.getElementById("tgR").innerHTML = Math.ceil(mettgR) + " kg/m2"
+        document.getElementById("tpB").innerHTML = (Math.ceil(((squareFootage * 144) / metaotPertile) * (1 + myselectedWaste))) / tileBox;
     }
 }
 function uomCheck()
@@ -331,7 +331,7 @@ function printButton() {
 
   <div class="form-row ml-2 y-auto">
     <label for="UOM">Unit of Measurement</label>
-    <button type="button" data-toggle="tooltip" data-delay='0' data-placement="top" title="A unit of measurement is a definite magnitude of a quanitity, defined and adopted by convention or by law, that is used as a standard for measurement of the same kind. The Imperial system includes definite quantifiers such as inches, feet, and yards. The Metric system utilizes milimeters, centimeters, and meters as units for measuring quantity." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+    <button type="button" data-toggle="tooltip" data-delay='0' data-placement="top" title="Select the untis system to be used for all calculations." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
 </div>
   <div class="form-row mx-auto my-auto">
     <div class="form-group col">
@@ -349,7 +349,7 @@ function printButton() {
   </div>
   <div class="form-row ml-2 y-auto">
     <label for="TileSize">Tile Size</label>
-      <button type="button" data-toggle="tooltip" data-placement="top" title="Dimensions of one tile. Actual length and width proportions of one floor tile. A measurement of a single tile piece that accurately sizes up and proportiates the intended area of tile application." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+      <button type="button" data-toggle="tooltip" data-placement="top" title="What's the length and width of each tile. We use this to calculate the tile required for your area." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
 </div>
   <div class="form-row my-0 mx-0 py-0 px-0">
     <div class="input-group my-0 mx-0 col-md-3">
@@ -372,8 +372,8 @@ function printButton() {
     </div>
   </div>
   <div class="form-row ml-2 y-auto pt-2">
-    <label for="TileSize">Tile Depth</label>
-      <button type="button" data-toggle="tooltip" data-placement="top" title="Thickness of tile." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+    <label for="TileDepth">Tile Depth</label>
+      <button type="button" data-toggle="tooltip" data-placement="top" title="We use this to calculate the grout required." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
 </div>
   <div class="form-row my-0 mx-0 py-0 px-0">
     <div class="input-group my-0 mx-0 col-md-3">
@@ -388,7 +388,7 @@ function printButton() {
   </div>
   <div class="form-row ml-2 y-auto pt-2">
     <label for="TileBox">Tiles per Box</label>
-      <button type="button" data-toggle="tooltip" data-placement="top" title="Number of tiles within one pack of tiles." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+      <button type="button" data-toggle="tooltip" data-placement="top" title="If you know how many tiles come in each box, we'll calculate this for you." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
 </div>
   <div class="form-row my-0 mx-0 py-0 px-0">
     <div class="input-group my-0 mx-0 col-md-3">
@@ -400,7 +400,7 @@ function printButton() {
   </div>
   <div class="form-row ml-2 pt-0 y-auto">
     <label for="ATC">Area to Cover:</label>
-      <button type="button" data-toggle="tooltip" data-placement="top" title="Area to cover is the part of the kitchen, bathroom, etc. where floor tiles will be installed atop the subfloor and not subject to drains and vents." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+      <button type="button" data-toggle="tooltip" data-placement="top" title="Tell us the length and width of your area if rectangular or use the square footage field to enter the total area for irreglar shaped spaces." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
 </div>
 <div class="form-row my-0 mx-0 py-0 px-0">
     <div class="input-group my-0 mx-0 col-md-3">
@@ -439,7 +439,7 @@ function printButton() {
   </div>
   <div class="form-row ml-2 pt-2 y-auto">
     <label for="GapSize">Gap Size:</label>
-      <button type="button" data-toggle="tooltip" data-placement="top" title="Gap Size of the tiles are the standard measurement to and from one tile to another one i.e. the width of the grout lines depending on the size and type of the tile. Your tile gap is the average degree of separation, from edge to edge, which remains as a buffer that forms the tile grid." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+      <button type="button" data-toggle="tooltip" data-placement="top" title="The gap between each tile. Used for grout and tile calculation." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
   </div>
   <div class="form-row my-0 mx-0 py-0 px-0">
     <div class="form-group col-md-6 my-0 mx-0">
@@ -475,7 +475,7 @@ function printButton() {
       <p>%</p>
     </div>
     <div class="form-group col-mt-n1 my-auto ml-5 pb-4 pt-1">
-      <button type="button" data-delay='0' data-toggle="tooltip" data-placement="top" title="Waste percentages can account for sections of the Area to Cover that will be removed from the equation, such as perimeter baseboards or structural support beams where tile cannot not be installed. Waste gives you control over your ability to manage the dimensions according to your project." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+      <button type="button" data-delay='0' data-toggle="tooltip" data-placement="top" title="Waste percentages can account for sections of the Area to Cover that will be removed from the equation, such as the area for perimeter baseboards or structural support beams where tile cannot not be installed. Waste gives you control over your ability to manage the dimensions according to your project." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
     </div>
   </div>
     <div class="form-row my-0 mx-0 py-0 px-0">
@@ -500,7 +500,7 @@ function printButton() {
 <b><p style="font-family:Helvetica;">Thinset: </b> <span id="thinset"> </span> </p>
 <b><p style="font-family:Helvetica;">Thinset Bags: </b> <span id="numberof50lbsBags"> </span> </p>
 <b><p style="font-family:Helvetica;">Total Grout Required: </b> <span id="tgR"> </span> </p>
-<b><p style="font-family:Helvetica;">Tiles/Box: </b> <span id="tpB"> </span> </p> </pre>
+<b><p style="font-family:Helvetica;">Boxes of Tiles: </b> <span id="tpB"> </span> </p> </pre>
 </div>
 <div class="container center-aligned" id="box">
 	<div class="row well mx-auto my-auto">
