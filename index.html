@@ -255,13 +255,13 @@ function uomCheck()
     document.getElementById("3/8").innerHTML="9.52"
     document.getElementById("totalSqft").placeholder = "Square Meters"
     document.getElementById("d1/2").value=12.7
-    document.getElementById("d1/2").innerHTML="12.7"
+    document.getElementById("d1/2").innerHTML="12.7 mm"
     document.getElementById("d3/4").value=19.05
-    document.getElementById("d3/4").innerHTML="19.05"
+    document.getElementById("d3/4").innerHTML="19.05 mm"
     document.getElementById("d1/8").value=3.175
-    document.getElementById("d1/8").innerHTML="3.175"
+    document.getElementById("d1/8").innerHTML="3.175 mm"
     document.getElementById("d3/8").value=9.525
-    document.getElementById("d3/8").innerHTML="9.525";
+    document.getElementById("d3/8").innerHTML="9.525 mm";
   }
   else if (document.getElementById("radio-Imp").checked == true)
   {
@@ -366,11 +366,11 @@ function printButton() {
 
   <div class="form-row ml-2 y-auto">
     <label for="UOM">Unit of Measurement</label>
-    <button type="button" data-toggle="tooltip" data-delay='0' data-placement="top" title="Select the untis system to be used for all calculations." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+    <button type="button"  tabindex="-1" data-toggle="tooltip" data-delay='0' data-placement="top" title="Select the untis system to be used for all calculations." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
 </div>
   <div class="form-row mx-auto my-auto">
     <div class="form-group col">
-      <div class="regular-field" onchange="uomCheck()">
+      <div class="regular-field" tabindex="0" onchange="uomCheck()">
         <input type="radio" id="radio-Imp" name="notaswitch-one" value="Imp" checked/>
         <label for="radio-Imp">Imperial</label>
         <input type="radio" id="radio-Met" name="notaswitch-one" value="Met" />
@@ -384,11 +384,11 @@ function printButton() {
   </div>
   <div class="form-row ml-2 y-auto">
     <label for="TileSize">Tile Size</label>
-      <button type="button" data-toggle="tooltip" data-placement="top" title="What's the length and width of each tile. We use this to calculate the tile required for your area." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+      <button type="button" tabindex="-1" data-toggle="tooltip" data-placement="top" title="What's the length and width of each tile. We use this to calculate the tile required for your area." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
 </div>
   <div class="form-row my-0 mx-0 py-0 px-0">
     <div class="input-group my-0 mx-0 col-md-3">
-      <input id="TileSizeL" onblur="validLTileSize()" maxlength="3" type="text" class="form-control" placeholder="Length" required>
+      <input id="TileSizeL" tabindex="1" onblur="validLTileSize()" maxlength="3" type="text" class="form-control" placeholder="Length" required>
       <div class="input-group-append my-0">
         <span class="input-group-text" id="uomTileSize">in</span>
       </div>
@@ -397,7 +397,7 @@ function printButton() {
       X
     </div>
     <div class="input-group my-0 mx-0 col-md-3">
-      <input id="TileSizeW" onblur="validWTileSize()" type="text" maxlength="3" class="form-control" placeholder="Width" required>
+      <input id="TileSizeW" tabindex="2" onblur="validWTileSize()" type="text" maxlength="3" class="form-control" placeholder="Width" required>
       <div class="input-group-append my-0 mx-0 py-0 px-0">
         <span class="input-group-text" id="uomWTileSize">in</span>
       </div>
@@ -408,14 +408,14 @@ function printButton() {
   </div>
   <div class="form-row ml-2 pt-2 y-auto">
     <label for="TileDepth">Tile Depth:</label>
-      <button type="button" data-toggle="tooltip" data-placement="top" title="We use this to calculate the grout required." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+      <button type="button" tabindex="-1" data-toggle="tooltip" data-placement="top" title="We use this to calculate the grout required." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
   </div>
   <div class="form-row my-0 mx-0 py-0 px-0">
     <div class="form-group col-md-6 my-0 mx-0">
-      <select id="depthSelect" class="form-control" onchange="depthcustomAppear()" onchange="depthsizeSelect()">
-        <option value=.5 id="d1/2" selected>1/2</option>
+      <select id="depthSelect" tabindex="3" class="form-control" onchange="depthcustomAppear()" onchange="depthsizeSelect()">
+        <option value=.5 id="d1/2">1/2</option>
         <option value=.74 id="d3/4">3/4</option>
-        <option value=.125 id="d1/8">1/8</option>
+        <option value=.125 id="d1/8" selected>1/8</option>
         <option value=.375 id="d3/8">3/8</option>
         <option id="customDepth" placeholder="Gap Size">Custom</option>
       </select>
@@ -433,11 +433,11 @@ function printButton() {
   </div>
   <div class="form-row ml-2 y-auto pt-0">
     <label for="TileBox">Tiles per Box</label>
-      <button type="button" data-toggle="tooltip" data-placement="top" title="If you know how many tiles come in each box, we'll calculate this for you." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+      <button type="button" tabindex="-1" data-toggle="tooltip" data-placement="top" title="If you know how many tiles come in each box, we'll calculate this for you." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
 </div>
   <div class="form-row my-0 mx-0 py-0 px-0">
     <div class="input-group my-0 mx-0 col-md-3">
-      <input id="tileBox" maxlength="3" type="text" class="form-control" placeholder="Tiles per Box">
+      <input id="tileBox" tabindex="4" maxlength="3" type="text" class="form-control" placeholder="Tiles per Box">
     </div>
     <div class="form-group my-0 mx-0 py-0 px-0 col-md-5">
       <p><span id="TileBoxError"></span></p>
@@ -445,11 +445,11 @@ function printButton() {
   </div>
   <div class="form-row ml-2 pt-0 y-auto">
     <label for="ATC">Area to Cover:</label>
-      <button type="button" data-toggle="tooltip" data-placement="top" title="Tell us the length and width of your area if rectangular or use the square footage field to enter the total area for irreglar shaped spaces." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+      <button type="button" tabindex="-1" data-toggle="tooltip" data-placement="top" title="Tell us the length and width of your area if rectangular or use the square footage field to enter the total area for irreglar shaped spaces." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
 </div>
 <div class="form-row my-0 mx-0 py-0 px-0">
     <div class="input-group my-0 mx-0 col-md-3">
-      <input id="sqftL" maxlength="3" name="sqftL" onblur="validLSqft()" type="text" class="form-control" placeholder="Length">
+      <input id="sqftL" tabindex="5" maxlength="3" name="sqftL" onblur="validLSqft()" type="text" class="form-control" placeholder="Length">
       <div class="input-group-append my-0 mx-0 px-0 py-0">
         <span class="input-group-text" id="uomsqftHangar">ft</span>
       </div>
@@ -458,7 +458,7 @@ function printButton() {
       X
     </div>
     <div class="input-group my-0 mx-0 col-md-3">
-      <input id="sqftW" name="sqftW" maxlength="3" onblur="validWSqft()" type="text" class="form-control" placeholder="Width">
+      <input id="sqftW" tabindex="6" name="sqftW" maxlength="3" onblur="validWSqft()" type="text" class="form-control" placeholder="Width">
       <div class="input-group-append my-0 mx-0 px-0 py-0">
         <span class="input-group-text" id="uomsqftWHangar">ft</span>
       </div>
@@ -469,11 +469,11 @@ function printButton() {
   </div>
   <div class="form-row ml-2 pt-2 y-auto">
     <label for="SquareFootage">Square Footage:</label>
-      <button type="button" data-toggle="tooltip" data-placement="top" title="Estimated Total Area of the tile floor. Not only the tile installed for a walkway/path, but also the floor finish that's installed underneath permanent fixtures like cabinets, refridgerators, and kitchen islands, in that end." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+      <button type="button" tabindex="-1" data-toggle="tooltip" data-placement="top" title="Estimated Total Area of the tile floor. Not only the tile installed for a walkway/path, but also the floor finish that's installed underneath permanent fixtures like cabinets, refridgerators, and kitchen islands, in that end." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
   </div>
   <div class="form-row my-0 mx-0 px-0 py-0">
     <div class="input-group my-0 mx-0 col-md-6">
-      <input type="text" id="totalSqft" maxlength="7" class="form-control" placeholder="Square Feet" onblur="validSquareFootage()" required>
+      <input type="text" tabindex="7" id="totalSqft" maxlength="7" class="form-control" placeholder="Square Feet" onblur="validSquareFootage()" required>
       <div class="input-group-append my-0 mx-0 py-0 px-0">
         <span class="input-group-text" id="totalsqftHangar"><span id="totalsqftTag"></span><sup>2</sup></span>
       </div>
@@ -484,11 +484,11 @@ function printButton() {
   </div>
   <div class="form-row ml-2 pt-2 y-auto">
     <label for="GapSize">Gap Size:</label>
-      <button type="button" data-toggle="tooltip" data-placement="top" title="The gap between each tile. Used for grout and tile calculation." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+      <button type="button" tabindex="-1" data-toggle="tooltip" data-placement="top" title="The gap between each tile. Used for grout and tile calculation." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
   </div>
   <div class="form-row my-0 mx-0 py-0 px-0">
     <div class="form-group col-md-6 my-0 mx-0">
-      <select id="gapSelect" class="form-control" onchange="gapcustomAppear()" onchange="gapsizeSelect()">
+      <select id="gapSelect" tabindex="8" class="form-control" onchange="gapcustomAppear()" onchange="gapsizeSelect()">
         <option value=0 id="NA" selected>Choose...</option>
         <option value=.0625 id="1/16">1/16</option>
         <option value=.125 id="1/8">1/8</option>
@@ -520,7 +520,7 @@ function printButton() {
       <p>%</p>
     </div>
     <div class="form-group col-mt-n1 my-auto ml-5 pb-4 pt-1">
-      <button type="button" data-delay='0' data-toggle="tooltip" data-placement="top" title="Waste percentages can account for sections of the Area to Cover that will be removed from the equation, such as the area for perimeter baseboards or structural support beams where tile cannot not be installed. Waste gives you control over your ability to manage the dimensions according to your project." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+      <button type="button" tabindex="-1" data-delay='0' data-toggle="tooltip" data-placement="top" title="Waste percentages can account for sections of the Area to Cover that will be removed from the equation, such as the area for perimeter baseboards or structural support beams where tile cannot not be installed. Waste gives you control over your ability to manage the dimensions according to your project." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
     </div>
   </div>
     <div class="form-row my-0 mx-0 py-0 px-0">
