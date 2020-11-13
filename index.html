@@ -153,18 +153,18 @@ function validTileDepth()
     var tiledepthContent = document.getElementById("tileDepth").value;
     if (tiledepthContent > 10)
     {
-    document.getElementById("gapsizeError").innerHTML= "Thickness too large"
-    document.getElementById("gapSize").style.backgroundColor= "red";
+    document.getElementById("TileDepthError").innerHTML= "Thickness too large"
+    document.getElementById("tileDepth").style.backgroundColor= "red";
     }
-    if(gapsizeContent < 0)
+    if (tiledepthContent < 0)
     {
-    document.getElementById("gapsizeError").innerHTML= "Not a Valid Response"
-    document.getElementById("gapSize").style.backgroundColor= "red";
+    document.getElementById("TileDepthError").innerHTML= "Not a Valid Response"
+    document.getElementById("tileDepth").style.backgroundColor= "red";
     }
     else
     {
-    document.getElementById("gapsizeError").innerHTML= ""
-    document.getElementById("gapSize").style.backgroundColor= "white";
+    document.getElementById("TileDepthError").innerHTML= ""
+    document.getElementById("tileDepth").style.backgroundColor= "white";
     }
 }
 function calculate()
@@ -201,17 +201,23 @@ function calculate()
     var isMet = document.getElementById("radio-Met").checked == true;
     var mettdA = tileareaLNumber + tileareaWNumber
     var mettdB = gapsizeContent * tiledepthNumber
-    var mettdC = mettdA * mettdB * 1.2
+    var mettdC = mettdA * mettdB * 1.2 <!-- grout coverage ratio -->
     var mettdD = tileareaWNumber * tiledepthNumber
     var mettdE = mettdC / mettdD
     var mettgR = mettdE * (areaLNumber * areaWNumber)
+    var imptdA = tileareaLNumber + tileareaWNumber
+    var imptdB = gapsizeContent * tiledepthNumber
+    var imptdC = mettdA * mettdB * .001707 <!-- grout coverage ratio -->
+    var imptdD = tileareaWNumber * tiledepthNumber
+    var imptdE = mettdC / mettdD
+    var imptgR = mettdE * (areaLNumber * areaWNumber)
     if (isImp)
     {
         document.getElementById("numberofTiles").innerHTML = Math.round(((squareFootage * 144) / impaotPertile) * (1 + myselectedWaste)) + " Tiles"
         document.getElementById("waste").innerHTML = wasteRange.value + " %";
         document.getElementById("thinset").innerHTML = Math.round((((areaLNumber * areaWNumber) * myselectedWaste)/95)*50) + " lbs of thinset"
         document.getElementById("numberof50lbsBags").innerHTML = Math.ceil(((areaLNumber * areaWNumber)*myselectedWaste)/95) + " X 50lb bag(s) of thinset"
-        document.getElementById("tgR").innerHTML = Math.ceil(mettgR * 2.205) + " lbs";
+        document.getElementById("tgR").innerHTML = Math.ceil(imptgR) + " lbs";
     }
     if (isMet)
     {
@@ -219,7 +225,7 @@ function calculate()
         document.getElementById("waste").innerHTML = wasteRange.value + " %"
         document.getElementById("thinset").innerHTML = Math.round((((areaLNumber * areaWNumber)*myselectedWaste)/8.82579)*22.6796) + " kgs of thinset"
         document.getElementById("numberof50lbsBags").innerHTML = Math.ceil(((areaLNumber * areaWNumber)*myselectedWaste)/8.82579) + " X 22kg bags of thinset"
-        document.getElementById("tgR").innerHTML = mettgR + " kg";
+        document.getElementById("tgR").innerHTML = Math.ceil(mettgR) + " kg";
     }
 }
 function uomCheck()
