@@ -375,6 +375,9 @@ function displayValue()
 function printButton() {
     window.print();
 }
+function cardReveal() {
+  document.getElementById("resultCard").style.display = "inline";
+}
 </script>
 <body>
 <div class="row" style="padding:25px">
@@ -556,10 +559,10 @@ function printButton() {
 </div>
 <div class="col-md-6">
   <div class="card p-2">
-    <div class="card-title"><button type="button" class="btn btn-primary m-3" onclick="calculate()">Calculate</button></div>
-      <div class="card-body">
+    <div class="card-title"></div>
+      <div class="card-body" id="resultCard" style="display:none">
 <br>
-<label for="resultsArea"><h2>Results</h2></label>
+<label for="resultsArea"><h2 style="text-decoration: underline;">Results</h2></label>
 <pre><b><p style="font-family:Helvetica;">Number of tiles: </b> <span id="numberofTiles"> </span></p>
 <b><p style="font-family:Helvetica;">Waste: </b> <span id="waste"> </span></p>
 <b><p style="font-family:Helvetica;">Thinset: </b> <span id="thinset"> </span> </p>
@@ -569,11 +572,15 @@ function printButton() {
 </div>
 <div class="container center-aligned" id="box">
 	<div class="row well mx-auto my-auto">
-		<h5 style="font-size:12px;text-align:center;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, labore, magni illum nemo ipsum quod voluptates ab natus nulla possimus incidunt aut neque quaerat mollitia perspiciatis assumenda asperiores consequatur soluta Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h5>
-
+		<h5 style="font-size:12px;text-align:center;">Lorem ipsum dolor sit amet,
+      consectetur adipisicing elit. Animi, labore, magni illum nemo ipsum quod
+      voluptates ab natus nulla possimus incidunt aut neque quaerat mollitia
+      perspiciatis assumenda asperiores consequatur soluta Lorem ipsum dolor
+      sit amet, consectetur adipisicing elit.</h5>
       <div class="mx-auto">
+        <div style="margin:10px 0px 0px 0px"> <button type="button" onmouseup="cardReveal()" class="btn btn-primary m-3" style="margin:auto"onclick="calculate()">Calculate</button></div>
         <br>
-             <button class="btn btn-primary hidden-print" onclick="printButton()"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print</button>
+             <button class="btn btn-primary hidden-print" style="display: none"onclick="printButton()"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print</button>
 	    </div>
 
 	      </div>
