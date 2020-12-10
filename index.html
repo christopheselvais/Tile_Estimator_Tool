@@ -7,7 +7,6 @@
   <title>Tile Estimator Tool</title>
   <link rel="stylesheet" href=
 "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
     <style type="text/css">
         h1 {
             color:black;
@@ -21,9 +20,30 @@
             border-color: darkgray;
             font-size: 6px;
         }
-
+        .btn-circle.btn-sm:link {
+            width: 15px;
+            height: 15px;
+            padding: 0px 0px;
+            margin: 0px 0px;
+            border-radius: 30px;
+            border-color: darkgray;
+            font-size: 6px;
+        }
+        .btn-circle.btn-sm:hover {
+            width: 15px;
+            height: 15px;
+            padding: 0px 0px;
+            margin: 0px 0px;
+            border-radius: 30px;
+            border-color: lightblue;
+            font-size: 6px;
+            color: lightblue;
+        }
         .mt-n1 {
   margin-top: -0.25rem !important;
+}
+body {
+  background-color: #1a3347;
 }
     </style>
 </head>
@@ -356,15 +376,16 @@ function printButton() {
     window.print();
 }
 </script>
-<div class="row" style="padding:50px">
+<body>
+<div class="row" style="padding:25px">
   <div class="col-md-6 mx-auto">
     <div class="card mx-auto p-0">
-      <div class="card-title" mx-auto><h1>Tile Estimator Tool</h1></div>
+      <div class="card-title" style="margin:auto" mx-auto><h1>Tile Estimator Tool</h1></div>
   <div class="card-body" mx-auto></div>
-<form>
+<form style="padding:25px">
 
   <div class="form-row ml-2 y-auto">
-    <label for="UOM">Unit of Measurement</label>
+    <label style="text-decoration: underline;" for="UOM">Unit of Measurement</label>
     <button type="button"  tabindex="-1" data-toggle="tooltip" data-delay='0' data-placement="top" title="Select the untis system to be used for all calculations." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
 </div>
   <div class="form-row mx-auto my-auto">
@@ -381,9 +402,9 @@ function printButton() {
       </select> -->
     </div>
   </div>
-  <div class="form-row ml-2 y-auto">
-    <label for="TileSize">Tile Size</label>
-      <button type="button" tabindex="-1" data-toggle="tooltip" data-placement="top" title="What's the length and width of each tile. We use this to calculate the tile required for your area." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+  <div class="form-row ml-2 y-auto" style="margin:10px 0px 0px 0px;">
+    <label style="text-decoration: underline;" for="TileSize">Tile Size</label>
+      <button type="button" tabindex="-1"  data-toggle="tooltip" data-placement="top" title="What's the length and width of each tile. We use this to calculate the tile required for your area." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
 </div>
   <div class="form-row my-0 mx-0 py-0 px-0">
     <div class="input-group my-0 mx-0 col-md-3">
@@ -406,7 +427,7 @@ function printButton() {
     </div>
   </div>
   <div class="form-row ml-2 pt-2 y-auto">
-    <label for="TileDepth">Tile Depth:</label>
+    <label style="text-decoration: underline;" for="TileDepth">Tile Depth:</label>
       <button type="button" tabindex="-1" data-toggle="tooltip" data-placement="top" title="We use this to calculate the grout required." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
   </div>
   <div class="form-row my-0 mx-0 py-0 px-0">
@@ -430,8 +451,8 @@ function printButton() {
     <p><span id="depthsizeError"></p>
     </div>
   </div>
-  <div class="form-row ml-2 y-auto pt-0">
-    <label for="TileBox">Tiles per Box</label>
+  <div class="form-row ml-2 y-auto pt-0" style="margin:-30px 0px 0px 0px;">
+    <label style="text-decoration: underline;" for="TileBox">Tiles per Box</label>
       <button type="button" tabindex="-1" data-toggle="tooltip" data-placement="top" title="If you know how many tiles come in each box, we'll calculate this for you." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
 </div>
   <div class="form-row my-0 mx-0 py-0 px-0">
@@ -442,8 +463,8 @@ function printButton() {
       <p><span id="TileBoxError"></span></p>
     </div>
   </div>
-  <div class="form-row ml-2 pt-0 y-auto">
-    <label for="ATC">Area to Cover:</label>
+  <div class="form-row ml-2 pt-0 y-auto" style="margin:10px 0px 0px 0px;">
+    <label style="text-decoration: underline;" for="ATC">Area to Cover:</label>
       <button type="button" tabindex="-1" data-toggle="tooltip" data-placement="top" title="Tell us the length and width of your area if rectangular or use the square footage field to enter the total area for irreglar shaped spaces." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
 </div>
 <div class="form-row my-0 mx-0 py-0 px-0">
@@ -467,7 +488,7 @@ function printButton() {
     </div>
   </div>
   <div class="form-row ml-2 pt-2 y-auto">
-    <label for="SquareFootage">Square Footage:</label>
+    <label style="text-decoration: underline;" for="SquareFootage">Square Footage:</label>
       <button type="button" tabindex="-1" data-toggle="tooltip" data-placement="top" title="Estimated Total Area of the tile floor. Not only the tile installed for a walkway/path, but also the floor finish that's installed underneath permanent fixtures like cabinets, refridgerators, and kitchen islands, in that end." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
   </div>
   <div class="form-row my-0 mx-0 px-0 py-0">
@@ -482,7 +503,7 @@ function printButton() {
   </div>
   </div>
   <div class="form-row ml-2 pt-2 y-auto">
-    <label for="GapSize">Gap Size:</label>
+    <label style="text-decoration: underline;" for="GapSize">Gap Size:</label>
       <button type="button" tabindex="-1" data-toggle="tooltip" data-placement="top" title="The gap between each tile. Used for grout and tile calculation." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
   </div>
   <div class="form-row my-0 mx-0 py-0 px-0">
@@ -510,7 +531,7 @@ function printButton() {
   </div>
   <div class="form-row ml-0 my-auto" style="width:18rem;">
     <div class="form-group col-md-4 my-auto ml-0">
-      <label for="Waste">Waste:</label>
+      <label style="text-decoration: underline;" for="Waste">Waste:</label>
     </div>
     <div class="form-group col-mt-n1 my-auto pb-2">
       <span id="currentwasteValue"></span>
