@@ -207,9 +207,9 @@ function validTileDepth()
 function calculate()
 {
     var squareFootage = document.getElementById("totalSqft").value
+    var sqftNumber = parseInt(squareFootage);
     var sqftLTextBoxContent = document.getElementById("sqftL").value;
     var areaLNumber = parseInt(sqftLTextBoxContent);
-    var tiledepthNumber = parseInt(sqftLTextBoxContent);
     var sqftWTextBoxContent = document.getElementById("sqftW").value;
     var areaWNumber = parseInt(sqftWTextBoxContent);
     var tilesizeLTextBoxContent = document.getElementById("TileSizeL").value;
@@ -236,27 +236,30 @@ function calculate()
     var isImp = document.getElementById("radio-Imp").checked == true;
     var isMet = document.getElementById("radio-Met").checked == true;
     var tiledepthNumber = eval(document.getElementById("depthSize").value);
-    var mettdA = tileareaLNumber + tileareaWNumber
+    var mettdA = (tileareaLNumber + tileareaWNumber) * 10
     var mettdB = gapsizeContent * tiledepthNumber
     var mettdC = mettdA * mettdB * 1.2 <!-- grout coverage ratio -->
-    var mettdD = tileareaWNumber * tiledepthNumber
+    var mettdD = (tileareaWNumber * 10) * (tiledepthNumber * 10)
     var mettdE = mettdC / mettdD
-    var mettgR = mettdE * (areaLNumber * areaWNumber)
+    var mettgR = mettdE * sqftNumber
     var imptdA = tileareaLNumber + tileareaWNumber
     var imptdB = gapsizeContent * tiledepthNumber
-    var imptdC = mettdA * mettdB * .001707 <!-- grout coverage ratio -->
-    var imptdD = tileareaWNumber * tiledepthNumber
-    var imptdE = mettdC / mettdD
-    var imptgR = mettdE * (areaLNumber * areaWNumber)
+    var imptdC = imptdA * imptdB * 10.7639 <!-- grout coverage ratio -->
+    var imptdD = tileareaLNumber * tileareaWNumber
+    var imptdE = imptdC / imptdD
+    var imptgR = imptdE * sqftNumber
     var tileBox = document.getElementById("tileBox").value
     if (isImp)
     {
-        document.getElementById("numberofTiles").innerHTML = Math.round(((squareFootage * 144) / impaotPertile) * (1 + myselectedWaste)) + " Tiles"
+        document.getElementById("numberofTiles").innerHTML = Math.round(((sqftNumber * 144) / impaotPertile) * (1 + myselectedWaste)) + " Tiles"
         document.getElementById("waste").innerHTML = wasteRange.value + " %";
         document.getElementById("thinset").innerHTML = Math.round((((areaLNumber * areaWNumber) * myselectedWaste)/95)*50) + " lbs of thinset"
         document.getElementById("numberof50lbsBags").innerHTML = Math.ceil(((areaLNumber * areaWNumber)*myselectedWaste)/95) + " X 50lb bag(s) of thinset"
-        document.getElementById("tgR").innerHTML = Math.ceil(imptgR) + " psi"
-        document.getElementById("tpB").innerHTML = (Math.ceil(((squareFootage * 144) / impaotPertile) * (1 + myselectedWaste))) / tileBox;
+        document.getElementById("tgR").innerHTML = Math.ceil(imptgR) + " lbs of Grout"
+        document.getElementById("tpB").innerHTML = (Math.ceil(((sqftNumber * 144) / impaotPertile) * (1 + myselectedWaste))) / tileBox;
+        if (tileBox = "" | tileBox == 0) {
+          document.getElementById("tpB").innerHTML = "Undetermined";
+        }
     }
     if (isMet)
     {
@@ -264,8 +267,11 @@ function calculate()
         document.getElementById("waste").innerHTML = wasteRange.value + " %"
         document.getElementById("thinset").innerHTML = Math.round((((areaLNumber * areaWNumber)*myselectedWaste)/8.82579)*22.6796) + " kgs of thinset"
         document.getElementById("numberof50lbsBags").innerHTML = Math.ceil(((areaLNumber * areaWNumber)*myselectedWaste)/8.82579) + " X 22kg bags of thinset"
-        document.getElementById("tgR").innerHTML = Math.ceil(mettgR) + " kg/m2"
-        document.getElementById("tpB").innerHTML = (Math.ceil(((squareFootage * 144) / metaotPertile) * (1 + myselectedWaste))) / tileBox;
+        document.getElementById("tgR").innerHTML = Math.ceil(mettgR) + " kgs of Grout"
+        document.getElementById("tpB").innerHTML = (Math.ceil(((sqftNumber * 144) / metaotPertile) * (1 + myselectedWaste))) / tileBox;
+        if (tileBox = "" | tileBox == 0) {
+          document.getElementById("tpB").innerHTML = "Undetermined";
+        }
     }
 }
 function uomCheck()
@@ -422,6 +428,23 @@ function cardReveal() {
       </select> -->
     </div>
   </div>
+  <!-- <div class="form-row ml-2 pt-2 y-auto">
+    <label style="text-decoration: underline;" for="TileType">Tile Type:</label>
+      <button type="button" tabindex="-1" data-toggle="tooltip" data-placement="top" title="The brand of tyle. Used for Grout calculation." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+  </div> -->
+  <!-- <div class="form-row my-0 mx-0 py-0 px-0">
+    <div class="form-group col-md-6 my-0 mx-0">
+      <select id="gapSelect" tabindex="8" class="form-control" onchange="gapcustomAppear()" onchange="gapsizeSelect()">
+        <option value=0 id="NA" selected>Choose...</option>
+        <option value=.0625 id="1/16">1/16</option>
+        <option value=.125 id="1/8">1/8</option>
+        <option value=.1875 id="3/16">3/16</option>
+        <option value=.25 id="1/4">1/4</option>
+        <option value=.375 id="3/8">3/8</option>
+        <option id="customGap" placeholder="Gap Size">Custom</option>
+      </select>
+    </div>
+  </div> -->
   <div class="form-row ml-2 y-auto" style="margin:10px 0px 0px 0px;">
     <label style="text-decoration: underline;" for="TileSize">Tile Size</label>
       <button type="button" tabindex="-1"  data-toggle="tooltip" data-placement="top" title="What's the length and width of each tile. We use this to calculate the tile required for your area." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
