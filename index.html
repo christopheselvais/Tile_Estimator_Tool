@@ -269,7 +269,7 @@ function calculate()
     {
         document.getElementById("numberofTiles").innerHTML = Math.round(((sqftNumber * 144) / impaotPertile) * (1 + myselectedWaste)) + " Tiles"
         document.getElementById("waste").innerHTML = wasteRange.value + " %";
-        document.getElementById("thinset").innerHTML = Math.round((((areaLNumber * areaWNumber) * myselectedWaste)/95)*50) + " lbs of thinset"
+        document.getElementById("thinset").innerHTML = Math.round((((areaLNumber * areaWNumber) * myselectedWaste)/95)*50) + " lb(s) of thinset"
         document.getElementById("numberof50lbsBags").innerHTML = Math.ceil(((areaLNumber * areaWNumber)*myselectedWaste)/95) + " X 50lb bag(s) of thinset"
         document.getElementById("tgR").innerHTML = Math.ceil(imptgR) + " lbs of Grout"
         document.getElementById("tpB").innerHTML = (Math.ceil(((sqftNumber * 144) / impaotPertile) * (1 + myselectedWaste))) / tileBox;
@@ -281,9 +281,9 @@ function calculate()
     {
         document.getElementById("numberofTiles").innerHTML = Math.round(((squareFootage * 144) / metaotPertile) * (1 + myselectedWaste)) + " Tiles"
         document.getElementById("waste").innerHTML = wasteRange.value + " %"
-        document.getElementById("thinset").innerHTML = Math.round((((areaLNumber * areaWNumber)*myselectedWaste)/8.82579)*22.6796) + " kgs of thinset"
-        document.getElementById("numberof50lbsBags").innerHTML = Math.ceil(((areaLNumber * areaWNumber)*myselectedWaste)/8.82579) + " X 22kg bags of thinset"
-        document.getElementById("tgR").innerHTML = Math.ceil(mettgR) + " kgs of Grout"
+        document.getElementById("thinset").innerHTML = Math.round((((areaLNumber * areaWNumber)*myselectedWaste)/8.82579)*22.6796) + " kg(s) of thinset"
+        document.getElementById("numberof50lbsBags").innerHTML = Math.ceil(((areaLNumber * areaWNumber)*myselectedWaste)/8.82579) + " X 22kg bag(s) of thinset"
+        document.getElementById("tgR").innerHTML = Math.ceil(mettgR) + " kg(s) of Grout"
         document.getElementById("tpB").innerHTML = (Math.ceil(((sqftNumber * 144) / metaotPertile) * (1 + myselectedWaste))) / tileBox;
         if (tileBox = "" | tileBox == 0) {
           document.getElementById("tpB").innerHTML = "Undetermined";
@@ -465,7 +465,7 @@ function printButton() {
   <div class="form-row my-0 mx-0 py-0 px-0">
     <div class="input-group my-0 mx-0 col-md-4">
       <input id="TileSizeL" tabindex="1" onblur="validLTileSize()" maxlength="3" type="text" class="form-control" placeholder="Length" required>
-      <div class="input-group-append my-0">
+      <div class="input-group-append-flex justify-content-top my-0 position-absolute-right" class="form-cotrol">
         <span class="input-group-text" id="uomTileSize">in</span>
       </div>
     </div>
@@ -474,12 +474,14 @@ function printButton() {
     </div>
     <div class="input-group my-0 mx-0 col-md-4">
       <input id="TileSizeW" tabindex="2" onblur="validWTileSize()" type="text" maxlength="3" class="form-control" placeholder="Width" required>
-      <div class="input-group-append my-0 mx-0 py-0 px-0">
+      <div class="input-group-append-flex justify-content-top my-0 mx-0 py-0 px-0">
         <span class="input-group-text" id="uomWTileSize">in</span>
       </div>
     </div>
-    <div class="form-group my-0 mx-0 py-0 px-0 col-md-3">
+    <div class="card p-1 m-1 md-3" style="border-color: white;color:red;">
+    <div class="form-group my-0 mx-0 py-0 px-0">
       <p><span id="TileSizeError"></span></p>
+      </div>
     </div>
   </div>
   <div class="form-row ml-2 pt-2 y-auto">
@@ -498,7 +500,7 @@ function printButton() {
     </div>
     <div class="input-group my-0 mx-0 py-0 px-0 ml-0 col-md-6">
       <input type="text" id="depthSize" min="0" maxlength="3" class="form-control" placeholder="Depth">
-      <div class="input-group-append my-0 mx-0 py-0 px-0" id="depthsizeAppend">
+      <div class="input-group-append-flex justify-content-top my-0 mx-0 py-0 px-0" id="depthsizeAppend">
         <span class="input-group-text" id="depthsizeHangar">in</span>
       </div>
     </div>
@@ -526,7 +528,7 @@ function printButton() {
 <div class="form-row my-0 mx-0 py-0 px-0">
     <div class="input-group my-0 mx-0 col-md-4">
       <input id="sqftL" tabindex="5" maxlength="3" name="sqftL" onblur="validLSqft()" type="text" class="form-control" placeholder="Length">
-      <div class="input-group-append my-0 mx-0 px-0 py-0">
+      <div class="input-group-append-flex justify-content-top my-0 mx-0 px-0 py-0">
         <span class="input-group-text" id="uomsqftHangar">ft</span>
       </div>
     </div>
@@ -535,12 +537,14 @@ function printButton() {
     </div>
     <div class="input-group my-0 mx-0 col-md-4">
       <input id="sqftW" tabindex="6" name="sqftW" maxlength="3" onblur="validWSqft()" type="text" class="form-control" placeholder="Width">
-      <div class="input-group-append my-0 mx-0 px-0 py-0">
+      <div class="input-group-append-flex justify-content-top my-0 mx-0 px-0 py-0">
         <span class="input-group-text" id="uomsqftWHangar">ft</span>
       </div>
     </div>
-    <div class="form-group my-0 mx-0 px-0 py-0 col-md-3">
+    <div class="card-3 p-1 m-1" style="border-color:white;color:red;">
+    <div class="form-group my-0 mx-0 px-0 py-0 md">
       <p><span id="sqftError"></span></p>
+      </div>
     </div>
   </div>
   <div class="form-row ml-2 pt-2 y-auto">
@@ -550,7 +554,7 @@ function printButton() {
   <div class="form-row my-0 mx-0 px-0 py-0">
     <div class="input-group my-0 mx-0 col-md-6">
       <input type="text" tabindex="7" id="totalSqft" maxlength="7" class="form-control" placeholder="Square Feet" onblur="validSquareFootage()" required>
-      <div class="input-group-append my-0 mx-0 py-0 px-0">
+      <div class="input-group-append-flex justify-content-top my-0 mx-0 py-0 px-0">
         <span class="input-group-text" id="totalsqftHangar"><span id="totalsqftTag"></span><sup>2</sup></span>
       </div>
     </div>
@@ -576,7 +580,7 @@ function printButton() {
     </div>
     <div class="input-group my-0 mx-0 py-0 px-0 ml-0 col-md-6">
       <input type="text" id="gapSize" onblur="validGapSize()" min="0" max=".5" step=".0001" maxlength="7" class="form-control" placeholder="Gap Size" required>
-      <div class="input-group-append my-0 mx-0 py-0 px-0" id="gapsizeAppend">
+      <div class="input-group-append-flex justify-content-top my-0 mx-0 py-0 px-0" id="gapsizeAppend">
         <span class="input-group-text" id="gapsizeHangar">in</span>
       </div>
     </div>
@@ -625,7 +629,7 @@ function printButton() {
 </div>
 <div class="container center-aligned" id="box">
 	<div class="row well mx-auto my-auto">
-		<h5 style="font-size:12px;text-align:center;">Lorem ipsum dolor sit amet,
+		<h5 style="font-size:12px;text-align:center;font-family:Arial;">Lorem ipsum dolor sit amet,
       consectetur adipisicing elit. Animi, labore, magni illum nemo ipsum quod
       voluptates ab natus nulla possimus incidunt aut neque quaerat mollitia
       perspiciatis assumenda asperiores consequatur soluta Lorem ipsum dolor
@@ -635,7 +639,6 @@ function printButton() {
         <br>
              <button class="btn btn-primary hidden-print" style="display: none" onclick="printButton()"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print</button>
 	    </div>
-
 	      </div>
       </div>
     </div>
