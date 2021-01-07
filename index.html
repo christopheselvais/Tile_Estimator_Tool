@@ -289,7 +289,7 @@ function calculate()
           document.getElementById("tpB").innerHTML = "Undetermined";
         }
     }
-}
+  }
 function uomCheck()
 {
   if (document.getElementById("radio-Met").checked == true)
@@ -414,7 +414,32 @@ function displayValue()
 function printButton() {
     window.print();
 }
+
+
+function setCookie(name, value)
+var today = new Date();
+var expiry = new Date(today.getTime() + 30 * 24 * 3600 * 1000); //plus 30 days
+{
+  document.cookie=name + "=" + escape(value) + "; path=/; expires=" + expiry.toGMTString();
+}
+function storeValues(form)
+{
+  setCookie("squareFootage", document.getElementById("totalSqft").value);
+  setCookie("sqftLTextBoxContent", document.getElementById("sqftL").value);
+  setCookie("sqftWTextBoxContent", document.getElementById("sqftW").value);
+  setCookie("tilesizeLTextBoxContent", document.getElementById("TileSizeL").value);
+  setCookie("tilesizeWTextBoxContent", document.getElementById("TileSizeW").value);
+  setCookie("gapsizeContent", document.getElementById("gapSize").value);
+  setCookie("wasteRange", document.getElementById("wasteRange");
+  setCookie("isImp", document.getElementById("radio-Imp").checked);
+  setCookie("isMet", document.getElementById("radio-Met").checked);
+  setCookie("tiledepthNumber", document.getElementById("depthSize").value);
+  setCookie("tileBox", document.getElementById("tileBox").value);
+  return true;
+}
 </script>
+
+
 <body>
 <div class="row" style="padding:25px">
   <div class="col-md-6 mx-auto">
@@ -646,7 +671,7 @@ function printButton() {
       perspiciatis assumenda asperiores consequatur soluta Lorem ipsum dolor
       sit amet, consectetur adipisicing elit.</h5>
       <div class="mx-auto">
-        <div style="margin:10px 0px 0px 0px"> <button type="button" onmouseup="validSub()" onmousedown="calculate()" class="btn btn-primary m-3" style="margin:auto">Calculate</button></div>
+        <div style="margin:10px 0px 0px 0px"> <button type="button" onmouseup="validSub()" onmousedown="calculate()" onclick="storeValues()" class="btn btn-primary m-3" style="margin:auto">Calculate</button></div>
         <br>
              <button class="btn btn-primary hidden-print" style="display: none" onclick="printButton()"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print</button>
 	    </div>
@@ -674,6 +699,19 @@ function printButton() {
         $('[data-toggle="tooltip"]').tooltip() ;
 
       })
+    </script>
+    <script>
+    if(squareFootage = getCookie("squareFootage")) document.getElementById("squareFootage").value = squareFootage;
+    if(sqftLTextBoxContent = getCookie("sqftLTextBoxContent")) document.getElementById("sqftLTextBoxContent").value = sqftLTextBoxContent;
+    if(sqftWTextBoxContent = getCookie("sqftWTextBoxContent")) document.getElementById("sqftWTextBoxContent").value = sqftWTextBoxContent;
+    if(tilesizeLTextBoxContent = getCookie("tilesizeLTextBoxContent")) document.getElementById("tilesizeLTextBoxContent").value = tilesizeLTextBoxContent;
+    if(tilesizeWTextBoxContent = getCookie("tilesizeWTextBoxContent")) document.getElementById("tilesizeWTextBoxContent").value = tilesizeWTextBoxContent;
+    if(gapsizeContent = getCookie("gapsizeContent")) document.getElementById("gapsizeContent").value = gapsizeContent;
+    if(wasteRange = getCookie("wasteRange")) document.getElementById("wasteRange") = wasteRange;
+    if(isImp = getCookie("isImp")) document.getElementById("isImp") = isImp;
+    if(isMet = getCookie("isMet")) document.getElementById("isMet") = isMet;
+    if(tiledepthNumber = getCookie("tiledepthNumber")) document.getElementById("tiledepthNumber") = tiledepthNumber;
+    if(tileBox = getCookie("tileBox")) document.getElementById("tileBox") = tileBox;
     </script>
   </body>
 </html>
