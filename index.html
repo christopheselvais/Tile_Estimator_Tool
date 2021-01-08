@@ -431,7 +431,7 @@ function storeValues(form)
   setCookie("tilesizeLTextBoxContent", document.getElementById("TileSizeL").value);
   setCookie("tilesizeWTextBoxContent", document.getElementById("TileSizeW").value);
   setCookie("gapsizeContent", document.getElementById("gapSize").value);
-  setCookie("wasteRange", document.getElementById("wasteRange");
+  setCookie("wasteRange", document.getElementById("wasteRange").value);
   setCookie("isImp", document.getElementById("radio-Imp").checked);
   setCookie("isMet", document.getElementById("radio-Met").checked);
   setCookie("tiledepthNumber", document.getElementById("depthSize").value);
@@ -723,7 +723,9 @@ function ready(callbackFunction){
         gapcustomAppear();
         $('[data-toggle="tooltip"]').tooltip() ;
 
-      })
+      }
+      ready();
+    )
     </script>
     <script>
 
