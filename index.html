@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang= "en">
+<html lang="en">
 <head>
   imperial.sqft = document.getElementById('squareFootage').value
   <!-- <style>
@@ -19,451 +19,455 @@
   }
   }
   </style> -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
   <title>Tile Estimator Tool</title>
   <link rel="stylesheet" href=
-"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <style type="text/css">
-        h1 {
-            color:black;
-        }
-        .btn-circle.btn-sm {
-            width: 15px;
-            height: 15px;
-            padding: 0px 0px;
-            margin: 0px 0px;
-            border-radius: 30px;
-            border-color: darkgray;
-            font-size: 6px;
-        }
-        .btn-circle.btn-sm:link {
-            width: 15px;
-            height: 15px;
-            padding: 0px 0px;
-            margin: 0px 0px;
-            border-radius: 30px;
-            border-color: darkgray;
-            font-size: 6px;
-        }
-        .btn-circle.btn-sm:hover {
-            width: 15px;
-            height: 15px;
-            padding: 0px 0px;
-            margin: 0px 0px;
-            border-radius: 30px;
-            border-color: lightblue;
-            font-size: 6px;
-            color: lightblue;
-        }
-        .mt-n1 {
-  margin-top: -0.25rem !important;
-}
-body {
-  background-color: #1a3347;
-}
-    </style>
+    "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style type="text/css">
+    h1 {
+      color: black;
+    }
+
+    .btn-circle.btn-sm {
+      width: 15px;
+      height: 15px;
+      padding: 0px 0px;
+      margin: 0px 0px;
+      border-radius: 30px;
+      border-color: darkgray;
+      font-size: 6px;
+    }
+
+    .btn-circle.btn-sm:link {
+      width: 15px;
+      height: 15px;
+      padding: 0px 0px;
+      margin: 0px 0px;
+      border-radius: 30px;
+      border-color: darkgray;
+      font-size: 6px;
+    }
+
+    .btn-circle.btn-sm:hover {
+      width: 15px;
+      height: 15px;
+      padding: 0px 0px;
+      margin: 0px 0px;
+      border-radius: 30px;
+      border-color: lightblue;
+      font-size: 6px;
+      color: lightblue;
+    }
+
+    .mt-n1 {
+      margin-top: -0.25rem !important;
+    }
+
+    body {
+      background-color: #1a3347;
+    }
+  </style>
 </head>
 
 <script language="javascript" type="text/javascript">
-function validLSqft()
-{
-    var sqftLTextBoxContent = document.getElementById("sqftL").value;
-    if (sqftLTextBoxContent == "" || sqftLTextBoxContent == null)
-    {
-      document.getElementById("sqftError").innerHTML= "Required Field"
-      document.getElementById("sqftL").style.backgroundColor= "red";
+  function validLSqft() {
+    var sqftLTextBoxContent = document.getElementById('sqftL').value;
+    if (sqftLTextBoxContent == '' || sqftLTextBoxContent == null) {
+      document.getElementById('sqftError').innerHTML = 'Required Field';
+      document.getElementById('sqftL').style.backgroundColor = 'red';
     }
-    // if (document.getElementById("UOM").value = "imperial" && sqftLTextBoxContent != "" && Number(sqftLTextBoxContent) <= 3)
-    // {
-    //   document.getElementById("sqftError").innerHTML= "Room too small"
-    //   document.getElementById("sqftL").style.backgroundColor= "red";
+      // if (document.getElementById("UOM").value = "imperial" && sqftLTextBoxContent != "" && Number(sqftLTextBoxContent) <= 3)
+      // {
+      //   document.getElementById("sqftError").innerHTML= "Room too small"
+      //   document.getElementById("sqftL").style.backgroundColor= "red";
     // }
-    else if (sqftLTextBoxContent != "" && sqftLTextBoxContent != null)
-    {
-      document.getElementById("sqftError").innerHTML= ""
-      document.getElementById("sqftL").style.backgroundColor="white";
+    else if (sqftLTextBoxContent != '' && sqftLTextBoxContent != null) {
+      document.getElementById('sqftError').innerHTML = '';
+      document.getElementById('sqftL').style.backgroundColor = 'white';
     }
-}
-function validWSqft()
-{
-    var sqftWTextBoxContent = document.getElementById("sqftW").value;
+  }
+
+  function validWSqft() {
+    var sqftWTextBoxContent = document.getElementById('sqftW').value;
     var areaWidth = parseInt(sqftWTextBoxContent);
-    var sqftLTextBoxContent = document.getElementById("sqftL").value;
+    var sqftLTextBoxContent = document.getElementById('sqftL').value;
     var areaLength = parseInt(sqftLTextBoxContent);
     var sqFootage = areaWidth * areaLength;
-    if (sqftWTextBoxContent == "" || sqftWTextBoxContent == null)
-    {
-        document.getElementById("sqftError").innerHTML= "Required Field"
-        document.getElementById("sqftW").style.backgroundColor="red";
+    if (sqftWTextBoxContent == '' || sqftWTextBoxContent == null) {
+      document.getElementById('sqftError').innerHTML = 'Required Field';
+      document.getElementById('sqftW').style.backgroundColor = 'red';
     }
-    // if (document.getElementById("UOM").value = "imperial" && sqftWTextBoxContent != "" && Number(sqftWTextBoxContent) <= 3)
-    // {
-    //     document.getElementById("sqftError").innerHTML= "Room too small"
-    //     document.getElementById("sqftW").style.backgroundColor="red";
+      // if (document.getElementById("UOM").value = "imperial" && sqftWTextBoxContent != "" && Number(sqftWTextBoxContent) <= 3)
+      // {
+      //     document.getElementById("sqftError").innerHTML= "Room too small"
+      //     document.getElementById("sqftW").style.backgroundColor="red";
     // }
-    else if (sqftWTextBoxContent != "" && sqftWTextBoxContent != null)
-    {
-        document.getElementById("sqftError").innerHTML= ""
-        document.getElementById("sqftW").style.backgroundColor= "white"
-        document.getElementById("totalSqft").value = sqFootage;
+    else if (sqftWTextBoxContent != '' && sqftWTextBoxContent != null) {
+      document.getElementById('sqftError').innerHTML = '';
+      document.getElementById('sqftW').style.backgroundColor = 'white';
+      document.getElementById('totalSqft').value = sqFootage;
     }
-}
-function validLTileSize()
-{
-    var tilesizeLTextBoxContent = document.getElementById("TileSizeL").value;
-    if (tilesizeLTextBoxContent == "" || tilesizeLTextBoxContent == null)
-    {
-        document.getElementById("TileSizeError").innerHTML= "Required Field"
-        document.getElementById("TileSizeL").style.backgroundColor= "red";
-    }
-    // if (Number(tilesizeLTextBoxContent) <= 3 && tilesizeLTextBoxContent != "")
-    // {
-    //     document.getElementById("TileSizeError").innerHTML= "Tile too small"
-    //     document.getElementById("TileSizeL").style.backgroundColor="red";
-    // }
-    else if (tilesizeLTextBoxContent != "" && tilesizeLTextBoxContent != null)
-    {
-        document.getElementById("TileSizeError").innerHTML= ""
-        document.getElementById("TileSizeL").style.backgroundColor= "white";
-    }
-}
-function validWTileSize()
-{
-    var tilesizeLTextBoxContent = document.getElementById("TileSizeL").value;
-    var tilesizeWTextBoxContent = document.getElementById("TileSizeW").value;
-    var gapList = document.getElementById("gapSelect");
-    var tileArea = Number(tilesizeLTextBoxContent) * Number(tilesizeWTextBoxContent);
-    if(tilesizeWTextBoxContent == "" || tilesizeWTextBoxContent == null)
-  {
-        document.getElementById("TileSizeError").innerHTML= "Required Field"
-        document.getElementById("TileSizeW").style.backgroundColor="red";
   }
-    if (tileArea <= 36)
-    {
-    gapList.selectedIndex = 0;
+
+  function validLTileSize() {
+    var tilesizeLTextBoxContent = document.getElementById('TileSizeL').value;
+    if (tilesizeLTextBoxContent == '' || tilesizeLTextBoxContent == null) {
+      document.getElementById('TileSizeError').innerHTML = 'Required Field';
+      document.getElementById('TileSizeL').style.backgroundColor = 'red';
     }
-    if (tileArea > 36 && tileArea <= 64)
-    {
-    gapList.selectedIndex = 1;
+      // if (Number(tilesizeLTextBoxContent) <= 3 && tilesizeLTextBoxContent != "")
+      // {
+      //     document.getElementById("TileSizeError").innerHTML= "Tile too small"
+      //     document.getElementById("TileSizeL").style.backgroundColor="red";
+    // }
+    else if (tilesizeLTextBoxContent != '' && tilesizeLTextBoxContent != null) {
+      document.getElementById('TileSizeError').innerHTML = '';
+      document.getElementById('TileSizeL').style.backgroundColor = 'white';
     }
-    if (tileArea > 64 && tileArea <= 144)
-    {
-    gapList.selectedIndex = 2;
+  }
+
+  function validWTileSize() {
+    var tilesizeLTextBoxContent = document.getElementById('TileSizeL').value;
+    var tilesizeWTextBoxContent = document.getElementById('TileSizeW').value;
+    var gapList = document.getElementById('gapSelect');
+    var tileArea = Number(tilesizeLTextBoxContent) * Number(tilesizeWTextBoxContent);
+    if (tilesizeWTextBoxContent == '' || tilesizeWTextBoxContent == null) {
+      document.getElementById('TileSizeError').innerHTML = 'Required Field';
+      document.getElementById('TileSizeW').style.backgroundColor = 'red';
     }
-    if (tileArea > 256)
-    {
-    gapList.selectedIndex = 0;
+    if (tileArea <= 36) {
+      gapList.selectedIndex = 0;
+    }
+    if (tileArea > 36 && tileArea <= 64) {
+      gapList.selectedIndex = 1;
+    }
+    if (tileArea > 64 && tileArea <= 144) {
+      gapList.selectedIndex = 2;
+    }
+    if (tileArea > 256) {
+      gapList.selectedIndex = 0;
     }
     // if (Number(tilesizeWTextBoxContent) <= 3 && tilesizeWTextBoxContent != "")
     // {
     //     document.getElementById("TileSizeError").innerHTML = "Tile too small"
     //     document.getElementById("TileSizeW").style.backgroundColor="red";
     // }
-if (tilesizeWTextBoxContent != "" && tilesizeWTextBoxContent != null)
-  {
-    document.getElementById("TileSizeError").innerHTML= ""
-    document.getElementById("TileSizeW").style.backgroundColor= "white";
+    if (tilesizeWTextBoxContent != '' && tilesizeWTextBoxContent != null) {
+      document.getElementById('TileSizeError').innerHTML = '';
+      document.getElementById('TileSizeW').style.backgroundColor = 'white';
+    }
   }
-}
-function validGapSize()
-{
-    var gapsizeContent = document.getElementById("gapSize").value;
-    if (gapsizeContent > .5)
-    {
-    document.getElementById("gapsizeError").innerHTML= "Gap too large"
-    document.getElementById("gapSize").style.backgroundColor= "red";
-    }
-    if(gapsizeContent < 0)
-    {
-    document.getElementById("gapsizeError").innerHTML= "Enter Positive Value"
-    document.getElementById("gapSize").style.backgroundColor= "red";
-    }
-    else
-    {
-    document.getElementById("gapsizeError").innerHTML= ""
-    document.getElementById("gapSize").style.backgroundColor= "white";
-    }
-}
-function validTileDepth()
-{
-    var tiledepthContent = document.getElementById("tileDepth").value;
-    if (tiledepthContent > 10)
-    {
-    document.getElementById("TileDepthError").innerHTML= "Thickness too large"
-    document.getElementById("tileDepth").style.backgroundColor= "red";
-    }
-    if (tiledepthContent < 0)
-    {
-    document.getElementById("TileDepthError").innerHTML= "Not a Valid Response"
-    document.getElementById("tileDepth").style.backgroundColor= "red";
-    }
-    else
-    {
-    document.getElementById("TileDepthError").innerHTML= ""
-    document.getElementById("tileDepth").style.backgroundColor= "white";
-    }
-}
-function validSub() {
-    var squareFootage = document.getElementById("totalSqft").value;
-    var sqftLTextBoxContent = document.getElementById("sqftL").value;
-    var tilesizeLTextBoxContent = document.getElementById("TileSizeL").value;
-    var tilesizeWTextBoxContent = document.getElementById("TileSizeW").value;
-    var sqftWTextBoxContent = document.getElementById("sqftW").value;
-    if (squareFootage == "" || squareFootage == null || sqftLTextBoxContent == "" || sqftLTextBoxContent == null
-  || tilesizeLTextBoxContent == "" || tilesizeLTextBoxContent == null || tilesizeWTextBoxContent == "" || tilesizeWTextBoxContent == null
-|| sqftWTextBoxContent == "" || sqftWTextBoxContent == null) {
-    document.getElementById("resultCard").style.display = "none";
-} else if (squareFootage != "" || squareFootage != null || sqftLTextBoxContent != "" || sqftLTextBoxContent != null
-|| tilesizeLTextBoxContent != "" || tilesizeLTextBoxContent != null || tilesizeWTextBoxContent != "" || tilesizeWTextBoxContent != null
-|| sqftWTextBoxContent != "" || sqftWTextBoxContent != null) {
-    document.getElementById("resultCard").style.display = "inline";
-  }
-}
 
-function calculate()
-{
-    var squareFootage = document.getElementById("totalSqft").value;
+  function validGapSize() {
+    var gapsizeContent = document.getElementById('gapSize').value;
+    if (gapsizeContent > .5) {
+      document.getElementById('gapsizeError').innerHTML = 'Gap too large';
+      document.getElementById('gapSize').style.backgroundColor = 'red';
+    }
+    if (gapsizeContent < 0) {
+      document.getElementById('gapsizeError').innerHTML = 'Enter Positive Value';
+      document.getElementById('gapSize').style.backgroundColor = 'red';
+    }
+    else {
+      document.getElementById('gapsizeError').innerHTML = '';
+      document.getElementById('gapSize').style.backgroundColor = 'white';
+    }
+  }
+
+  function validTileDepth() {
+    var tiledepthContent = document.getElementById('tileDepth').value;
+    if (tiledepthContent > 10) {
+      document.getElementById('TileDepthError').innerHTML = 'Thickness too large';
+      document.getElementById('tileDepth').style.backgroundColor = 'red';
+    }
+    if (tiledepthContent < 0) {
+      document.getElementById('TileDepthError').innerHTML = 'Not a Valid Response';
+      document.getElementById('tileDepth').style.backgroundColor = 'red';
+    }
+    else {
+      document.getElementById('TileDepthError').innerHTML = '';
+      document.getElementById('tileDepth').style.backgroundColor = 'white';
+    }
+  }
+
+  function validSub() {
+    var squareFootage = document.getElementById('totalSqft').value;
+    var sqftLTextBoxContent = document.getElementById('sqftL').value;
+    var tilesizeLTextBoxContent = document.getElementById('TileSizeL').value;
+    var tilesizeWTextBoxContent = document.getElementById('TileSizeW').value;
+    var sqftWTextBoxContent = document.getElementById('sqftW').value;
+    if (squareFootage == '' || squareFootage == null || sqftLTextBoxContent == '' || sqftLTextBoxContent == null
+      || tilesizeLTextBoxContent == '' || tilesizeLTextBoxContent == null || tilesizeWTextBoxContent == '' || tilesizeWTextBoxContent == null
+      || sqftWTextBoxContent == '' || sqftWTextBoxContent == null) {
+      document.getElementById('resultCard').style.display = 'none';
+    }
+    else if (squareFootage != '' || squareFootage != null || sqftLTextBoxContent != '' || sqftLTextBoxContent != null
+      || tilesizeLTextBoxContent != '' || tilesizeLTextBoxContent != null || tilesizeWTextBoxContent != '' || tilesizeWTextBoxContent != null
+      || sqftWTextBoxContent != '' || sqftWTextBoxContent != null) {
+      document.getElementById('resultCard').style.display = 'inline';
+    }
+  }
+
+  function calculate() {
+    validSub();
+    storeValues();
+
+
+    var squareFootage = document.getElementById('totalSqft').value;
     var sqftNumber = parseInt(squareFootage);
-    var sqftLTextBoxContent = document.getElementById("sqftL").value;
+    var sqftLTextBoxContent = document.getElementById('sqftL').value;
     var areaLNumber = parseInt(sqftLTextBoxContent);
-    var sqftWTextBoxContent = document.getElementById("sqftW").value;
+    var sqftWTextBoxContent = document.getElementById('sqftW').value;
     var areaWNumber = parseInt(sqftWTextBoxContent);
-    var tilesizeLTextBoxContent = document.getElementById("TileSizeL").value;
+    var tilesizeLTextBoxContent = document.getElementById('TileSizeL').value;
     var tileareaLNumber = parseInt(tilesizeLTextBoxContent);
     var mettileareaLConverted = tileareaLNumber / 100;
-    var tilesizeWTextBoxContent = document.getElementById("TileSizeW").value;
+    var tilesizeWTextBoxContent = document.getElementById('TileSizeW').value;
     var tileareaWNumber = parseInt(tilesizeWTextBoxContent);
     var mettileareaWConverted = tileareaWNumber / 100;
-    var gapsizeContent = eval(document.getElementById("gapSize").value);
+    var gapsizeContent = eval(document.getElementById('gapSize').value);
     var halfimpgapConverted = (parseInt(gapsizeContent) / 144) / 2;
-    var halfmetgapmmtomConverted = (parseInt(gapsizeContent) / 1000)/2;
-    var impatcPerimeter = (areaLNumber - halfimpgapConverted)*(areaWNumber - halfimpgapConverted);
-    var metatcPerimeter = (areaLNumber - halfmetgapmmtomConverted)*(areaWNumber - halfmetgapmmtomConverted);
+
+    var halfmetgapmmtomConverted = (parseInt(gapsizeContent) / 1000) / 2;
+
+    var impatcPerimeter = (areaLNumber - halfimpgapConverted) * (areaWNumber - halfimpgapConverted);
+
+    var metatcPerimeter = (areaLNumber - halfmetgapmmtomConverted) * (areaWNumber - halfmetgapmmtomConverted);
+
     const implengthplusGap = tileareaLNumber + halfimpgapConverted;
     const impwidthplusGap = tileareaWNumber + halfimpgapConverted;
     const impaotPertile = implengthplusGap * impwidthplusGap;
+
     const metmmtomlengthplusGap = mettileareaLConverted + halfmetgapmmtomConverted;
     const metmmtomwidthplusGap = mettileareaWConverted + halfmetgapmmtomConverted;
     const metaotPertile = metmmtomlengthplusGap * metmmtomwidthplusGap;
+
     var remainderImp = impatcPerimeter % impaotPertile;
+
     var remainderMet = metatcPerimeter % metaotPertile;
-    var wasteRange = document.getElementById("wasteRange");
-    var myselectedWaste = (Number(wasteRange.value)/100);
-    var isImp = document.getElementById("radio-Imp").checked == true;
-    var isMet = document.getElementById("radio-Met").checked == true;
-    var tiledepthNumber = eval(document.getElementById("depthSize").value);
-    var mettdA = (tileareaLNumber + tileareaWNumber) * 10
-    var mettdB = gapsizeContent * tiledepthNumber
-    var mettdC = mettdA * mettdB * 1.2 <!-- grout coverage ratio -->
-    var mettdD = (tileareaWNumber * 10) * (tiledepthNumber * 10)
-    var mettdE = mettdC / mettdD
-    var mettgR = mettdE * sqftNumber
-    var imptdA = tileareaLNumber + tileareaWNumber
-    var imptdB = gapsizeContent * tiledepthNumber
-    var imptdC = imptdA * imptdB * 10.7639 <!-- grout coverage ratio -->
-    var imptdD = tileareaLNumber * tileareaWNumber
-    var imptdE = imptdC / imptdD
-    var imptgR = imptdE * sqftNumber
-    var tileBox = parseInt(document.getElementById("tileBox").value)
-    if (isImp)
-    {
-        document.getElementById("numberofTiles").innerHTML = Math.round(((sqftNumber * 144) / impaotPertile) * (1 + myselectedWaste)) + " Tiles"
-        document.getElementById("waste").innerHTML = wasteRange.value + " %";
-        document.getElementById("thinset").innerHTML = Math.round((((areaLNumber * areaWNumber) * myselectedWaste)/95)*50) + " lb(s) of thinset"
-        document.getElementById("numberof50lbsBags").innerHTML = Math.ceil(((areaLNumber * areaWNumber)*myselectedWaste)/95) + " X 50lb bag(s) of thinset"
-        document.getElementById("tgR").innerHTML = Math.ceil(imptgR) + " lbs of Grout"
-        document.getElementById("tpB").innerHTML = Math.ceil(((((sqftNumber * 144) / impaotPertile) * (1 + myselectedWaste))) / tileBox);
-        if (tileBox = "" | tileBox == 0) {
-          document.getElementById("tpB").innerHTML = "Undetermined";
-        }
-    }
-    if (isMet)
-    {
-        document.getElementById("numberofTiles").innerHTML = Math.round((sqftNumber / metaotPertile) * (1 + myselectedWaste)) + " Tiles"
-        document.getElementById("waste").innerHTML = wasteRange.value + " %"
-        document.getElementById("thinset").innerHTML = Math.round((((areaLNumber * areaWNumber)*myselectedWaste)/8.82579)*22.6796) + " kg(s) of thinset"
-        document.getElementById("numberof50lbsBags").innerHTML = Math.ceil(((areaLNumber * areaWNumber)*myselectedWaste)/8.82579) + " X 22kg bag(s) of thinset"
-        document.getElementById("tgR").innerHTML = Math.ceil(mettgR) + " kg(s) of Grout"
-        document.getElementById("tpB").innerHTML = Math.ceil(Math.round((sqftNumber / metaotPertile) * (1 + myselectedWaste)) / tileBox);
-        if (tileBox = "" | tileBox == 0) {
-          document.getElementById("tpB").innerHTML = "Undetermined";
-        }
-    }
-  }
-function uomCheck()
-{
-  if (document.getElementById("radio-Met").checked == true)
-  {
-    document.getElementById("uomsqftHangar").innerHTML = "m"
-    document.getElementById("depthsizeHangar").innerHTML = "mm"
-    document.getElementById("gapsizeHangar").innerHTML = "mm"
-    document.getElementById("uomTileSize").innerHTML = "cm"
-    document.getElementById("uomsqftWHangar").innerHTML = "m"
-    document.getElementById("uomWTileSize").innerHTML = "cm"
-    document.getElementById("totalsqftTag").innerHTML = "m"
-    document.getElementById("1/16").value=1.5875
-    document.getElementById("1/16").innerHTML="1.5"
-    document.getElementById("1/8").value=3.175
-    document.getElementById("1/8").innerHTML="3.5"
-    document.getElementById("3/16").value=4.7625
-    document.getElementById("3/16").innerHTML="4.76"
-    document.getElementById("1/4").value=6.35
-    document.getElementById("1/4").innerHTML="6.35"
-    document.getElementById("3/8").value=9.525
-    document.getElementById("3/8").innerHTML="9.52"
-    document.getElementById("totalSqft").placeholder = "Square Meters"
-    document.getElementById("d1/2").value=12.7
-    document.getElementById("d1/2").innerHTML="12.7 mm"
-    document.getElementById("d3/4").value=19.05
-    document.getElementById("d3/4").innerHTML="19.05 mm"
-    document.getElementById("d1/8").value=3.175
-    document.getElementById("d1/8").innerHTML="3.175 mm"
-    document.getElementById("d3/8").value=9.525
-    document.getElementById("d3/8").innerHTML="9.525 mm"
-    document.getElementById("totalareaLabel").innerHTML = "Square Meters: ";
-  }
-  else if (document.getElementById("radio-Imp").checked == true)
-  {
-      document.getElementById("uomsqftHangar").innerHTML = "ft"
-      document.getElementById("depthsizeHangar").innerHTML = "in"
-      document.getElementById("gapsizeHangar").innerHTML = "in"
-      document.getElementById("uomTileSize").innerHTML = "in"
-      document.getElementById("uomWTileSize").innerHTML = "in"
-      document.getElementById("uomsqftWHangar").innerHTML = "ft"
-      document.getElementById("totalsqftTag").innerHTML = "ft"
-      document.getElementById("1/16").value=.0625
-      document.getElementById("1/16").innerHTML="1/16"
-      document.getElementById("1/8").value=.125
-      document.getElementById("1/8").innerHTML="1/8"
-      document.getElementById("3/16").value=.1875
-      document.getElementById("3/16").innerHTML="3/16"
-      document.getElementById("1/4").value=.25
-      document.getElementById("1/4").innerHTML="1/4"
-      document.getElementById("3/8").value=.375
-      document.getElementById("3/8").innerHTML="3/8"
-      document.getElementById("totalSqft").placeholder = "Square Feet"
-      document.getElementById("d1/2").value=.5
-      document.getElementById("d1/2").innerHTML="1/2"
-      document.getElementById("d3/4").value=.75
-      document.getElementById("d3/4").innerHTML="3/4"
-      document.getElementById("d1/8").value=.125
-      document.getElementById("d1/8").innerHTML="1/8"
-      document.getElementById("d3/8").value=.375
-      document.getElementById("d3/8").innerHTML="3/8"
-      document.getElementById("totalareaLabel").innerHTML = "Square Footage: ";
 
-  }
-}
-function gapsizeSelect()
-{
-  document.getElementById("gapSize").value = document.getElementById("gapSelect").value;
-}
-function depthsizeSelect()
-{
-  document.getElementById("depthSize").value = document.getElementById("depthSelect").value;
-}
-function depthcustomAppear()
-{
-  if (document.getElementById("depthSelect").options.selectedIndex != 4)
-  {
-    document.getElementById("depthSize").style.display = "none"
-    document.getElementById("depthsizeAppend").style.display = "none"
-    document.getElementById("depthSize").value = document.getElementById("depthSelect").value;
-  }
-  else if (document.getElementById("depthSelect").options.selectedIndex = 4)
-  {
-    document.getElementById("depthSize").style.display = "inline"
-    document.getElementById("depthsizeAppend").style.display = "inline";
-  }
-}
-function gapcustomAppear()
-{
-  if (document.getElementById("gapSelect").options.selectedIndex != 5)
-  {
-    document.getElementById("gapSize").style.display = "none"
-    document.getElementById("gapsizeAppend").style.display = "none"
-    document.getElementById("gapSize").value = document.getElementById("gapSelect").value;
-  }
-  else if (document.getElementById("gapSelect").options.selectedIndex = 5)
-  {
-    document.getElementById("gapSize").style.display = "inline"
-    document.getElementById("gapsizeAppend").style.display = "inline";
-  }
-}
-function validSquareFootage()
-{
-  var squareFootage = document.getElementById("totalSqft").value
-  if ( squareFootage != "" || squareFootage != null || squareFootage != NaN)
-  {
-    // document.getElementById("sqftL").value = Number(squareFootage)/2
-    // document.getElementById("sqftW").value = Number(squareFootage)/2
-  }
-  else
-  {
-  document.getElementById("totalSqftError").innerHTML = "Invalid Input"
-  squareFootage.style.backgroundColor = "red"
-  }
-}
-function displayValue()
-{
-  var slider = document.getElementById("wasteRange");
-  var output = document.getElementById("currentwasteValue");
-  output.innerHTML = slider.value; //Display the default slider value
+    var wasteRange = document.getElementById('wasteRange');
+    var myselectedWaste = (Number(wasteRange.value) / 100);
 
-  slider.oninput = function() {
-    output.innerHTML = this.value;
+    var isImp = document.getElementById('radio-Imp').checked == true;
+
+    var isMet = document.getElementById('radio-Met').checked == true;
+
+    var tiledepthNumber = eval(document.getElementById('depthSize').value);
+
+    var mettdA = (tileareaLNumber + tileareaWNumber) * 10;
+    var mettdB = gapsizeContent * tiledepthNumber;
+    var mettdC = mettdA * mettdB * 1.2; // grout coverage ratio
+    var mettdD = (tileareaWNumber * 10) * (tiledepthNumber * 10);
+    var mettdE = mettdC / mettdD;
+    var mettgR = mettdE * sqftNumber;
+
+    var imptdA = tileareaLNumber + tileareaWNumber;
+    var imptdB = gapsizeContent * tiledepthNumber;
+    var imptdC = imptdA * imptdB * 10.7639; // grout coverage ratio
+    var imptdD = tileareaLNumber * tileareaWNumber;
+    var imptdE = imptdC / imptdD;
+    var imptgR = imptdE * sqftNumber;
+
+    var tileBox = parseInt(document.getElementById('tileBox').value);
+    if (isImp) {
+      document.getElementById('numberofTiles').innerHTML = Math.round(((sqftNumber * 144) / impaotPertile) * (1 + myselectedWaste)) + ' Tiles';
+      document.getElementById('waste').innerHTML = wasteRange.value + ' %';
+      document.getElementById('thinset').innerHTML = Math.round((((areaLNumber * areaWNumber) * myselectedWaste) / 95) * 50) + ' lb(s) of thinset';
+      document.getElementById('numberof50lbsBags').innerHTML = Math.ceil(((areaLNumber * areaWNumber) * myselectedWaste) / 95) + ' X 50lb bag(s) of thinset';
+      document.getElementById('tgR').innerHTML = Math.ceil(imptgR) + ' lbs of Grout';
+      document.getElementById('tpB').innerHTML = Math.ceil(((((sqftNumber * 144) / impaotPertile) * (1 + myselectedWaste))) / tileBox);
+      if (tileBox = '' | tileBox == 0) {
+        document.getElementById('tpB').innerHTML = 'Undetermined';
+      }
+    }
+    if (isMet) {
+      document.getElementById('numberofTiles').innerHTML = Math.round((sqftNumber / metaotPertile) * (1 + myselectedWaste)) + ' Tiles';
+      document.getElementById('waste').innerHTML = wasteRange.value + ' %';
+      document.getElementById('thinset').innerHTML = Math.round((((areaLNumber * areaWNumber) * myselectedWaste) / 8.82579) * 22.6796) + ' kg(s) of thinset';
+      document.getElementById('numberof50lbsBags').innerHTML = Math.ceil(((areaLNumber * areaWNumber) * myselectedWaste) / 8.82579) + ' X 22kg bag(s) of thinset';
+      document.getElementById('tgR').innerHTML = Math.ceil(mettgR) + ' kg(s) of Grout';
+      document.getElementById('tpB').innerHTML = Math.ceil(Math.round((sqftNumber / metaotPertile) * (1 + myselectedWaste)) / tileBox);
+      if (tileBox = '' | tileBox == 0) {
+        document.getElementById('tpB').innerHTML = 'Undetermined';
+      }
+    }
   }
-}
-function printButton() {
+
+  function uomCheck() {
+    if (document.getElementById('radio-Met').checked == true) {
+      document.getElementById('uomsqftHangar').innerHTML = 'm';
+      document.getElementById('depthsizeHangar').innerHTML = 'mm';
+      document.getElementById('gapsizeHangar').innerHTML = 'mm';
+      document.getElementById('uomTileSize').innerHTML = 'cm';
+      document.getElementById('uomsqftWHangar').innerHTML = 'm';
+      document.getElementById('uomWTileSize').innerHTML = 'cm';
+      document.getElementById('totalsqftTag').innerHTML = 'm';
+      document.getElementById('1/16').value = 1.5875;
+      document.getElementById('1/16').innerHTML = '1.5';
+      document.getElementById('1/8').value = 3.175;
+      document.getElementById('1/8').innerHTML = '3.5';
+      document.getElementById('3/16').value = 4.7625;
+      document.getElementById('3/16').innerHTML = '4.76';
+      document.getElementById('1/4').value = 6.35;
+      document.getElementById('1/4').innerHTML = '6.35';
+      document.getElementById('3/8').value = 9.525;
+      document.getElementById('3/8').innerHTML = '9.52';
+      document.getElementById('totalSqft').placeholder = 'Square Meters';
+      document.getElementById('d1/2').value = 12.7;
+      document.getElementById('d1/2').innerHTML = '12.7 mm';
+      document.getElementById('d3/4').value = 19.05;
+      document.getElementById('d3/4').innerHTML = '19.05 mm';
+      document.getElementById('d1/8').value = 3.175;
+      document.getElementById('d1/8').innerHTML = '3.175 mm';
+      document.getElementById('d3/8').value = 9.525;
+      document.getElementById('d3/8').innerHTML = '9.525 mm';
+      document.getElementById('totalareaLabel').innerHTML = 'Square Meters: ';
+    }
+    else if (document.getElementById('radio-Imp').checked == true) {
+      document.getElementById('uomsqftHangar').innerHTML = 'ft';
+      document.getElementById('depthsizeHangar').innerHTML = 'in';
+      document.getElementById('gapsizeHangar').innerHTML = 'in';
+      document.getElementById('uomTileSize').innerHTML = 'in';
+      document.getElementById('uomWTileSize').innerHTML = 'in';
+      document.getElementById('uomsqftWHangar').innerHTML = 'ft';
+      document.getElementById('totalsqftTag').innerHTML = 'ft';
+      document.getElementById('1/16').value = .0625;
+      document.getElementById('1/16').innerHTML = '1/16';
+      document.getElementById('1/8').value = .125;
+      document.getElementById('1/8').innerHTML = '1/8';
+      document.getElementById('3/16').value = .1875;
+      document.getElementById('3/16').innerHTML = '3/16';
+      document.getElementById('1/4').value = .25;
+      document.getElementById('1/4').innerHTML = '1/4';
+      document.getElementById('3/8').value = .375;
+      document.getElementById('3/8').innerHTML = '3/8';
+      document.getElementById('totalSqft').placeholder = 'Square Feet';
+      document.getElementById('d1/2').value = .5;
+      document.getElementById('d1/2').innerHTML = '1/2';
+      document.getElementById('d3/4').value = .75;
+      document.getElementById('d3/4').innerHTML = '3/4';
+      document.getElementById('d1/8').value = .125;
+      document.getElementById('d1/8').innerHTML = '1/8';
+      document.getElementById('d3/8').value = .375;
+      document.getElementById('d3/8').innerHTML = '3/8';
+      document.getElementById('totalareaLabel').innerHTML = 'Square Footage: ';
+
+    }
+  }
+
+  function gapsizeSelect() {
+    document.getElementById('gapSize').value = document.getElementById('gapSelect').value;
+  }
+
+  function depthsizeSelect() {
+    document.getElementById('depthSize').value = document.getElementById('depthSelect').value;
+  }
+
+  function depthcustomAppear() {
+    if (document.getElementById('depthSelect').options.selectedIndex != 4) {
+      document.getElementById('depthSize').style.display = 'none';
+      document.getElementById('depthsizeAppend').style.display = 'none';
+      document.getElementById('depthSize').value = document.getElementById('depthSelect').value;
+    }
+    else if (document.getElementById('depthSelect').options.selectedIndex = 4) {
+      document.getElementById('depthSize').style.display = 'inline';
+      document.getElementById('depthsizeAppend').style.display = 'inline';
+    }
+  }
+
+  function gapcustomAppear() {
+    if (document.getElementById('gapSelect').options.selectedIndex != 5) {
+      document.getElementById('gapSize').style.display = 'none';
+      document.getElementById('gapsizeAppend').style.display = 'none';
+      document.getElementById('gapSize').value = document.getElementById('gapSelect').value;
+    }
+    else if (document.getElementById('gapSelect').options.selectedIndex = 5) {
+      document.getElementById('gapSize').style.display = 'inline';
+      document.getElementById('gapsizeAppend').style.display = 'inline';
+    }
+  }
+
+  function validSquareFootage() {
+    var squareFootage = document.getElementById('totalSqft').value;
+    if (squareFootage != '' || squareFootage != null || squareFootage != NaN) {
+      // document.getElementById("sqftL").value = Number(squareFootage)/2
+      // document.getElementById("sqftW").value = Number(squareFootage)/2
+    }
+    else {
+      document.getElementById('totalSqftError').innerHTML = 'Invalid Input';
+      squareFootage.style.backgroundColor = 'red';
+    }
+  }
+
+  function displayValue() {
+    var slider = document.getElementById('wasteRange');
+    var output = document.getElementById('currentwasteValue');
+    output.innerHTML = slider.value; //Display the default slider value
+
+    slider.oninput = function() {
+      output.innerHTML = this.value;
+    };
+  }
+
+  function printButton() {
     window.print();
-}
+  }
 
-function setCookie(name, value) {
-  var today = new Date();
-  var expiry = new Date(today.getTime() + 30 * 24 * 3600 * 1000); //plus 30 days
-  {
-  document.cookie=name + "=" + escape(value) + "; path=/; expires=" + expiry.toGMTString();
+  function setCookie(name, value) {
+    var today = new Date();
+    var expiry = new Date(today.getTime() + 30 * 24 * 3600 * 1000); //plus 30 days
+    {
+      document.cookie = name + '=' + escape(value) + '; path=/; expires=' + expiry.toGMTString();
+    }
   }
-}
-function storeValues(form)
-{
-  setCookie("squareFootage", document.getElementById("totalSqft").value);
-  setCookie("sqftLTextBoxContent", document.getElementById("sqftL").value);
-  setCookie("sqftWTextBoxContent", document.getElementById("sqftW").value);
-  setCookie("tilesizeLTextBoxContent", document.getElementById("TileSizeL").value);
-  setCookie("tilesizeWTextBoxContent", document.getElementById("TileSizeW").value);
-  setCookie("gapsizeContent", document.getElementById("gapSize").value);
-  setCookie("wasteRange", document.getElementById("wasteRange").value);
-  setCookie("isImp", document.getElementById("radio-Imp").checked);
-  setCookie("isMet", document.getElementById("radio-Met").checked);
-  setCookie("tiledepthNumber", document.getElementById("depthSize").value);
-  setCookie("tileBox", document.getElementById("tileBox").value);
-  return true;
-}
-function loadValues()
-{
-  if(squareFootage = getCookie("squareFootage")) document.getElementById("squareFootage").value = squareFootage;
-  if(sqftLTextBoxContent = getCookie("sqftLTextBoxContent")) document.getElementById("sqftLTextBoxContent").value = sqftLTextBoxContent;
-  if(sqftWTextBoxContent = getCookie("sqftWTextBoxContent")) document.getElementById("sqftWTextBoxContent").value = sqftWTextBoxContent;
-  if(tilesizeLTextBoxContent = getCookie("tilesizeLTextBoxContent")) document.getElementById("tilesizeLTextBoxContent").value = tilesizeLTextBoxContent;
-  if(tilesizeWTextBoxContent = getCookie("tilesizeWTextBoxContent")) document.getElementById("tilesizeWTextBoxContent").value = tilesizeWTextBoxContent;
-  if(gapsizeContent = getCookie("gapsizeContent")) document.getElementById("gapsizeContent").value = gapsizeContent;
-  if(wasteRange = getCookie("wasteRange")) document.getElementById("wasteRange") = wasteRange;
-  if(isImp = getCookie("isImp")) document.getElementById("isImp").checked = isImp;
-  if(isMet = getCookie("isMet")) document.getElementById("isMet").checked = isMet;
-  if(tiledepthNumber = getCookie("tiledepthNumber")) document.getElementById("tiledepthNumber") = tiledepthNumber;
-  if(tileBox = getCookie("tileBox")) document.getElementById("tileBox") = tileBox;
-}
-function ready(callbackFunction){
-  if(document.readyState != 'loading')
-    callbackFunction(event)
-  else {
-    document.addEventListener("DOMContentLoaded", callbackFunction)
+
+  function storeValues(form) {
+    setCookie('squareFootage', document.getElementById('totalSqft').value);
+    setCookie('sqftLTextBoxContent', document.getElementById('sqftL').value);
+    setCookie('sqftWTextBoxContent', document.getElementById('sqftW').value);
+    setCookie('tilesizeLTextBoxContent', document.getElementById('TileSizeL').value);
+    setCookie('tilesizeWTextBoxContent', document.getElementById('TileSizeW').value);
+    setCookie('gapsizeContent', document.getElementById('gapSize').value);
+    setCookie('wasteRange', document.getElementById('wasteRange').value);
+    setCookie('isImp', document.getElementById('radio-Imp').checked);
+    setCookie('isMet', document.getElementById('radio-Met').checked);
+    setCookie('tiledepthNumber', document.getElementById('depthSize').value);
+    setCookie('tileBox', document.getElementById('tileBox').value);
+    return true;
   }
-}
-ready(event => {
+
+  function loadValues() {
+    if (squareFootage = getCookie('squareFootage')) document.getElementById('squareFootage').value = squareFootage;
+    if (sqftLTextBoxContent = getCookie('sqftLTextBoxContent')) document.getElementById('sqftLTextBoxContent').value = sqftLTextBoxContent;
+    if (sqftWTextBoxContent = getCookie('sqftWTextBoxContent')) document.getElementById('sqftWTextBoxContent').value = sqftWTextBoxContent;
+    if (tilesizeLTextBoxContent = getCookie('tilesizeLTextBoxContent')) document.getElementById('tilesizeLTextBoxContent').value = tilesizeLTextBoxContent;
+    if (tilesizeWTextBoxContent = getCookie('tilesizeWTextBoxContent')) document.getElementById('tilesizeWTextBoxContent').value = tilesizeWTextBoxContent;
+    if (gapsizeContent = getCookie('gapsizeContent')) document.getElementById('gapsizeContent').value = gapsizeContent;
+    if (wasteRange = getCookie('wasteRange')) document.getElementById('wasteRange').value = wasteRange;
+    if (isImp = getCookie('isImp')) document.getElementById('isImp').checked = isImp;
+    if (isMet = getCookie('isMet')) document.getElementById('isMet').checked = isMet;
+    if (tiledepthNumber = getCookie('tiledepthNumber')) document.getElementById('tiledepthNumber').value = tiledepthNumber;
+    if (tileBox = getCookie('tileBox')) document.getElementById('tileBox').value = tileBox;
+  }
+
+  function ready(callbackFunction) {
+    if (document.readyState != 'loading')
+      callbackFunction(event);
+    else {
+      document.addEventListener('DOMContentLoaded', callbackFunction);
+    }
+  }
+
+  ready(event => {
     console.log('DOM is ready.');
     displayValue();
 
@@ -476,8 +480,30 @@ ready(event => {
     gapsizeSelect();
 
     gapcustomAppear();
-    $('[data-toggle="tooltip"]').tooltip() ;
-})
+    $('[data-toggle="tooltip"]').tooltip();
+
+    $('#calc-button').click(() => {
+      calculate();
+      storeValues();
+    });
+
+    const demoData = () => {
+      $('#radio-Met').click();
+      $('#TileSizeL').val(100);
+      $('#TileSizeW').val(200);
+      document.getElementById('depthSelect').options.selectedIndex = 4;
+      depthcustomAppear();
+      $('#tileBox').val(10);
+      $('#sqftL').val(2).trigger('blur');
+      $('#sqftW').val(2).trigger('blur');
+
+      $('#calc-button').click();
+      // console.assert($('#sqftL').val() == '2')
+    };
+
+    $('.card-title > h1').click(demoData);
+    demoData();
+  });
 </script>
 
 
@@ -485,242 +511,306 @@ ready(event => {
 <div class="row" style="padding:25px">
   <div class="col-md-6 mx-auto">
     <div class="card mx-auto p-0">
-      <div class="card-title" style="margin:auto;padding:10px 0px 0px 0px" my-auto mx-auto><h1>Tile Estimator Tool</h1></div>
-  <div class="card-body" mx-auto></div>
-<form style="padding:25px">
+      <div class="card-title" style="margin:auto;padding:10px 0px 0px 0px" my-auto mx-auto>
+        <h1>Tile Estimator Tool</h1></div>
+      <div class="card-body" mx-auto></div>
+      <form style="padding:25px">
 
-  <div class="form-row ml-2 y-auto">
-    <label style="text-decoration: underline;" for="UOM">Unit of Measurement</label>
-    <button type="button"  tabindex="-1" data-toggle="tooltip" data-delay='0' data-placement="top" title="Select the unit system to be used for all calculations." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
-</div>
-  <div class="form-row mx-auto my-auto">
-    <div class="form-group col">
-      <div class="regular-field" tabindex="0" onchange="uomCheck()">
-        <input type="radio" id="radio-Imp" name="notaswitch-one" value="Imp" checked/>
-        <label for="radio-Imp">Imperial</label>
-        <input type="radio" id="radio-Met" name="notaswitch-one" value="Met" />
-        <label for="radio-Met">Metric</label>
-      </div>
-      <!-- <select id="UOM" class="form-control" name="UOM" onchange="uomCheck()">
-        <option selected value ="imperial">Imperial</option>
-        <option value="metric">Metric</option>
-      </select> -->
-    </div>
-  </div>
-  <!-- <div class="form-row ml-2 pt-2 y-auto">
-    <label style="text-decoration: underline;" for="TileType">Tile Type:</label>
-      <button type="button" tabindex="-1" data-toggle="tooltip" data-placement="top" title="The brand of tyle. Used for Grout calculation." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
-  </div> -->
-  <!-- <div class="form-row my-0 mx-0 py-0 px-0">
-    <div class="form-group col-md-6 my-0 mx-0">
-      <select id="gapSelect" tabindex="8" class="form-control" onchange="gapcustomAppear()" onchange="gapsizeSelect()">
-        <option value=0 id="NA" selected>Choose...</option>
-        <option value=.0625 id="1/16">1/16</option>
-        <option value=.125 id="1/8">1/8</option>
-        <option value=.1875 id="3/16">3/16</option>
-        <option value=.25 id="1/4">1/4</option>
-        <option value=.375 id="3/8">3/8</option>
-        <option id="customGap" placeholder="Gap Size">Custom</option>
-      </select>
-    </div>
-  </div> -->
-  <div class="form-row ml-2 y-auto" style="margin:10px 0px 0px 0px;">
-    <label style="text-decoration: underline;" for="TileSize">Tile Size</label>
-      <button type="button" tabindex="-1"  data-toggle="tooltip" data-placement="top" title="What's the length and width of each tile. We use this to calculate the tile required for your area." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
-      <div class="card p-1 m-1 md-3 y-auto x-auto" style="border-color: white;color:red;">
-      <div class="form-group my-0 mx-0 py-0 px-0">
-        <p><span id="TileSizeError"></span></p>
+        <div class="form-row ml-2 y-auto">
+          <label style="text-decoration: underline;" for="UOM">Unit of Measurement</label>
+          <button type="button" tabindex="-1" data-toggle="tooltip" data-delay='0'
+            data-placement="top"
+            title="Select the unit system to be used for all calculations."
+            class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?
+          </button>
         </div>
-      </div>
-</div>
-  <div class="form-row my-0 mx-0 py-0 px-0">
-    <div class="input-group my-0 mx-0 col-md-5">
-      <input id="TileSizeL" tabindex="1" onblur="validLTileSize()" maxlength="5" type="text" class="form-control" placeholder="Length" required>
-      <div class="input-group-append-flex justify-content-top my-0 position-absolute-right" class="form-cotrol">
-        <span class="input-group-text" id="uomTileSize">in</span>
-      </div>
-    </div>
-    <div class="form-group italic col-mt-n2  y-auto x-auto">
-      X
-    </div>
-    <div class="input-group my-0 mx-0 col-md-5">
-      <input id="TileSizeW" tabindex="2" onblur="validWTileSize()" type="text" maxlength="5" class="form-control" placeholder="Width" required>
-      <div class="input-group-append-flex justify-content-top my-0 mx-0 py-0 px-0">
-        <span class="input-group-text" id="uomWTileSize">in</span>
-      </div>
+        <div class="form-row mx-auto my-auto">
+          <div class="form-group col">
+            <div class="regular-field" tabindex="0" onchange="uomCheck()">
+              <input type="radio" id="radio-Imp" name="notaswitch-one" value="Imp"
+                checked />
+              <label for="radio-Imp">Imperial</label>
+              <input type="radio" id="radio-Met" name="notaswitch-one" value="Met" />
+              <label for="radio-Met">Metric</label>
+            </div>
+            <!-- <select id="UOM" class="form-control" name="UOM" onchange="uomCheck()">
+              <option selected value ="imperial">Imperial</option>
+              <option value="metric">Metric</option>
+            </select> -->
+          </div>
+        </div>
+        <!-- <div class="form-row ml-2 pt-2 y-auto">
+          <label style="text-decoration: underline;" for="TileType">Tile Type:</label>
+            <button type="button" tabindex="-1" data-toggle="tooltip" data-placement="top" title="The brand of tyle. Used for Grout calculation." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
+        </div> -->
+        <!-- <div class="form-row my-0 mx-0 py-0 px-0">
+          <div class="form-group col-md-6 my-0 mx-0">
+            <select id="gapSelect" tabindex="8" class="form-control" onchange="gapcustomAppear()" onchange="gapsizeSelect()">
+              <option value=0 id="NA" selected>Choose...</option>
+              <option value=.0625 id="1/16">1/16</option>
+              <option value=.125 id="1/8">1/8</option>
+              <option value=.1875 id="3/16">3/16</option>
+              <option value=.25 id="1/4">1/4</option>
+              <option value=.375 id="3/8">3/8</option>
+              <option id="customGap" placeholder="Gap Size">Custom</option>
+            </select>
+          </div>
+        </div> -->
+        <div class="form-row ml-2 y-auto" style="margin:10px 0px 0px 0px;">
+          <label style="text-decoration: underline;" for="TileSize">Tile Size</label>
+          <button type="button" tabindex="-1" data-toggle="tooltip" data-placement="top"
+            title="What's the length and width of each tile. We use this to calculate the tile required for your area."
+            class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?
+          </button>
+          <div class="card p-1 m-1 md-3 y-auto x-auto"
+            style="border-color: white;color:red;">
+            <div class="form-group my-0 mx-0 py-0 px-0">
+              <p><span id="TileSizeError"></span></p>
+            </div>
+          </div>
+        </div>
+        <div class="form-row my-0 mx-0 py-0 px-0">
+          <div class="input-group my-0 mx-0 col-md-5">
+            <input id="TileSizeL" tabindex="1" onblur="validLTileSize()" maxlength="5"
+              type="text" class="form-control" placeholder="Length" required>
+            <div
+              class="input-group-append-flex justify-content-top my-0 position-absolute-right"
+              class="form-cotrol">
+              <span class="input-group-text" id="uomTileSize">in</span>
+            </div>
+          </div>
+          <div class="form-group italic col-mt-n2  y-auto x-auto">
+            X
+          </div>
+          <div class="input-group my-0 mx-0 col-md-5">
+            <input id="TileSizeW" tabindex="2" onblur="validWTileSize()" type="text"
+              maxlength="5" class="form-control" placeholder="Width" required>
+            <div class="input-group-append-flex justify-content-top my-0 mx-0 py-0 px-0">
+              <span class="input-group-text" id="uomWTileSize">in</span>
+            </div>
+          </div>
+
+        </div>
+        <div class="form-row ml-2 pt-2 y-auto" style="margin:10px 0px -20px 0px">
+          <label style="text-decoration: underline;" for="TileDepth">Tile Depth:</label>
+          <button type="button" tabindex="-1" data-toggle="tooltip" data-placement="top"
+            title="We use this to calculate the grout required."
+            class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?
+          </button>
+          <div class="card p-1 m-1 md-3 y-auto x-auto"
+            style="border-color: white;color:red;">
+            <div class="form-group my-0 mx-0 py-0 px-0 col-md-1">
+              <label for="depthsizeerrorSpan"></label>
+              <p><span id="depthsizeError"></p>
+            </div>
+          </div>
+        </div>
+        <div class="form-row my-0 mx-0 py-0 px-0" style="margin:0px 0px 0px 20px">
+          <div class="form-group col-md-5 my-0 mx-0">
+            <select id="depthSelect" tabindex="3" class="form-control"
+              onchange="depthcustomAppear()" onchange="depthsizeSelect()">
+              <option value=.5 id="d1/2">1/2</option>
+              <option value=.74 id="d3/4">3/4</option>
+              <option value=.125 id="d1/8" selected>1/8</option>
+              <option value=.375 id="d3/8">3/8</option>
+              <option id="customDepth" placeholder="Gap Size">Custom</option>
+            </select>
+          </div>
+          <div class="input-group my-0 mx-0 py-0 px-0 ml-0 col-md-5">
+            <input type="text" id="depthSize" min="0" maxlength="5" class="form-control"
+              placeholder="Depth">
+            <div class="input-group-append-flex justify-content-top my-0 mx-0 py-0 px-0"
+              id="depthsizeAppend">
+              <span class="input-group-text" id="depthsizeHangar">in</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-row ml-2 y-auto pt-2" style="margin:20px 0px 0px 0px;">
+          <label style="text-decoration: underline;" for="TileBox">Tiles per Box</label>
+          <button type="button" tabindex="-1" data-toggle="tooltip" data-placement="top"
+            title="If you know how many tiles come in each box, we'll calculate this for you."
+            class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?
+          </button>
+          <div class="card p-1 m-1 md-3 y-auto x-auto"
+            style="border-color: white;color:red;">
+            <div class="form-group my-0 mx-0 py-0 px-0 col-md-1">
+              <p><span id="TileBoxError"></span></p>
+            </div>
+          </div>
+        </div>
+        <div class="form-row my-0 mx-0 py-0 px-0">
+          <div class="input-group my-0 mx-0 col-md-6">
+            <input id="tileBox" tabindex="4" maxlength="5" type="text" class="form-control"
+              placeholder="Tiles per Box">
+          </div>
+        </div>
+        <div class="form-row ml-2 pt-0 y-auto" style="margin:10px 0px 0px 0px;">
+          <label style="text-decoration: underline;" for="ATC">Area to Cover:</label>
+          <button type="button" tabindex="-1" data-toggle="tooltip" data-placement="top"
+            title="Tell us the length and width of your area if rectangular or use the square footage field to enter the total area for irreglar shaped spaces."
+            class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?
+          </button>
+          <div class="card-3 p-1 m-1" style="border-color:white;color:red;">
+            <div class="form-group my-0 mx-0 px-0 py-0 md">
+              <p><span id="sqftError"></span></p>
+            </div>
+          </div>
+        </div>
+        <div class="form-row my-0 mx-0 py-0 px-0">
+          <div class="input-group my-0 mx-0 col-md-5">
+            <input id="sqftL" tabindex="5" maxlength="5" name="sqftL" onblur="validLSqft()"
+              type="text" class="form-control" placeholder="Length">
+            <div class="input-group-append-flex justify-content-top my-0 mx-0 px-0 py-0">
+              <span class="input-group-text" id="uomsqftHangar">ft</span>
+            </div>
+          </div>
+          <div class="form-group italic x-auto y-auto" style="text-align: center;">
+            X
+          </div>
+          <div class="input-group my-0 mx-0 col-md-5">
+            <input id="sqftW" tabindex="6" name="sqftW" maxlength="5" onblur="validWSqft()"
+              type="text" class="form-control" placeholder="Width">
+            <div class="input-group-append-flex justify-content-top my-0 mx-0 px-0 py-0">
+              <span class="input-group-text" id="uomsqftWHangar">ft</span>
+            </div>
+          </div>
+
+        </div>
+        <div class="form-row ml-2 pt-2 y-auto">
+          <label style="text-decoration: underline;" for="SquareFootage"
+            id="totalareaLabel">Square Footage:</label>
+          <button type="button" tabindex="-1" data-toggle="tooltip" data-placement="top"
+            title="Estimated Total Area of the tile floor. Not only the tile installed for a walkway/path, but also the floor finish that's installed underneath permanent fixtures like cabinets, refridgerators, and kitchen islands, in that end."
+            class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?
+          </button>
+          <div class="card-3 p-1 m-1" style="border-color:white;color:red;">
+            <div class="form-group my-0 mx-0 py-0 px-0 col-md-6">
+              <p><span id="totalSqftError"></p>
+            </div>
+          </div>
+        </div>
+        <div class="form-row my-0 mx-0 px-0 py-0">
+          <div class="input-group my-0 mx-0 col-md-6">
+            <input type="text" tabindex="7" id="totalSqft" maxlength="7"
+              class="form-control" placeholder="Square Feet" onblur="validSquareFootage()"
+              required>
+            <div class="input-group-append-flex justify-content-top my-0 mx-0 py-0 px-0">
+              <span class="input-group-text" id="totalsqftHangar"><span
+                id="totalsqftTag"></span><sup>2</sup></span>
+            </div>
+          </div>
+        </div>
+        <div class="form-row ml-2 pt-2 y-auto">
+          <label style="text-decoration: underline;" for="GapSize">Gap Size:</label>
+          <button type="button" tabindex="-1" data-toggle="tooltip" data-placement="top"
+            title="The gap between each tile. Used for grout and tile calculation."
+            class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?
+          </button>
+          <div class="card-3 p-1 m-1" style="border-color:white;color:red;">
+            <div class="form-group my-0 mx-0 py-0 px-0 col-md-1">
+              <label for="gapsizeerrorSpan"></label>
+              <p><span id="gapsizeError"></p>
+            </div>
+          </div>
+        </div>
+        <div class="form-row my-0 mx-0 py-0 px-0">
+          <div class="form-group col-md-6 my-0 mx-0">
+            <select id="gapSelect" tabindex="8" class="form-control"
+              onchange="gapcustomAppear()" onchange="gapsizeSelect()">
+              <option value=.0625 id="1/16">1/16</option>
+              <option value=.125 id="1/8" selected>1/8</option>
+              <option value=.1875 id="3/16">3/16</option>
+              <option value=.25 id="1/4">1/4</option>
+              <option value=.375 id="3/8">3/8</option>
+              <option id="customGap" placeholder="Gap Size">Custom</option>
+            </select>
+          </div>
+          <div class="input-group my-0 mx-0 py-0 px-0 ml-0 col-md-6">
+            <input type="text" id="gapSize" onblur="validGapSize()" min="0" max=".5"
+              step=".0001" maxlength="7" class="form-control" placeholder="Gap Size"
+              required>
+            <div class="input-group-append-flex justify-content-top my-0 mx-0 py-0 px-0"
+              id="gapsizeAppend">
+              <span class="input-group-text" id="gapsizeHangar">in</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-row ml-0 my-auto" style="width:18rem;">
+          <div class="form-group col-md-4 my-auto ml-0">
+            <label style="text-decoration: underline;" for="Waste">Waste:</label>
+          </div>
+          <div class="card x-auto y-auto" style="border-color:white;">
+            <div class="form-group position-relative col-mt-n1 my-auto pb-2">
+              <span id="currentwasteValue"></span>
+            </div>
+          </div>
+          <div style="min-width:50px;" class="form-group col-mt-n1 my-auto pt-2">
+            <p>%</p>
+          </div>
+          <div class="form-group col-mt-n1 my-auto ml-5 pb-4 pt-1">
+            <button type="button" tabindex="-1" data-delay='0' data-toggle="tooltip"
+              data-placement="top"
+              title="Waste percentages can account for sections of the Area to Cover that will be removed from the equation, such as the area for perimeter baseboards or structural support beams where tile cannot not be installed. Waste gives you control over your ability to manage the dimensions according to your project."
+              class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?
+            </button>
+          </div>
+        </div>
+        <div class="form-row my-0 mx-0 py-0 px-0">
+          <div class="form-group col-md-6 my-0 mx-0 py-0 px-0">
+            <input type="range" class="form-control-range" id="wasteRange" min="0" max="20"
+              step=".5" oninput="displayValue()">
+          </div>
+          <div class="form-group my-0 mx-0 py-0 px-0 col-md-6">
+          </div>
+        </div>
     </div>
 
+    </form>
   </div>
-  <div class="form-row ml-2 pt-2 y-auto" style="margin:10px 0px -20px 0px">
-    <label style="text-decoration: underline;" for="TileDepth">Tile Depth:</label>
-      <button type="button" tabindex="-1" data-toggle="tooltip" data-placement="top" title="We use this to calculate the grout required." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
-      <div class="card p-1 m-1 md-3 y-auto x-auto" style="border-color: white;color:red;">
-      <div class="form-group my-0 mx-0 py-0 px-0 col-md-1">
-        <label for="depthsizeerrorSpan"></label>
-        <p><span id="depthsizeError"></p>
-        </div>
-      </div>
-  </div>
-  <div class="form-row my-0 mx-0 py-0 px-0" style="margin:0px 0px 0px 20px">
-    <div class="form-group col-md-5 my-0 mx-0">
-      <select id="depthSelect" tabindex="3" class="form-control" onchange="depthcustomAppear()" onchange="depthsizeSelect()">
-        <option value=.5 id="d1/2">1/2</option>
-        <option value=.74 id="d3/4">3/4</option>
-        <option value=.125 id="d1/8" selected>1/8</option>
-        <option value=.375 id="d3/8">3/8</option>
-        <option id="customDepth" placeholder="Gap Size">Custom</option>
-      </select>
-    </div>
-    <div class="input-group my-0 mx-0 py-0 px-0 ml-0 col-md-5">
-      <input type="text" id="depthSize" min="0" maxlength="5" class="form-control" placeholder="Depth">
-      <div class="input-group-append-flex justify-content-top my-0 mx-0 py-0 px-0" id="depthsizeAppend">
-        <span class="input-group-text" id="depthsizeHangar">in</span>
-      </div>
-    </div>
-  </div>
-  <div class="form-row ml-2 y-auto pt-2" style="margin:20px 0px 0px 0px;">
-    <label style="text-decoration: underline;" for="TileBox">Tiles per Box</label>
-      <button type="button" tabindex="-1" data-toggle="tooltip" data-placement="top" title="If you know how many tiles come in each box, we'll calculate this for you." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
-      <div class="card p-1 m-1 md-3 y-auto x-auto" style="border-color: white;color:red;">
-      <div class="form-group my-0 mx-0 py-0 px-0 col-md-1">
-        <p><span id="TileBoxError"></span></p>
-      </div>
-    </div>
-</div>
-  <div class="form-row my-0 mx-0 py-0 px-0">
-    <div class="input-group my-0 mx-0 col-md-6">
-      <input id="tileBox" tabindex="4" maxlength="5" type="text" class="form-control" placeholder="Tiles per Box">
-    </div>
-  </div>
-  <div class="form-row ml-2 pt-0 y-auto" style="margin:10px 0px 0px 0px;">
-    <label style="text-decoration: underline;" for="ATC">Area to Cover:</label>
-      <button type="button" tabindex="-1" data-toggle="tooltip" data-placement="top" title="Tell us the length and width of your area if rectangular or use the square footage field to enter the total area for irreglar shaped spaces." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
-      <div class="card-3 p-1 m-1" style="border-color:white;color:red;">
-      <div class="form-group my-0 mx-0 px-0 py-0 md">
-        <p><span id="sqftError"></span></p>
-        </div>
-      </div>
-</div>
-<div class="form-row my-0 mx-0 py-0 px-0">
-    <div class="input-group my-0 mx-0 col-md-5">
-      <input id="sqftL" tabindex="5" maxlength="5" name="sqftL" onblur="validLSqft()" type="text" class="form-control" placeholder="Length">
-      <div class="input-group-append-flex justify-content-top my-0 mx-0 px-0 py-0">
-        <span class="input-group-text" id="uomsqftHangar">ft</span>
-      </div>
-    </div>
-    <div class="form-group italic x-auto y-auto" style="text-align: center;">
-      X
-    </div>
-    <div class="input-group my-0 mx-0 col-md-5">
-      <input id="sqftW" tabindex="6" name="sqftW" maxlength="5" onblur="validWSqft()" type="text" class="form-control" placeholder="Width">
-      <div class="input-group-append-flex justify-content-top my-0 mx-0 px-0 py-0">
-        <span class="input-group-text" id="uomsqftWHangar">ft</span>
-      </div>
-    </div>
-
-  </div>
-  <div class="form-row ml-2 pt-2 y-auto">
-    <label style="text-decoration: underline;" for="SquareFootage" id="totalareaLabel">Square Footage:</label>
-      <button type="button" tabindex="-1" data-toggle="tooltip" data-placement="top" title="Estimated Total Area of the tile floor. Not only the tile installed for a walkway/path, but also the floor finish that's installed underneath permanent fixtures like cabinets, refridgerators, and kitchen islands, in that end." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
-      <div class="card-3 p-1 m-1" style="border-color:white;color:red;">
-      <div class="form-group my-0 mx-0 py-0 px-0 col-md-6">
-        <p><span id="totalSqftError"></p>
-      </div>
-    </div>
-  </div>
-  <div class="form-row my-0 mx-0 px-0 py-0">
-    <div class="input-group my-0 mx-0 col-md-6">
-      <input type="text" tabindex="7" id="totalSqft" maxlength="7" class="form-control" placeholder="Square Feet" onblur="validSquareFootage()" required>
-      <div class="input-group-append-flex justify-content-top my-0 mx-0 py-0 px-0">
-        <span class="input-group-text" id="totalsqftHangar"><span id="totalsqftTag"></span><sup>2</sup></span>
-      </div>
-    </div>
-  </div>
-  <div class="form-row ml-2 pt-2 y-auto">
-    <label style="text-decoration: underline;" for="GapSize">Gap Size:</label>
-      <button type="button" tabindex="-1" data-toggle="tooltip" data-placement="top" title="The gap between each tile. Used for grout and tile calculation." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
-      <div class="card-3 p-1 m-1" style="border-color:white;color:red;">
-      <div class="form-group my-0 mx-0 py-0 px-0 col-md-1">
-        <label for="gapsizeerrorSpan"></label>
-        <p><span id="gapsizeError"></p>
-        </div>
-      </div>
-  </div>
-  <div class="form-row my-0 mx-0 py-0 px-0">
-    <div class="form-group col-md-6 my-0 mx-0">
-      <select id="gapSelect" tabindex="8" class="form-control" onchange="gapcustomAppear()" onchange="gapsizeSelect()">
-        <option value=.0625 id="1/16">1/16</option>
-        <option value=.125 id="1/8" selected>1/8</option>
-        <option value=.1875 id="3/16">3/16</option>
-        <option value=.25 id="1/4">1/4</option>
-        <option value=.375 id="3/8">3/8</option>
-        <option id="customGap" placeholder="Gap Size">Custom</option>
-      </select>
-    </div>
-    <div class="input-group my-0 mx-0 py-0 px-0 ml-0 col-md-6">
-      <input type="text" id="gapSize" onblur="validGapSize()" min="0" max=".5" step=".0001" maxlength="7" class="form-control" placeholder="Gap Size" required>
-      <div class="input-group-append-flex justify-content-top my-0 mx-0 py-0 px-0" id="gapsizeAppend">
-        <span class="input-group-text" id="gapsizeHangar">in</span>
-      </div>
-    </div>
-  </div>
-  <div class="form-row ml-0 my-auto" style="width:18rem;">
-    <div class="form-group col-md-4 my-auto ml-0">
-      <label style="text-decoration: underline;" for="Waste">Waste:</label>
-    </div>
-    <div class="card x-auto y-auto" style="border-color:white;">
-    <div class="form-group position-relative col-mt-n1 my-auto pb-2">
-      <span id="currentwasteValue"></span>
-    </div>
-  </div>
-    <div style="min-width:50px;" class="form-group col-mt-n1 my-auto pt-2">
-      <p>%</p>
-  </div>
-    <div class="form-group col-mt-n1 my-auto ml-5 pb-4 pt-1">
-      <button type="button" tabindex="-1" data-delay='0' data-toggle="tooltip" data-placement="top" title="Waste percentages can account for sections of the Area to Cover that will be removed from the equation, such as the area for perimeter baseboards or structural support beams where tile cannot not be installed. Waste gives you control over your ability to manage the dimensions according to your project." class="btn btn-gray btn-circle btn-sm ml-1 mt-1">?</button>
-    </div>
-  </div>
-    <div class="form-row my-0 mx-0 py-0 px-0">
-      <div class="form-group col-md-6 my-0 mx-0 py-0 px-0">
-        <input type="range" class="form-control-range" id="wasteRange" min="0" max="20" step=".5" oninput="displayValue()">
-      </div>
-        <div class="form-group my-0 mx-0 py-0 px-0 col-md-6">
-    </div>
-  </div>
-</div>
-
-  </form>
-</div>
-<div class="col-md-6">
-  <div class="card p-2">
-    <div class="card-title"></div>
+  <div class="col-md-6">
+    <div class="card p-2">
+      <div class="card-title"></div>
       <div class="card-body animated" id="resultCard" style="display:none">
-<br>
-<label for="resultsArea"><h2 style="text-decoration: underline;">Results</h2></label>
-<pre><b><p style="font-family:Helvetica;">Number of tiles: </b> <span id="numberofTiles"> </span></p>
-<b><p style="font-family:Helvetica;">Waste: </b> <span id="waste"> </span></p>
-<b><p style="font-family:Helvetica;">Thinset: </b> <span id="thinset"> </span> </p>
-<b><p style="font-family:Helvetica;">Thinset Bags: </b> <span id="numberof50lbsBags"> </span> </p>
-<b><p style="font-family:Helvetica;">Total Grout Required: </b> <span id="tgR"> </span> </p>
-<b><p style="font-family:Helvetica;">Boxes of Tiles: </b> <span id="tpB"> </span> </p> </pre>
-</div>
-<div class="container center-aligned" id="box">
-	<div class="row well mx-auto my-auto">
-		<h5 style="font-size:12px;text-align:center;font-family:Arial;">Lorem ipsum dolor sit amet,
-      consectetur adipisicing elit. Animi, labore, magni illum nemo ipsum quod
-      voluptates ab natus nulla possimus incidunt aut neque quaerat mollitia
-      perspiciatis assumenda asperiores consequatur soluta Lorem ipsum dolor
-      sit amet, consectetur adipisicing elit.</h5>
-      <div class="mx-auto">
-        <div style="margin:10px 0px 0px 0px"> <button type="button" onmouseup="validSub()" onmousedown="calculate()" onclick="storeValues()" class="btn btn-primary m-3" style="margin:auto">Calculate</button></div>
         <br>
-             <button class="btn btn-primary hidden-print" style="display: none" onclick="printButton()"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print</button>
-	    </div>
-	      </div>
+        <label for="resultsArea"><h2 style="text-decoration: underline;">Results</h2>
+        </label>
+        <pre><b><p style="font-family:Helvetica;">Number of tiles: </b> <span
+          id="numberofTiles"> </span></p>
+          <b><p style="font-family:Helvetica;">Waste: </b> <span id="waste"> </span></p>
+          <b><p style="font-family:Helvetica;">Thinset: </b> <span
+            id="thinset"> </span> </p>
+          <b><p style="font-family:Helvetica;">Thinset Bags: </b> <span
+            id="numberof50lbsBags"> </span> </p>
+          <b><p style="font-family:Helvetica;">Total Grout Required: </b> <span
+            id="tgR"> </span> </p>
+          <b><p style="font-family:Helvetica;">Boxes of Tiles: </b> <span
+            id="tpB"> </span> </p> </pre>
+      </div>
+      <div class="container center-aligned" id="box">
+        <div class="row well mx-auto my-auto">
+          <h5
+            style="font-size:12px;text-align:center;font-family:Arial;">Lorem ipsum dolor sit amet,
+            consectetur adipisicing elit. Animi, labore, magni illum nemo ipsum quod
+            voluptates ab natus nulla possimus incidunt aut neque quaerat mollitia
+            perspiciatis assumenda asperiores consequatur soluta Lorem ipsum dolor
+            sit amet, consectetur adipisicing elit.</h5>
+          <div class="mx-auto">
+            <div style="margin:10px 0px 0px 0px">
+              <button type="button" id='calc-button' onmouseup="calculate()"
+                class="btn btn-primary m-3" style="margin:auto">Calculate
+              </button>
+            </div>
+            <br>
+            <button class="btn btn-primary hidden-print" style="display: none"
+              onclick="printButton()"><span class="glyphicon glyphicon-print"
+              aria-hidden="true"></span> Print
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-  <br>
-  </body>
+<br>
+</body>
 </html>
